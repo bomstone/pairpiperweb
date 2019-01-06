@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
-from piperdatabase.views import PiperdatabaseView
+from piperdatabase import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pairsdata/', include('pairsdata.urls')),
-    path('piperdatabase/', PiperdatabaseView.as_view())
+    path('piperdatabase/', views.PiperdatabaseView, name='PiperdatabaseView'),
+    path('piperdatabase/updatelive/', views.updatelive),
+    path('piperdatabase/updatehistorical/', views.updatehistorical),
 ]

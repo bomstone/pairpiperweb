@@ -1,6 +1,12 @@
-from django.views.generic import TemplateView
 from django.shortcuts import render, HttpResponse
+from django.template import loader
 
 
-class PiperdatabaseView(TemplateView):
-    template_name = 'piperdatabase/database.html'
+def PiperdatabaseView(request):
+    return render(request, 'piperdatabase/database.html')
+
+def updatelive(request):
+    return HttpResponse('updatelive')
+
+def updatehistorical(request):
+    return HttpResponse('updatehistorical')
