@@ -220,3 +220,4 @@ def updatehistoricaldb():
             for symbol in symbol_list:
                 writer.writerow(scrape_historical(symbol, historical_date))
 
+        print('Lade till data för ' + str(historical_date) + ' till databasen')

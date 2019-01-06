@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
+from django.shortcuts import render, HttpResponse
 
-# Create your views here.
+
+class PiperdatabaseView(TemplateView):
+    template_name = 'piperdatabase/database.html'
