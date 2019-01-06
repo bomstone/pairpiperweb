@@ -1,21 +1,16 @@
-from django.views.generic import TemplateView #TEMP
+from django.views.generic import TemplateView
 from django.shortcuts import render, HttpResponse
-from pairsdata.forms import PairsdataForm
 
-#def home(request):
-    #return render(request, 'pairsdata/pairsdata.html')
 
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
 
-    def get(self, request):     #beskriver vad som händer vid get-request. Get-request skapas när sidan laddas (varför?)
-        form = PairsdataForm()
-        return render(request, self.template_name, {'form': form}) #renderar ett formulär enligt mallen PairsdataForm och returnerar
-
     def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
-        form = PairsdataForm(request.POST)
-        if form.is_valid():
-            text = form.cleaned_data['post'] #Cleaned_data ser till att texten som postats inte är skadlig
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+        ticker_1 = request.POST.get('ticker_1')
+        ticker_2 = request.POST.get('ticker_2')
+        assets = [ticker_1, ticker_2]
 
-        args = {'form': form, 'text': text}
+        args = {'start_date': start_date, 'end_date': end_date, 'ticker_1': ticker_1, 'ticker_2': ticker_2}
         return render(request, self.template_name, args)
