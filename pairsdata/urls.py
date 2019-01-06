@@ -1,8 +1,8 @@
 from django.urls import path
-from . import views
+from pairsdata.views import PairsdataView
 
 
 urlpatterns = [
-    path('', views.home),
+    path('', PairsdataView.as_view(), name='pairsdata'),
 
 ]
