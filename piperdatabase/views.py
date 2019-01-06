@@ -1,12 +1,14 @@
-from django.shortcuts import render, HttpResponse
-from django.template import loader
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from . import webscraper
 
 
 def PiperdatabaseView(request):
     return render(request, 'piperdatabase/database.html')
 
 def updatelive(request):
-    return HttpResponse('updatelive')
+    webscraper.updatelivedb()
+    return HttpResponseRedirect('/piperdatabase')
 
 def updatehistorical(request):
-    return HttpResponse('updatehistorical')
+
+    return HttpResponseRedirect('/piperdatabase')
