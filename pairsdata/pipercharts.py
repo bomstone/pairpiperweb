@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
-from django.core.files.storage import default_storage
+
 
 def fetch_data(asset, dataset, startdate, enddate):
     df = pd.read_csv('fulldb.csv', index_col = 'date', parse_dates=True).append(pd.read_csv('livedb.csv', index_col = 'date', parse_dates=True))
