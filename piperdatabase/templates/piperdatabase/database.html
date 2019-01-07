@@ -1,0 +1,19 @@
+<html>
+    <head>
+
+    </head>
+    <body align="center">
+        <form action="updatelive/" method="POST">
+        {% csrf_token %}
+            <input type="submit" value="Uppdatera livedb.csv">
+        </form>
+
+        <br>
+        <br>
+        <form action="updatehistorical/" method="POST">
+        {% csrf_token %}
+            <input type="text" name="historical_date" size="13" maxlength="20" value="Historical date">
+            <input type="submit" value="Uppdatera fulldb.csv">
+        </form>
+    </body>
+</html>
