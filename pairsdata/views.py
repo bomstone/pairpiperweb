@@ -1,5 +1,7 @@
 from django.views.generic import TemplateView
-from django.shortcuts import render, HttpResponse
+from . import pipercharts as pc
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.template import Template, Context
 
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
@@ -11,5 +13,7 @@ class PairsdataView(TemplateView):
         ticker_2 = request.POST.get('ticker_2')
         assets = [ticker_1, ticker_2]
 
-        args = {'start_date': start_date, 'end_date': end_date, 'ticker_1': ticker_1, 'ticker_2': ticker_2}
-        return render(request, self.template_name, args)
+        pc.plot_chart(assets, start_date, end_date)
+
+        return render(request, self.template_name)
+
