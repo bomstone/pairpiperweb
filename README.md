@@ -1,9 +1,4 @@
-### Pair Piper webbversion
-
-####App-Struktur
-**pairsdata:** *[domain]/pairsdata/ - grafanalys av par*<br>
-**piperdatabase:** *[domain]/piperdatabase/ - uppdatera livedb.csv och fulldb.csv*<br>
-
+### PairPiperWeb 0.0.4
 
 ##
 ####Versionshistorik<br>
