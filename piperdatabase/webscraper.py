@@ -204,7 +204,7 @@ def inspecthistorical():
     for symbol in symbol_list:
         print(scrape_historical(symbol, historical_date))
 
-def updatehistoricaldb():
+def updatehistoricaldb(historical_date):
     with open('fulldb.csv', 'r') as csvfile:
 
         read_file = csvfile.read()

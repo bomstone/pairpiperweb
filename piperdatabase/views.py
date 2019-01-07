@@ -9,5 +9,6 @@ def updatelive(request):
     return HttpResponseRedirect('/piperdatabase')
 
 def updatehistorical(request):
-
+    historical_date = request.POST.get('historical_date')
+    webscraper.updatehistoricaldb(historical_date)
     return HttpResponseRedirect('/piperdatabase')
