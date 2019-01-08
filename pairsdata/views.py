@@ -55,7 +55,7 @@ class PairsdataView(TemplateView):
 
         plt.savefig(f,
                     format="png",
-                    facecolor=(0.95, 0.95, 0.95),
+                    facecolor=('white'),
                     bbox_inches='tight',
                     )
         plt.clf()
