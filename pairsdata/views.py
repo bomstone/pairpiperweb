@@ -42,9 +42,9 @@ class PairsdataView(TemplateView):
         spread_rev = S1 - b * S2
 
         # Beräkna och plotta Zscore
-        zscore(spread).plot(figsize=(16, 3))
+        zscore(spread).plot(figsize=(9, 2))
         zscore2 = zscore(spread_rev)
-        zscore2.plot(figsize=(16, 3))
+        zscore2.plot(figsize=(9, 2))
         plt.axhline(zscore(spread).mean(), color='black')
         plt.axhline(1.0, color='red', linestyle='--')
         plt.axhline(-1.0, color='green', linestyle='--')
@@ -53,7 +53,11 @@ class PairsdataView(TemplateView):
 
         f = io.BytesIO()
 
-        plt.savefig(f, format="png", facecolor=(0.95, 0.95, 0.95))
+        plt.savefig(f,
+                    format="png",
+                    facecolor=(0.95, 0.95, 0.95),
+                    bbox_inches='tight',
+                    )
         plt.clf()
 
         image_b64 = base64.b64encode(f.getvalue()) #konverterar bilden till base64
