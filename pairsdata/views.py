@@ -7,6 +7,8 @@ from .pipercharts import *
 
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.template import Template, Context
+import base64
+
 
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
@@ -54,4 +56,8 @@ class PairsdataView(TemplateView):
         plt.savefig(f, format="png", facecolor=(0.95, 0.95, 0.95))
         plt.clf()
 
-        return HttpResponse(f.getvalue(), content_type="image/png")
+        image_b64 = base64.b64encode(f.getvalue())
+        image_show = str(image_b64, 'utf8')
+        context = {'image_show': image_show,}
+        return render(request, self.template_name, context)
+
