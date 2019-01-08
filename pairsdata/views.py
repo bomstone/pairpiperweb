@@ -56,8 +56,8 @@ class PairsdataView(TemplateView):
         plt.savefig(f, format="png", facecolor=(0.95, 0.95, 0.95))
         plt.clf()
 
-        image_b64 = base64.b64encode(f.getvalue())
-        image_show = str(image_b64, 'utf8')
+        image_b64 = base64.b64encode(f.getvalue()) #konverterar bilden till base64
+        image_show = str(image_b64, 'utf8') #encodar till 8 bit strängar
         context = {'image_show': image_show,}
         return render(request, self.template_name, context)
 
