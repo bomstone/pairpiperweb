@@ -1,8 +1,6 @@
-<html>
-    <head>
+{% extends 'base.html' %}
 
-    </head>
-    <body align="center">
+{% block content %}
         <form action="updatelive/" method="POST">
         {% csrf_token %}
             <input type="submit" value="Uppdatera livedb.csv">
@@ -15,5 +13,4 @@
             <input type="text" name="historical_date" size="13" maxlength="20" value="Historical date">
             <input type="submit" value="Uppdatera fulldb.csv">
         </form>
-    </body>
-</html>
+{% endblock %}
