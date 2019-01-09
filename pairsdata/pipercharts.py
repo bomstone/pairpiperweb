@@ -11,7 +11,7 @@ import base64
 
 
 def fetch_data(asset, dataset, startdate, enddate):
-    df = pd.read_csv('fulldb.csv', index_col = 'date', parse_dates=True)#.append(pd.read_csv('livedb.csv', index_col = 'date', parse_dates=True))
+    df = pd.read_csv('fulldb.csv', index_col = 'date', parse_dates=True).append(pd.read_csv('livedb.csv', index_col = 'date', parse_dates=True))
     data = df.loc[startdate:enddate]
     pivot_table = data.pivot(columns='symbol',
                              values=dataset)
