@@ -57,7 +57,7 @@ def draw_chart(symbol_list, start_date, end_date):
 
     plt.savefig(f,
                 format="png",
-                facecolor=('white'),
+                facecolor=('#3d5c87'),
                 bbox_inches='tight',
                 )
     plt.clf()
