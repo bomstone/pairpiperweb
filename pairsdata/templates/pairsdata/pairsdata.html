@@ -1,10 +1,5 @@
-<html>
-    <head>
-
-    </head>
-
-    <body align="center">
-        <center>
+{% extends 'base.html' %}
+    {% block content %}
         <table>
             <form method="POST">
             {% csrf_token %}
@@ -110,10 +105,9 @@
             </form>
             </tr>
         </table>
-        </center>
         <br><br><br>
             <img src="data:image/png;base64,{{ chart_1 }}" /><br>
             <img src="data:image/png;base64,{{ chart_2 }}" /><br>
             <img src="data:image/png;base64,{{ chart_3 }}" /><br>
-    </body>
-</html>
+        </center>
+    {% endblock %}
