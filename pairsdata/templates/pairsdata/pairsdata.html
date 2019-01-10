@@ -1,119 +1,115 @@
-<html>
-    <head>
+{% extends 'base.html' %}
 
-    </head>
+{% block content %}
+    <table>
+        <form method="POST">
+        {% csrf_token %}
+            <td>
+                <input type="text" name="start_date" size="9" maxlength="10" value="">
+            </td>
+            <td>
+                <input type="text" name="end_date" size="9" maxlength="10" value="">
+            </td>
+            <td>
+                <select name="ticker_1">
+                    <option value="ABB">ABB</option>
+                    <option value="ALFA">ALFA</option>
+                    <option value="ALIV-SDB">ALIV-SDB</option>
+                    <option value="ASSA-B">ASSA-B</option>
+                    <option value="ATCO-A">ATCO-A</option>
+                    <option value="ATCO-B">ATCO-B</option>
+                    <option value="AXFO">AXFO</option>
+                    <option value="BOL">BOL</option>
+                    <option value="DAX">DAX</option>
+                    <option value="ELUX-A">ELUX-A</option>
+                    <option value="ELUX-B">ELUX-B</option>
+                    <option value="EURSEK">EURSEK</option>
+                    <option value="GLD">GLD</option>
+                    <option value="HOLM-B">HOLM-B</option>
+                    <option value="HUSQ-B">HUSQ-B</option>
+                    <option value="ICA">ICA</option>
+                    <option value="NCC-B">NCC-B</option>
+                    <option value="NDA-SEK">NDA-SEK</option>
+                    <option value="NIBE-B">NIBE-B</option>
+                    <option value="OMX">OMX</option>
+                    <option value="PEAB-B">PEAB-B</option>
+                    <option value="SAAB-B">SAAB-B</option>
+                    <option value="SAND">SAND</option>
+                    <option value="SCA-B">SCA-B</option>
+                    <option value="SEB-A">SEB-A</option>
+                    <option value="SKA-B">SKA-B</option>
+                    <option value="SKF-A">SKF-A</option>
+                    <option value="SKF-B">SKF-B</option>
+                    <option value="SLV">SLV</option>
+                    <option value="SP500">SP500</option>
+                    <option value="SSAB-A">SSAB-A</option>
+                    <option value="SSAB-B">SSAB-B</option>
+                    <option value="STE-R">STE-R</option>
+                    <option value="SWED-A">SWED-A</option>
+                    <option value="TEL2-B">TEL2-B</option>
+                    <option value="TELIA">TELIA</option>
+                    <option value="TREL-B">TREL-B</option>
+                    <option value="USDSEK">USDSEK</option>
+                    <option value="VIX">VIX</option>
+                    <option value="VOLV-A">VOLV-A</option>
+                    <option value="VOLV-B">VOLV-B</option>
+                </select>
+            </td>
+            <td>
+                <select name="ticker_2">
+                    <option value="ABB">ABB</option>
+                    <option value="ALFA">ALFA</option>
+                    <option value="ALIV-SDB">ALIV-SDB</option>
+                    <option value="ASSA-B">ASSA-B</option>
+                    <option value="ATCO-A">ATCO-A</option>
+                    <option value="ATCO-B">ATCO-B</option>
+                    <option value="AXFO">AXFO</option>
+                    <option value="BOL">BOL</option>
+                    <option value="DAX">DAX</option>
+                    <option value="ELUX-A">ELUX-A</option>
+                    <option value="ELUX-B">ELUX-B</option>
+                    <option value="EURSEK">EURSEK</option>
+                    <option value="GLD">GLD</option>
+                    <option value="HOLM-B">HOLM-B</option>
+                    <option value="HUSQ-B">HUSQ-B</option>
+                    <option value="ICA">ICA</option>
+                    <option value="NCC-B">NCC-B</option>
+                    <option value="NDA-SEK">NDA-SEK</option>
+                    <option value="NIBE-B">NIBE-B</option>
+                    <option value="OMX">OMX</option>
+                    <option value="PEAB-B">PEAB-B</option>
+                    <option value="SAAB-B">SAAB-B</option>
+                    <option value="SAND">SAND</option>
+                    <option value="SCA-B">SCA-B</option>
+                    <option value="SEB-A">SEB-A</option>
+                    <option value="SKA-B">SKA-B</option>
+                    <option value="SKF-A">SKF-A</option>
+                    <option value="SKF-B">SKF-B</option>
+                    <option value="SLV">SLV</option>
+                    <option value="SP500">SP500</option>
+                    <option value="SSAB-A">SSAB-A</option>
+                    <option value="SSAB-B">SSAB-B</option>
+                    <option value="STE-R">STE-R</option>
+                    <option value="SWED-A">SWED-A</option>
+                    <option value="TEL2-B">TEL2-B</option>
+                    <option value="TELIA">TELIA</option>
+                    <option value="TREL-B">TREL-B</option>
+                    <option value="USDSEK">USDSEK</option>
+                    <option value="VIX">VIX</option>
+                    <option value="VOLV-A">VOLV-A</option>
+                    <option value="VOLV-B">VOLV-B</option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Refresh">
+            </td>
+        </form>
+        </tr>
+    </table>
+    <br><br><br>
+        <img src="data:image/png;base64,{{ chart_1 }}" /><br><br>
+        <img src="data:image/png;base64,{{ chart_2 }}" /><br><br>
+        <img src="data:image/png;base64,{{ chart_3 }}" /><br><br>
 
-    <body align="center">
-        <center>
-        <table>
-            <form method="POST">
-            {% csrf_token %}
-                <td>
-                    <input type="text" name="start_date" size="9" maxlength="10" value="Start date">
-                </td>
-                <td>
-                    <input type="text" name="end_date" size="9" maxlength="10" value="{{ todays_date }}">
-                </td>
-                <td>
-                    <select name="ticker_1">
-                        <option value="ABB">ABB</option>
-                        <option value="ALFA">ALFA</option>
-                        <option value="ALIV-SDB">ALIV-SDB</option>
-                        <option value="ASSA-B">ASSA-B</option>
-                        <option value="ATCO-A">ATCO-A</option>
-                        <option value="ATCO-B">ATCO-B</option>
-                        <option value="AXFO">AXFO</option>
-                        <option value="BOL">BOL</option>
-                        <option value="DAX">DAX</option>
-                        <option value="ELUX-A">ELUX-A</option>
-                        <option value="ELUX-B">ELUX-B</option>
-                        <option value="EURSEK">EURSEK</option>
-                        <option value="GLD">GLD</option>
-                        <option value="HOLM-B">HOLM-B</option>
-                        <option value="HUSQ-B">HUSQ-B</option>
-                        <option value="ICA">ICA</option>
-                        <option value="NCC-B">NCC-B</option>
-                        <option value="NDA-SEK">NDA-SEK</option>
-                        <option value="NIBE-B">NIBE-B</option>
-                        <option value="OMX">OMX</option>
-                        <option value="PEAB-B">PEAB-B</option>
-                        <option value="SAAB-B">SAAB-B</option>
-                        <option value="SAND">SAND</option>
-                        <option value="SCA-B">SCA-B</option>
-                        <option value="SEB-A">SEB-A</option>
-                        <option value="SKA-B">SKA-B</option>
-                        <option value="SKF-A">SKF-A</option>
-                        <option value="SKF-B">SKF-B</option>
-                        <option value="SLV">SLV</option>
-                        <option value="SP500">SP500</option>
-                        <option value="SSAB-A">SSAB-A</option>
-                        <option value="SSAB-B">SSAB-B</option>
-                        <option value="STE-R">STE-R</option>
-                        <option value="SWED-A">SWED-A</option>
-                        <option value="TEL2-B">TEL2-B</option>
-                        <option value="TELIA">TELIA</option>
-                        <option value="TREL-B">TREL-B</option>
-                        <option value="USDSEK">USDSEK</option>
-                        <option value="VIX">VIX</option>
-                        <option value="VOLV-A">VOLV-A</option>
-                        <option value="VOLV-B">VOLV-B</option>
-                    </select>
-                </td>
-                <td>
-                    <select name="ticker_2">
-                        <option value="ABB">ABB</option>
-                        <option value="ALFA">ALFA</option>
-                        <option value="ALIV-SDB">ALIV-SDB</option>
-                        <option value="ASSA-B">ASSA-B</option>
-                        <option value="ATCO-A">ATCO-A</option>
-                        <option value="ATCO-B">ATCO-B</option>
-                        <option value="AXFO">AXFO</option>
-                        <option value="BOL">BOL</option>
-                        <option value="DAX">DAX</option>
-                        <option value="ELUX-A">ELUX-A</option>
-                        <option value="ELUX-B">ELUX-B</option>
-                        <option value="EURSEK">EURSEK</option>
-                        <option value="GLD">GLD</option>
-                        <option value="HOLM-B">HOLM-B</option>
-                        <option value="HUSQ-B">HUSQ-B</option>
-                        <option value="ICA">ICA</option>
-                        <option value="NCC-B">NCC-B</option>
-                        <option value="NDA-SEK">NDA-SEK</option>
-                        <option value="NIBE-B">NIBE-B</option>
-                        <option value="OMX">OMX</option>
-                        <option value="PEAB-B">PEAB-B</option>
-                        <option value="SAAB-B">SAAB-B</option>
-                        <option value="SAND">SAND</option>
-                        <option value="SCA-B">SCA-B</option>
-                        <option value="SEB-A">SEB-A</option>
-                        <option value="SKA-B">SKA-B</option>
-                        <option value="SKF-A">SKF-A</option>
-                        <option value="SKF-B">SKF-B</option>
-                        <option value="SLV">SLV</option>
-                        <option value="SP500">SP500</option>
-                        <option value="SSAB-A">SSAB-A</option>
-                        <option value="SSAB-B">SSAB-B</option>
-                        <option value="STE-R">STE-R</option>
-                        <option value="SWED-A">SWED-A</option>
-                        <option value="TEL2-B">TEL2-B</option>
-                        <option value="TELIA">TELIA</option>
-                        <option value="TREL-B">TREL-B</option>
-                        <option value="USDSEK">USDSEK</option>
-                        <option value="VIX">VIX</option>
-                        <option value="VOLV-A">VOLV-A</option>
-                        <option value="VOLV-B">VOLV-B</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="submit" value="Refresh">
-                </td>
-            </form>
-            </tr>
-        </table>
-        </center>
-        <br><br><br>
-            <img src="data:image/png;base64,{{ chart_1 }}" /><br>
-            <img src="data:image/png;base64,{{ chart_2 }}" /><br>
-            <img src="data:image/png;base64,{{ chart_3 }}" /><br>
-    </body>
-</html>
+    </center>
+{% endblock %}
