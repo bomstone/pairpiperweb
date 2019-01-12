@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <form action="updatelive/" method="POST">
+        <form action="/piperdatabase/updatelive/" method="POST">
         {% csrf_token %}
             <input type="submit" value="Uppdatera livedb.csv">
         </form>
+            {{ update_live_message }}
 
         <br>
         <br>
-        <form action="updatehistorical/" method="POST">
+        <form action="/piperdatabase/updatehistorical/" method="POST">
         {% csrf_token %}
             <input type="text" name="historical_date" size="13" maxlength="20" value="Historical date">
             <input type="submit" value="Uppdatera fulldb.csv">
         </form>
+            {{ update_historical_message }}
+
+
 {% endblock %}
