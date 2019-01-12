@@ -198,7 +198,8 @@ def updatelivedb():
             row[0] = now.strftime('%Y-%m-%d')
             writer.writerow(row)
             u += 1
-    print('livedb.csv uppdaterades.')
+    update_live_message = 'livedb.csv uppdaterades.'
+    return update_live_message
 
 def inspecthistorical():
     for symbol in symbol_list:
@@ -210,7 +211,9 @@ def updatehistoricaldb(historical_date):
         read_file = csvfile.read()
 
     if historical_date in read_file:
-        print('Data för aktuellt datum finns redan i fulldb.csv')
+
+        update_historical_message = 'Data för aktuellt datum finns redan i fulldb.csv'
+        return update_historical_message
 
     # Om inte, skriv till databas
     else:
@@ -221,4 +224,5 @@ def updatehistoricaldb(historical_date):
             for symbol in symbol_list:
                 writer.writerow(scrape_historical(symbol, historical_date))
 
-        print('fulldb.csv uppdaterades med data för ' + str(historical_date) + '.')
+        update_historical_message = 'fulldb.csv uppdaterades med data för ' + str(historical_date) + '.'
+        return update_historical_message

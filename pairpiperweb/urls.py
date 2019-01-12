@@ -16,10 +16,11 @@ Including another URLconf
 from django.urls import include, path
 from django.contrib import admin
 from piperdatabase import views
+from pairsdata.views import PairsdataView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pairsdata/', include('pairsdata.urls')),
+    path('pairsdata/', PairsdataView.as_view(), name='pairsdata'),
     path('piperdatabase/', views.PiperdatabaseView, name='PiperdatabaseView'),
     path('piperdatabase/updatelive/', views.updatelive),
     path('piperdatabase/updatehistorical/', views.updatehistorical),
