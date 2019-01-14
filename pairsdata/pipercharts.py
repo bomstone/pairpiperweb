@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
+from statsmodels.tsa.stattools import coint
+from statsmodels.tsa.stattools import coint, adfuller
 
 import io
 import base64
@@ -43,15 +45,30 @@ def draw_chart(symbol_list, start_date, end_date):
     b = results.params[symbol_list[1]]
     spread_rev = S1 - b * S2
 
-    # Beräkna och plotta Zscore
-    zscore(spread).plot(figsize=(9, 2))
+    zscore1 = zscore(spread)
     zscore2 = zscore(spread_rev)
-    zscore2.plot(figsize=(9, 2))
-    plt.axhline(zscore(spread).mean(), color='black')
-    plt.axhline(1.0, color='red', linestyle='--')
-    plt.axhline(-1.0, color='green', linestyle='--')
-    plt.legend(['Spread ' + symbol_list[1], 'Spread ' + symbol_list[0]], bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
-               ncol=1, mode="expand", borderaxespad=0.);
+
+    score, pvalue, _ = coint(S1, S2)
+    pvalue = round(pvalue, 4)
+    if pvalue <= 0.05:
+        coint_string = ('p-Value = ' + str(pvalue) + ' Likely cointegrated')
+    else:
+        coint_string = ('p-Value = ' + str(pvalue) + ' Likely NOT cointegrated')
+
+    #plotta Zscore
+    zscore1.plot(linewidth=1.7, figsize=(10, 2))
+    zscore2.plot(linewidth=1.7)
+    plt.xlabel('')
+    plt.axhline(zscore(spread).mean(), color='black', linewidth=1.0)
+    plt.axhline(1.0, color='red', linestyle='--', linewidth=1.0)
+    plt.axhline(-1.0, color='green', linestyle='--', linewidth=1.0)
+    plt.axhline(2.0, color='grey', linestyle='--', linewidth=1.0)
+    plt.axhline(-2.0, color='grey', linestyle='--', linewidth=1.0)
+    plt.title(coint_string, loc='left', color='white', fontsize=10);
+    plt.xticks(rotation=0, color='white', fontsize=8)
+    plt.yticks(color='white', fontsize=8)
+    plt.legend([symbol_list[1], symbol_list[0]], bbox_to_anchor=(1.0, 1.12), loc=5,
+               ncol=2, borderaxespad=0.);
 
     f = io.BytesIO()
 
