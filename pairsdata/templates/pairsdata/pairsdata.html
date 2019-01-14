@@ -5,7 +5,7 @@
         <form method="POST">
         {% csrf_token %}
             <td>
-                <input type="text" name="start_date_textbox" size="9" maxlength="10" value="">
+                <input type="text" name="start_date_textbox" size="9" maxlength="10" value="{{ today_minus }}">
             </td>
             <td>
                 <input type="text" name="end_date_textbox" size="9" maxlength="10" value="{{ todays_date }}">

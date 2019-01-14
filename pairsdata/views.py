@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-import datetime
+from datetime import datetime, timedelta
 from . import pipercharts as pp
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 
@@ -8,11 +8,13 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
-    todays_date = datetime.datetime.now().strftime("%Y-%m-%d")
+    todays_date = datetime.now().strftime("%Y-%m-%d")
+    today_minus = (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d')
 
     def get_context_data(self, **kwargs):
         context = super(PairsdataView, self).get_context_data(**kwargs)
         context['todays_date'] = self.todays_date
+        context['today_minus'] = self.today_minus
         return context
 
     def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
