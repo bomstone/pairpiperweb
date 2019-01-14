@@ -62,8 +62,8 @@ def draw_chart(symbol_list, start_date, end_date):
     plt.axhline(zscore(spread).mean(), color='black', linewidth=1.0)
     plt.axhline(1.0, color='red', linestyle='--', linewidth=1.0)
     plt.axhline(-1.0, color='green', linestyle='--', linewidth=1.0)
-    plt.axhline(2.0, color='grey', linestyle='--', linewidth=1.0)
-    plt.axhline(-2.0, color='grey', linestyle='--', linewidth=1.0)
+    plt.axhline(2.0, color='grey', linestyle='--', linewidth=.5)
+    plt.axhline(-2.0, color='grey', linestyle='--', linewidth=.5)
     plt.title(coint_string, loc='left', color='white', fontsize=10);
     plt.xticks(rotation=0, color='white', fontsize=8)
     plt.yticks(color='white', fontsize=8)

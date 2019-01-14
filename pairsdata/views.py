@@ -21,18 +21,22 @@ class PairsdataView(TemplateView):
 
         start_date = request.POST.get('start_date_textbox')
         end_date = request.POST.get('end_date_textbox')
-        symbol_list = [request.POST.get('ticker_1_droplist'), request.POST.get('ticker_2_droplist')]
+        asset_1 = request.POST.get('ticker_1_droplist')
+        asset_2 = request.POST.get('ticker_2_droplist')
+        symbol_list = [asset_1, asset_2]
 
         chart_1 = pp.draw_chart(symbol_list, start_date, end_date)
         chart_2 = pp.draw_chart(symbol_list, '2018-05-05', end_date)
         chart_3 = pp.draw_chart(symbol_list, '2018-01-01', end_date)
 
 
-        context = {'chart_1': chart_1,
-                   'chart_2': chart_2,
-                   'chart_3': chart_3,
-                    'todays_date' : self.todays_date
-                   }
+        context = {
+            'chart_1': chart_1,
+            'chart_2': chart_2,
+            'chart_3': chart_3,
+            'todays_date': self.todays_date,
+            'today_minus': self.today_minus,
+            }
 
         return render(request, self.template_name, context)
 
