@@ -4,10 +4,16 @@ from . import pipercharts as pp
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 
 
-todays_date = datetime.datetime.now()
+
 
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
+    todays_date = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    def get_context_data(self, **kwargs):
+        context = super(PairsdataView, self).get_context_data(**kwargs)
+        context['todays_date'] = self.todays_date
+        return context
 
     def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
 
@@ -23,6 +29,7 @@ class PairsdataView(TemplateView):
         context = {'chart_1': chart_1,
                    'chart_2': chart_2,
                    'chart_3': chart_3,
+                    'todays_date' : self.todays_date
                    }
 
         return render(request, self.template_name, context)
