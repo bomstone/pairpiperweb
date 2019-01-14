@@ -1,4 +1,4 @@
-### PairPiperWeb 0.1.3
+### PairPiperWeb 0.1.10
 
 ##
 #### Versionshistorik<br>
@@ -8,7 +8,8 @@
 **0.0.4** - Uppdateringsfunktioner för livedb.csv och fulldb.csv är nu fullt fungerande <br>
 **0.0.5** - Pairsdata visar nu graf i samma template <br>
 
-**0.1.0** - Förbättrad layout samt interface för att växla mellan pairsdata och piperdatabase <br>
-**0.1.1** - Piperdatabase genererar nu statusmeddelande vid databasuppdatering <br>
-**0.1.2** - Problemet "List index out of range" vid webscraping löst <br>
-**0.1.3** - Graf-layout förändrad och förinställd end date i pairs data
+**0.1.6** - Förbättrad layout samt interface för att växla mellan pairsdata och piperdatabase <br>
+**0.1.7** - Piperdatabase genererar nu statusmeddelande vid databasuppdatering <br>
+**0.1.8** - Problemet "List index out of range" vid webscraping löst <br>
+**0.1.9** - Graf-layout förändrad och förinställd end date i pairs data <br>
+**0.1.10** - Förinställd start date <br>
