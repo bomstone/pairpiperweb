@@ -11,9 +11,9 @@ class PairsdataView(TemplateView):
 
     def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
 
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date')
-        symbol_list = [request.POST.get('ticker_1'), request.POST.get('ticker_2')]
+        start_date = request.POST.get('start_date_textbox')
+        end_date = request.POST.get('end_date_textbox')
+        symbol_list = [request.POST.get('ticker_1_droplist'), request.POST.get('ticker_2_droplist')]
 
         chart_1 = pp.draw_chart(symbol_list, start_date, end_date)
         chart_2 = pp.draw_chart(symbol_list, '2018-05-05', end_date)
