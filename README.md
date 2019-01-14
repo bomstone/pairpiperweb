@@ -1,4 +1,4 @@
-### PairPiperWeb 0.1.2
+### PairPiperWeb 0.1.3
 
 ##
 #### Versionshistorik<br>
@@ -11,3 +11,4 @@
 **0.1.0** - Förbättrad layout samt interface för att växla mellan pairsdata och piperdatabase <br>
 **0.1.1** - Piperdatabase genererar nu statusmeddelande vid databasuppdatering <br>
 **0.1.2** - Problemet "List index out of range" vid webscraping löst <br>
+**0.1.3** - Graf-layout förändrad och förinställd end date i pairs data
