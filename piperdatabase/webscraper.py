@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup as soup
 import datetime
 import csv
-
+import time
 
 historical_date = '2019-01-04'
 
@@ -125,9 +125,10 @@ def scrape_live(asset):
                   livedata[4].replace(',', ''),
                   livedata[1].replace(',', ''),
                   ]
-
-    return (datastring)
+    time.sleep(2)
     url.close()
+    return (datastring)
+
 
 
 def scrape_historical(asset, date_input):
@@ -164,6 +165,8 @@ def scrape_historical(asset, date_input):
                   filtered_data[4].replace(',', ''),
                   filtered_data[1].replace(',', ''),
                   ]
+    time.sleep(2)
+    url.close()
     return (datastring)
 
 def inspectlive():
