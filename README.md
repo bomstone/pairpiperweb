@@ -9,4 +9,5 @@
 **0.0.5** - Pairsdata visar nu graf i samma template <br>
 
 **0.1.0** - Förbättrad layout samt interface för att växla mellan pairsdata och piperdatabase <br>
-**0.1.1** - Piperdatabase genererar nu statusmeddelande vid databasuppdatering
+**0.1.1** - Piperdatabase genererar nu statusmeddelande vid databasuppdatering <br>
+**0.1.2** - Problemet "List index out of range" vid webscraping löst <br>
