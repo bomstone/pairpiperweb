@@ -1,22 +1,19 @@
 from django import forms
 
+class AddTradeBasic(forms.Form):
+    strategy = forms.ChoiceField()
+    legs = forms.IntegerField()
 
-class Add_MiniFuture(forms.form):
-    start_date_1 = forms.DateField()
-    start_time_1 = forms.TimeField()
-    exposure_1 = forms.DecimalField()
+class AddMiniFuture(forms.Form):
+    start_date = forms.DateField()
+    start_time = forms.TimeField()
+    exposure = forms.DecimalField()
 
-    ticker_1 = forms.CharField()
-    ul_open_1 = forms.DecimalField()
-    mf_open_1 = forms.DecimalField()
-    mf_finlevel_1 = forms.DecimalField()
-    quantity_1 = forms.IntegerField()
-    commission_1 = forms.BooleanField()
+    ticker = forms.CharField()
+    ul_open = forms.DecimalField()
+    mf_open = forms.DecimalField()
+    mf_finlevel = forms.DecimalField()
+    quantity = forms.IntegerField()
+    commission = forms.BooleanField()
 
-    ticker_2 = forms.CharField()
-    ul_open_2 = forms.DecimalField()
-    mf_open_2 = forms.DecimalField()
-    mf_finlevel_2 = forms.DecimalField()
-    quantity_2 = forms.IntegerField()
-    commission_2 = forms.BooleanField()
 

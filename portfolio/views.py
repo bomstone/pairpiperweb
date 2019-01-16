@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from django.views.generic import TemplateView
+from .forms import AddMiniFuture
 
-class PortfolioView(TemplateView):
-    template_name = 'portfolio/portfolio.html'
+def PortfolioView(request):
+    form = AddMiniFuture()
+    return render(request, 'portfolio/portfolio.html', {'form': form})
+

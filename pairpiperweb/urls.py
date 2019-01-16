@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
-from piperdatabase import views
+import piperdatabase.views
 from pairsdata.views import PairsdataView
-from portfolio.views import PortfolioView
+import portfolio.views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pairsdata/', PairsdataView.as_view(), name='pairsdata'),
-    path('piperdatabase/', views.PiperdatabaseView, name='PiperdatabaseView'),
-    path('piperdatabase/updatelive/', views.updatelive),
-    path('piperdatabase/updatehistorical/', views.updatehistorical),
-    path('portfolio/', PortfolioView.as_view(), name='portfolio')
+    path('piperdatabase/', piperdatabase.views.PiperdatabaseView, name='PiperdatabaseView'),
+    path('piperdatabase/updatelive/', piperdatabase.views.updatelive),
+    path('piperdatabase/updatehistorical/', piperdatabase.views.updatehistorical),
+    path('portfolio/', portfolio.views.PortfolioView, name='PortfolioView')
 ]
