@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 
-# Create your views here.
+
+class PortfolioView(TemplateView):
+    template_name = 'portfolio/portfolio.html'

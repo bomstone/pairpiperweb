@@ -17,6 +17,7 @@ from django.urls import include, path
 from django.contrib import admin
 from piperdatabase import views
 from pairsdata.views import PairsdataView
+from portfolio.views import PortfolioView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('piperdatabase/', views.PiperdatabaseView, name='PiperdatabaseView'),
     path('piperdatabase/updatelive/', views.updatelive),
     path('piperdatabase/updatehistorical/', views.updatehistorical),
+    path('portfolio/', PortfolioView.as_view(), name='portfolio')
 ]
