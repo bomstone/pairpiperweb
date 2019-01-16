@@ -1,4 +1,4 @@
-### PairPiperWeb 0.1.10
+### PairPiperWeb 1.1.10
 
 ##
 #### Versionshistorik<br>
@@ -13,3 +13,5 @@
 **0.1.8** - Problemet "List index out of range" vid webscraping löst <br>
 **0.1.9** - Graf-layout förändrad och förinställd end date i pairs data <br>
 **0.1.10** - Förinställd start date <br>
+
+**1.1.10** - Körs skarpt på lokal webbserver synkad via Dropbox
