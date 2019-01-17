@@ -1,10 +1,9 @@
 from django import forms
 
-class AddTradeBasic(forms.Form):
+class AddPosition(forms.Form):
     strategy = forms.ChoiceField()
     legs = forms.IntegerField()
 
-class AddMiniFuture(forms.Form):
     start_date = forms.DateField()
     start_time = forms.TimeField()
     exposure = forms.DecimalField()
