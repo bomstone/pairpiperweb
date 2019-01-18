@@ -1,7 +1,14 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from .forms import AddPosition
+from addposition.models import AddPosition
 
 def AddpositionView(request):
+    add = AddPosition(strategy='pairs trade', product_type='mini future')
+    add.save(using='piperdb')
+    return render(request, 'addposition/addposition.html')
+
+
+    '''
     if request.method == "POST":
         form = AddPosition(request, POST)
 
@@ -24,4 +31,5 @@ def AddpositionView(request):
 
     form = AddPosition()
     return render(request, 'addposition/addposition.html', {'form': form})
+    '''
 

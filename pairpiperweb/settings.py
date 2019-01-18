@@ -85,9 +85,11 @@ DATABASES = {
 
     'piperdb': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.path.join(BASE_DIR, 'piperdb.sql'),
+        'NAME': 'piperdb',
         'USER': 'root',
-        'PASSWORD': ''
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
