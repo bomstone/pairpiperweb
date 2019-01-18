@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'pairsdata',
     'piperdatabase',
     'portfolio',
+    'addposition',
 ]
 
 MIDDLEWARE = [

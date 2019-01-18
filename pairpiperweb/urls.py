@@ -18,6 +18,7 @@ from django.contrib import admin
 import piperdatabase.views
 from pairsdata.views import PairsdataView
 import portfolio.views
+import addposition.views
 
 
 urlpatterns = [
@@ -26,5 +27,6 @@ urlpatterns = [
     path('piperdatabase/', piperdatabase.views.PiperdatabaseView, name='PiperdatabaseView'),
     path('piperdatabase/updatelive/', piperdatabase.views.updatelive),
     path('piperdatabase/updatehistorical/', piperdatabase.views.updatehistorical),
-    path('portfolio/', portfolio.views.PortfolioView, name='PortfolioView')
+    path('portfolio/', portfolio.views.PortfolioView, name='PortfolioView'),
+    path('addposition/', addposition.views.AddpositionView, name='AddpositionView')
 ]
