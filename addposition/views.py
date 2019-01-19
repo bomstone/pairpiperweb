@@ -3,7 +3,7 @@ from .forms import AddPosition
 from addposition.models import AddPosition
 
 def AddpositionView(request):
-    add = AddPosition(strategy='pairs trade', product_type='mini future')
+    add = AddPosition(strategy='test', product_type='product')
     add.save(using='piperdb')
     return render(request, 'addposition/addposition.html')
 

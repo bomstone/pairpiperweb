@@ -84,12 +84,8 @@ DATABASES = {
     },
 
     'piperdb': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'piperdb',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'piperdb.sqlite3',
     }
 }
 
