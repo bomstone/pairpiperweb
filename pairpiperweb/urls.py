@@ -17,8 +17,10 @@ from django.urls import include, path
 from django.contrib import admin
 import piperdatabase.views
 from pairsdata.views import PairsdataView
-import portfolio.views
+from portfolio.views import PortfolioView
 import addposition.views
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -27,6 +29,6 @@ urlpatterns = [
     path('piperdatabase/', piperdatabase.views.PiperdatabaseView, name='PiperdatabaseView'),
     path('piperdatabase/updatelive/', piperdatabase.views.updatelive),
     path('piperdatabase/updatehistorical/', piperdatabase.views.updatehistorical),
-    path('portfolio/', portfolio.views.PortfolioView, name='PortfolioView'),
+    path('portfolio/', PortfolioView.as_view(), name='PortfolioView'),
     path('addposition/', addposition.views.AddpositionView, name='AddpositionView')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
