@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<select>
-    <option value="jesper">jesper</option>
-    <option value="mikael">mikael</option>
-</select>
+<div class="portfolio">
+    <select>
+        <option value="jesper">jesper</option>
+        <option value="mikael">mikael</option>
+    </select>
+    <br>
+    <br>
     <table>
-        <div class="portfolio">
             <tr>
                 <th>strategy</th>
                 <th>open date</th>
@@ -23,8 +24,6 @@
                 <th>net result</th>
                 <th></th>
             </tr>
-        </div>
-        <div class="portfolio">
             <tr>
                 <td>{{ variable1 }}</td>
                 <td>2019-01-01</td>
@@ -40,9 +39,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td><button>Close</button></td>
             </tr>
-        </div>
     </table>
-
+</div>
 {% endblock %}
