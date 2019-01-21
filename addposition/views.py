@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from .forms import AddPosition
+from .forms import AddPositionform
 from addposition.models import AddPositionmodel
 
 def AddpositionView(request):
@@ -9,29 +9,28 @@ def AddpositionView(request):
 
 
     if request.method == "POST":
-        form = AddPosition(request, POST)
+        form = AddPositionform(request.POST)
 
-        add = AddPositionmodel(
-            strategy = form.cleaned_data['strategy'],
-            id = form.cleaned_data['id'],
-            product_type = form.cleaned_data['product_type'],
+        if form.is_valid():
+            add = AddPositionmodel(
+                strategy = form.cleaned_data['strategy'],
+                trade_id = form.cleaned_data['trade_id'],
+                product_type = form.cleaned_data['product_type'],
+                open_date = form.cleaned_data['open_date'],
+                open_time = form.cleaned_data['open_time'],
+                true_exposure = form.cleaned_data['true_exposure'],
+                asset = form.cleaned_data['asset'],
+                ul_open = form.cleaned_data['ul_open'],
+                open_price = form.cleaned_data['open_price'],
+                mf_finlevel = form.cleaned_data['mf_finlevel'],
+                quantity = form.cleaned_data['quantity'],
+                commission = form.cleaned_data['commission']
+            )
 
-            start_date = form.cleaned_data['start_date'],
-            start_time = form.cleaned_data['start_time'],
-            exposure = form.cleaned_data['exposure'],
+            add.save(using='piperdb')
+            return render(request, 'addposition/addposition.html', {'form': form})
 
-            ticker = form.cleaned_data['ticker'],
-            ul_open = form.cleaned_data['ul_open'],
-            mf_open = form.cleaned_data['mf_open'],
-            mf_finlevel = form.cleaned_data['mf_finlevel'],
-            quantity = form.cleaned_data['quantity'],
-            commission = form.cleaned_data['commission']
-        )
-
-        add.save(using='piperdb')
-        return render(request, 'addposition/addposition.html')
-
-    form = AddPosition()
+    form = AddPositionform()
     return render(request, 'addposition/addposition.html', {'form': form})
 
 
