@@ -1,57 +1,19 @@
+{% load static %}
 <html>
-<head>
+    <head>
 	<title>PairPiperWeb</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-	* {box-sizing: border-box}
-
-	/* Set height of body and the document to 100% */
-	body, html {
-	  background-color: #31496b;
-	  height: 100%;
-	  margin: 0;
-	  font-family: Calibri;
-	  color: #eaeaea;
-	}
-
-	/* Style tab links */
-	.tablink {
-	  background-color: #555;
-	  color: white;
-	  float: center;
-	  border: none;
-	  outline: none;
-	  cursor: pointer;
-	  padding: 14px 14px;
-	  transition: 0.3s;
-	  font-size: 17px;
-	  width: 133px;
-	}
-
-	.tablink:hover {
-	  background-color: #3d5c87;
-	}
-
-	/* Style the tab content (and add height:100% for full page content) */
-	.content_container {
-	  background-color: #3d5c87;
-	  color: white;
-	  padding: 10px 20px;
-	  height: 100%;
-	}
-
-
-
-
-	</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
 	</head>
 <body>
 <center>
     <div class="page_header">
-        <font color=#f5c258 size="6">PAIR PIPER</font><br>  ver <font size=5>1</font>.1.10<br><br>
+        <font color=#f5c258 size="6">PAIR PIPER</font><br>  ver <font size=5>1</font>.2.10<br><br>
 
         <button class="tablink" onclick="window.location.href='/piperdatabase';">piperdatabase</button>
         <button class="tablink" onclick="window.location.href='/pairsdata';">pairs data</button>
+        <button class="tablink" onclick="window.location.href='/portfolio';">portfolio</button>
+        <button class="tablink" onclick="window.location.href='/addposition';">add position</button>
 
     </div>
 

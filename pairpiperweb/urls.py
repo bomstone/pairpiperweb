@@ -15,13 +15,20 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
-from piperdatabase import views
+import piperdatabase.views
 from pairsdata.views import PairsdataView
+import portfolio.views
+import addposition.views
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pairsdata/', PairsdataView.as_view(), name='pairsdata'),
-    path('piperdatabase/', views.PiperdatabaseView, name='PiperdatabaseView'),
-    path('piperdatabase/updatelive/', views.updatelive),
-    path('piperdatabase/updatehistorical/', views.updatehistorical),
-]
+    path('piperdatabase/', piperdatabase.views.PiperdatabaseView, name='PiperdatabaseView'),
+    path('piperdatabase/updatelive/', piperdatabase.views.updatelive),
+    path('piperdatabase/updatehistorical/', piperdatabase.views.updatehistorical),
+    path('portfolio/', portfolio.views.PrintPortfolio, name='PrintPortfolio'),
+    path('addposition/', addposition.views.AddpositionView, name='AddpositionView')
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
