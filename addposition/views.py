@@ -3,10 +3,6 @@ from .forms import AddPositionform
 from addposition.models import AddPositionmodel
 
 def AddpositionView(request):
-    '''add = AddPositionmodel(strategy='test', product_type='product')
-    add.save(using='piperdb')
-    return render(request, 'addposition/addposition.html')'''
-
 
     if request.method == "POST":
         form = AddPositionform(request.POST)
