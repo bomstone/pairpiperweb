@@ -1,8 +1,9 @@
 from django import forms
 
 class AddPosition(forms.Form):
-    strategy = forms.ChoiceField(required=False)
-    legs = forms.IntegerField(required=False)
+    id = forms.IntegerField(required=False)
+    strategy = forms.CharField(required=False)
+    product_type = forms.CharField(required=False)
 
     start_date = forms.DateField(required=False)
     start_time = forms.TimeField(required=False)
@@ -13,6 +14,6 @@ class AddPosition(forms.Form):
     mf_open = forms.DecimalField(required=False)
     mf_finlevel = forms.DecimalField(required=False)
     quantity = forms.IntegerField(required=False)
-    commission = forms.BooleanField(required=False)
+    commission = forms.DecimalField(required=False)
 
 
