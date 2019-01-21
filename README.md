@@ -1,4 +1,4 @@
-### PairPiperWeb 1.1.10
+### PairPiperWeb 1.2.10
 
 ##
 #### Versionshistorik<br>
@@ -15,3 +15,5 @@
 **0.1.10** - Förinställd start date <br>
 
 **1.1.10** - Körs skarpt på lokal webbserver synkad via Dropbox
+
+**1.2.10** - Portfolio och Add Position tillagd, delvis fungerande
