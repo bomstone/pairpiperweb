@@ -3,18 +3,17 @@ from django.views.generic import TemplateView
 from .models import PortfolioPart
 
 
-class PortfolioView(TemplateView):
+
+def PrintPortfolio(request):
     template_name = 'portfolio/portfolio.html'
-    def PrintPortfolio(request):
-        template_name = 'portfolio/portfolio.html'
 
-        queryset = PortfolioPart.objects.all()
-        context = {
-            'object_list': queryset,
-            'title:': 'List'
-        }
+    queryset = PortfolioPart.objects.all()
+    context = {
+        'object_list': queryset,
+    }
 
-        return render(request, self.template_name, context)
+    return render(request, template_name, context)
+
 '''
     variable1 = 'test1'
     variable2 = 'test2'

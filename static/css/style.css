@@ -36,9 +36,9 @@ body, html {
 }
 
 .portfolio th, td {
-  text-align: left;
+  text-align: center;
   padding: 11px;
-  font-size: 12px;
+
 }
 
 .portfolio tr:nth-child(even){background-color: #f2f2f2}

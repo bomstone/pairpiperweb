@@ -27,7 +27,7 @@ def AddpositionView(request):
                 commission = form.cleaned_data['commission']
             )
 
-            add.save(using='piperdb')
+            add.save()
             return render(request, 'addposition/addposition.html', {'form': form})
 
     form = AddPositionform()

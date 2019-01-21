@@ -13,39 +13,37 @@
                 <th>open date</th>
                 <th>open time</th>
                 <th>asset</th>
-                <th>underluying open</th>
+                <th>underlying open</th>
                 <th>mini future open</th>
                 <th>quantity</th>
                 <th>close date</th>
                 <th>close time</th>
-                <th>underluying close</th>
+                <th>underlying close</th>
                 <th>mini future close</th>
                 <th>commission</th>
                 <th>net result</th>
                 <th></th>
             </tr>
+            {% for obj in object_list %}
             <tr>
-                <td>{{ variable1 }}</td>
-                <td>2019-01-01</td>
-                <td>09:55</td>
+                <td>{{ obj.strategy }}</td>
+                <td>{{ obj.open_date }}</td>
+                <td>{{ obj.open_time }}</td>
+                <td>{{ obj.asset }}</td>
+                <td>{{ obj.ul_open }}</td>
+                <td>{{ obj.open_price }}</td>
+                <td>{{ obj.quantity }}</td>
+                <td><input type="text" size="7" maxlength="10"></td>
+                <td><input type="text" size="5" maxlength="10"></td>
+                <td><input type="text" size="5" maxlength="10"></td>
+                <td><input type="text" size="5" maxlength="10"></td>
+                <td><input type="text" size="5" maxlength="10"></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button>Close</button></td>
+                <td><button>close position</button></td>
             </tr>
+            {% endfor %}
     </table>
 </div>
 
-{% for obj in object_list %}
-{{ strategy }}
-{% endfor %}
 
 {% endblock %}
