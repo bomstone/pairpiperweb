@@ -1,11 +1,80 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Add position</button>
-</form>
+<div class="portfolio">
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>portfolio</th>
+                <th>strategy</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>{{ form.user }}</td>
+                <td>{{ form.strategy }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="submit">Add position</button></td>
+            </tr>
+            <br><br>
+            <tr>
+                <th>instrument</th>
+                <th>open date</th>
+                <th>open time</th>
+                <th>asset</th>
+                <th>asset price</th>
+                <th>mini future price</th>
+                <th>finance level</th>
+                <th>target exposure</th>
+                <th>quantity</th>
+            </tr>
+            <tr>
+                <td>{{ form.product_type }}</td>
+                <td>{{ form.open_date }}</td>
+                <td>{{ form.open_time }}</td>
+                <td>{{ form.asset }}</td>
+                <td>{{ form.ul_open }}</td>
+                <td>{{ form.open_price }}</td>
+                <td>{{ form.mf_finlevel }}</td>
+                <td>{{ form.target_exposure }}</td>
+                <td>{{ form.quantity }}<button>auto</button></td>
+            </tr>
+            <br><br>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 {% endblock %}

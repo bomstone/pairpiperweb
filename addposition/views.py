@@ -20,7 +20,8 @@ def AddpositionView(request):
                 open_price = form.cleaned_data['open_price'],
                 mf_finlevel = form.cleaned_data['mf_finlevel'],
                 quantity = form.cleaned_data['quantity'],
-                commission = form.cleaned_data['commission']
+                commission = form.cleaned_data['commission'],
+                user = form.cleaned_data['user'],
             )
 
             add.save()

@@ -2,18 +2,61 @@ from django import forms
 
 class AddPositionform(forms.Form):
     trade_id = forms.IntegerField(required=False)
-    strategy = forms.CharField(required=False)
-    product_type = forms.CharField(required=False)
+    strategy = forms.CharField(
+        required= False,
+        max_length = 12,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    product_type = forms.CharField(
+        required= False,
+        max_length = 12,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    open_date = forms.CharField(
+        required= False,
+        max_length = 12,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    open_time = forms.CharField(
+        required= False,
+        max_length = 12,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    target_exposure = forms.DecimalField(
+        required= False,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
 
-    open_date = forms.CharField(required=False)
-    open_time = forms.CharField(required=False)
-    true_exposure = forms.DecimalField(required=False)
+    asset = forms.CharField(
+        required= False,
+        max_length = 12,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    ul_open = forms.DecimalField(
+        required= False,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    open_price = forms.DecimalField(
+        required= False,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    mf_finlevel = forms.DecimalField(
+        required= False,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    quantity = forms.IntegerField(
+        required= False,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
+    commission = forms.DecimalField(
+        required= False,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
 
-    asset = forms.CharField(required=False)
-    ul_open = forms.DecimalField(required=False)
-    open_price = forms.DecimalField(required=False)
-    mf_finlevel = forms.DecimalField(required=False)
-    quantity = forms.IntegerField(required=False)
-    commission = forms.DecimalField(required=False)
+    user = forms.CharField(
+        required= False,
+        max_length = 12,
+        widget = forms.TextInput(attrs={'size': 8})
+    )
 
 
