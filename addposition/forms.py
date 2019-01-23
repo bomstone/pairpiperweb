@@ -1,6 +1,8 @@
 from django import forms
+from django.forms import formset_factory
 
-class AddPositionform(forms.Form):
+
+class AddPositionForm(forms.Form):
     trade_id = forms.IntegerField(required=False)
     strategy = forms.CharField(
         required= False,
@@ -59,4 +61,4 @@ class AddPositionform(forms.Form):
         widget = forms.TextInput(attrs={'size': 8})
     )
 
-
+AddPositionForm_FormSet = formset_factory(AddPositionForm)

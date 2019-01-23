@@ -1,6 +1,7 @@
 from django.db import models
 
-class AddPositionmodel(models.Model):
+
+class AddPositionModel(models.Model):
     trade_id = models.IntegerField(default=None, null=True)
     trade_type = models.CharField(max_length=30, default=None, null=True)
     strategy = models.CharField(max_length=30, default=None, null=True)

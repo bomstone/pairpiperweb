@@ -1,20 +1,20 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from .forms import AddPositionform
-from addposition.models import AddPositionmodel
+from .forms import AddPositionForm
+from addposition.models import AddPositionModel
 
-def AddpositionView(request):
+def AddPositionView(request):
 
     if request.method == "POST":
-        form = AddPositionform(request.POST)
+        form = AddPositionForm(request.POST)
 
         if form.is_valid():
-            add = AddPositionmodel(
+            add = AddPositionModel(
                 strategy = form.cleaned_data['strategy'],
-                trade_id = form.cleaned_data['trade_id'],
+                #trade_id = form.cleaned_data['trade_id'],
                 product_type = form.cleaned_data['product_type'],
                 open_date = form.cleaned_data['open_date'],
                 open_time = form.cleaned_data['open_time'],
-                true_exposure = form.cleaned_data['true_exposure'],
+                #true_exposure = form.cleaned_data['true_exposure'],
                 asset = form.cleaned_data['asset'],
                 ul_open = form.cleaned_data['ul_open'],
                 open_price = form.cleaned_data['open_price'],
@@ -27,7 +27,7 @@ def AddpositionView(request):
             add.save()
             return render(request, 'addposition/addposition.html', {'form': form})
 
-    form = AddPositionform()
+    form = AddPositionForm()
     return render(request, 'addposition/addposition.html', {'form': form})
 
 

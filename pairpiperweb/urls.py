@@ -30,5 +30,5 @@ urlpatterns = [
     path('piperdatabase/updatelive/', piperdatabase.views.updatelive),
     path('piperdatabase/updatehistorical/', piperdatabase.views.updatehistorical),
     path('portfolio/', portfolio.views.PrintPortfolio, name='PrintPortfolio'),
-    path('addposition/', addposition.views.AddpositionView, name='AddpositionView')
+    path('addposition/', addposition.views.AddPositionView, name='AddpositionView')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

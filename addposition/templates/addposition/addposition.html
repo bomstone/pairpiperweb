@@ -25,11 +25,12 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button type="submit">Add position</button></td>
+                <td></td>
             </tr>
-            <br><br>
+        </table>
+        <br>
+        <table>
             {% for i in '01'|make_list %}
-
                 <tr>
                     <th>instrument</th>
                     <th>open date</th>
@@ -51,6 +52,7 @@
                     <td>{{ form.mf_finlevel }}</td>
                     <td>{{ form.target_exposure }}</td>
                     <td>{{ form.quantity }}<button>auto</button></td>
+                    <td><button type="submit">Add position</button></td>
                 </tr>
             {% endfor %}
         </table>
