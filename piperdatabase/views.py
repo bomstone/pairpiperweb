@@ -16,3 +16,5 @@ def updatehistorical(request):
     update_historical_message = ws.updatehistoricaldb(historical_date)
     context = {'update_historical_message': update_historical_message}
     return render(request, 'piperdatabase/database.html', context)
+
+

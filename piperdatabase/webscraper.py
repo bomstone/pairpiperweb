@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup as soup
 import datetime
 import csv
 import time
+from piperdatabase.models import PiperDatabase
 
 historical_date = '2019-01-04'
 
@@ -235,3 +236,28 @@ def updatehistoricaldb(historical_date):
 
         update_historical_message = 'fulldb.csv uppdaterades med data för ' + str(historical_date) + '.'
         return update_historical_message
+
+'''pseudokod
+def update_piperdb(historical_date):
+
+    if historical_date in #piperdb.date:
+
+        update_historical_message = 'Data för aktuellt datum finns redan i PiperDatabasen'
+        return update_historical_message
+
+    # Om inte, skriv till databas
+    else:
+        for symbol in symbol_list:
+            add = PiperDatabase(
+            date = scrape_historical(symbol, historical_date)[0],
+            symbol = scrape_historical(symbol, historical_date)[1],
+            opening_price = scrape_historical(symbol, historical_date)[2],
+            high_price = scrape_historical(symbol, historical_date)[3],
+            low_price = scrape_historical(symbol, historical_date)[4],
+            closing_price = scrape_historical(symbol, historical_date)[5],
+            )
+            add.save()
+
+        update_historical_message = 'PiperDatabase uppdaterades med data för ' + str(historical_date) + '.'
+        return update_historical_message
+'''
