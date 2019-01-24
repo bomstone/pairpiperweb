@@ -16,5 +16,5 @@
 
 **1.1.10** - Körs skarpt på lokal webbserver synkad via Dropbox
 
-**1.2.10** - Portfolio och Add Position tillagd, delvis fungerande, kopplad till sqlite-databas
-**1.2.11** - Uppdaterad tickerlist i samtliga appar (CAST, HUFV-A, FABG, SHB-A, SECU-B)
+**1.2.10** - Portfolio och Add Position tillagd, delvis fungerande, kopplad till sqlite-databas<br>
+**1.2.11** - Uppdaterad tickerlist i samtliga appar (CAST, HUFV-A, FABG, SHB-A, SECU-B)<br>
