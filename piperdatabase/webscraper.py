@@ -5,8 +5,6 @@ import csv
 import time
 from piperdatabase.models import PiperDatabase
 
-historical_date = '2019-01-04'
-
 
 symbol_list = [
     'ABB',
@@ -19,7 +17,6 @@ symbol_list = [
     'BOL',
     'CAST',
     'DAX',
-    'ELUX-A',
     'ELUX-B',
     'EURSEK',
     'FABG',
@@ -66,15 +63,14 @@ asset_url = {
     'ATCO-B': 'equities/atlas-copco-b-historical-data',
     'AXFO': 'equities/axfood-ab-historical-data',
     'BOL': 'equities/boliden-historical-data',
-    'CAST': 'equities/castellum-ab?cid=25979',
+    'CAST': 'equities/castellum-ab-historical-data?cid=25979',
     'DAX': 'indices/germany-30-historical-data',
-    'ELUX-A': 'equities/electrolux-historical-data',
     'ELUX-B': 'equities/electrolux-b-historical-data',
     'EURSEK': 'currencies/eur-sek-historical-data',
     'FABG': 'equities/fabege-historical-data?cid=25983',
     'GLD': 'etfs/spdr-gold-trust-historical-data',
     'HOLM-B': 'equities/holmen-historical-data?cid=25987',
-    'HUFV-A': 'equities/hufvudstaden?cid=25988',
+    'HUFV-A': 'equities/hufvudstaden-historical-data?cid=25988',
     'HUSQ-B': 'equities/husqvarna-b-historical-data?cid=25990',
     'ICA': 'equities/hakon-invest-historical-data?cid=25985',
     'NCC-B': 'equities/ncc-b-historical-data?cid=26008',
@@ -106,7 +102,6 @@ asset_url = {
     'VOLV-B': 'equities/volvo-b-historical-data',
 }
 
-
 def scrape_live(asset):
     url = requests.get('https://www.investing.com/' + asset_url[asset],
                        headers={'User-Agent': 'Mozilla/5.0 Chrome/70.0.3538.110'})
@@ -132,11 +127,9 @@ def scrape_live(asset):
                   livedata[4].replace(',', ''),
                   livedata[1].replace(',', ''),
                   ]
-    time.sleep(2)
     url.close()
-    return (datastring)
-
-
+    time.sleep(2)
+    return datastring
 
 def scrape_historical(asset, date_input):
     # konverterar angivet datum yyyy-mm-dd till Xxx dd, yyyy för att kunna matchas på investing.com
@@ -172,24 +165,10 @@ def scrape_historical(asset, date_input):
                   filtered_data[4].replace(',', ''),
                   filtered_data[1].replace(',', ''),
                   ]
-    time.sleep(2)
     url.close()
-    return (datastring)
+    time.sleep(2)
+    return datastring
 
-def inspectlive():
-    live_list = []
-
-    for symbol in symbol_list:
-        live_list.append(scrape_live(symbol))
-
-    # Hårdknackar dagens datum som 'date' och skriver ut live_list.
-    now = datetime.datetime.now()
-    u = 0
-    for post in live_list:
-        row = live_list[u]
-        row[0] = now.strftime('%Y-%m-%d')
-        print(row)
-        u += 1
 
 def updatelivedb():
     live_list = []
@@ -199,35 +178,24 @@ def updatelivedb():
 
     with open('livedb.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(['date', 'symbol', 'opening_price', 'high_price', 'low_price', 'closing_price'])
-
-        now = datetime.datetime.now()
-        u = 0
-        for post in live_list:
-            row = live_list[u]
+        for symbol in symbol_list:
+            now = datetime.datetime.now()
+            row = scrape_live(symbol)
             row[0] = now.strftime('%Y-%m-%d')
             writer.writerow(row)
-            u += 1
     update_live_message = 'livedb.csv uppdaterades.'
     return update_live_message
 
-def inspecthistorical():
-    for symbol in symbol_list:
-        print(scrape_historical(symbol, historical_date))
-
 def updatehistoricaldb(historical_date):
     with open('fulldb.csv', 'r') as csvfile:
-
         read_file = csvfile.read()
 
     if historical_date in read_file:
-
         update_historical_message = 'Data för aktuellt datum finns redan i fulldb.csv'
         return update_historical_message
-
-    # Om inte, skriv till databas
     else:
         import csv
+
         with open('fulldb.csv', 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
 
