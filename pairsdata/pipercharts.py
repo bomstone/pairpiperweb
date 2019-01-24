@@ -10,10 +10,12 @@ from statsmodels.tsa.stattools import coint, adfuller
 
 import io
 import base64
+import sqlite3
 
 
 def fetch_data(asset, dataset, startdate, enddate):
-    df = pd.read_csv('fulldb.csv', index_col = 'date', parse_dates=True).append(pd.read_csv('livedb.csv', index_col = 'date', parse_dates=True))
+    conn = sqlite3.connect('db.sqlite3')
+    df = pd.read_sql_query("SELECT * FROM piperdb", conn, index_col = 'date', parse_dates=True)
     data = df.loc[startdate:enddate]
     pivot_table = data.pivot(columns='symbol',
                              values=dataset)
@@ -33,14 +35,14 @@ def draw_chart(symbol_list, start_date, end_date):
 
     # Beräkna spread
     S1 = sm.add_constant(S1)
-    results = sm.OLS(S2, S1).fit()
+    results = sm.OLS(S2.astype(float), S1.astype(float)).fit()
     S1 = S1[symbol_list[0]]  # återställer S1
     b = results.params[symbol_list[0]]
     spread = S2 - b * S1
 
     # Beräkna omvänd spread
     S2 = sm.add_constant(S2)
-    results = sm.OLS(S1, S2).fit()
+    results = sm.OLS(S1.astype(float), S2.astype(float)).fit()
     S2 = S2[symbol_list[1]]  # återställer S2
     b = results.params[symbol_list[1]]
     spread_rev = S1 - b * S2
@@ -48,7 +50,7 @@ def draw_chart(symbol_list, start_date, end_date):
     zscore1 = zscore(spread)
     zscore2 = zscore(spread_rev)
 
-    score, pvalue, _ = coint(S1, S2)
+    score, pvalue, _ = coint(S1.astype(float), S2.astype(float))
     pvalue = round(pvalue, 4)
     if pvalue <= 0.05:
         coint_string = ('p-Value = ' + str(pvalue) + ' Likely cointegrated')
