@@ -7,6 +7,8 @@ class PiperDatabase(models.Model):
     high_price = models.DecimalField(max_digits=10, decimal_places=3, null=False)
     low_price = models.DecimalField(max_digits=10, decimal_places=3, null=False)
     closing_price = models.DecimalField(max_digits=10, decimal_places=3, null=False)
+    timestamp = models.CharField(max_length=50, null=True)
+
 
     class Meta():
         db_table = 'piperdb'

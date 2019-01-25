@@ -26,38 +26,34 @@ def zscore(series):
     return (series - series.mean()) / np.std(series)
 
 def draw_chart(symbol_list, start_date, end_date):
-    # Hämta data ur historisk databas+livedatabas
+
     price = fetch_data(symbol_list, 'closing_price', start_date, end_date)
 
-    # Separera listan till två variabler
     S1 = price[symbol_list[0]]
     S2 = price[symbol_list[1]]
 
-    # Beräkna spread
     S1 = sm.add_constant(S1)
-    results = sm.OLS(S2.astype(float), S1.astype(float)).fit()
-    S1 = S1[symbol_list[0]]  # återställer S1
+    results = sm.OLS(S2, S1).fit()
+    S1 = S1[symbol_list[0]]
     b = results.params[symbol_list[0]]
     spread = S2 - b * S1
 
-    # Beräkna omvänd spread
     S2 = sm.add_constant(S2)
-    results = sm.OLS(S1.astype(float), S2.astype(float)).fit()
-    S2 = S2[symbol_list[1]]  # återställer S2
+    results = sm.OLS(S1, S2).fit()
+    S2 = S2[symbol_list[1]]
     b = results.params[symbol_list[1]]
     spread_rev = S1 - b * S2
 
     zscore1 = zscore(spread)
     zscore2 = zscore(spread_rev)
 
-    score, pvalue, _ = coint(S1.astype(float), S2.astype(float))
+    score, pvalue, _ = coint(S1, S2)
     pvalue = round(pvalue, 4)
     if pvalue <= 0.05:
         coint_string = ('p-Value = ' + str(pvalue) + ' Likely cointegrated')
     else:
         coint_string = ('p-Value = ' + str(pvalue) + ' Likely NOT cointegrated')
 
-    #plotta Zscore
     zscore1.plot(linewidth=1.7, figsize=(10, 2))
     zscore2.plot(linewidth=1.7)
     plt.xlabel('')

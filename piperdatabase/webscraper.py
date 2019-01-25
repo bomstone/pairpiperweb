@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as soup
 import datetime
-import csv
+import sqlite3
 import time
 from piperdatabase.models import PiperDatabase
 
@@ -169,63 +169,50 @@ def scrape_historical(asset, date_input):
     time.sleep(2)
     return datastring
 
-
 def updatelivedb():
-    live_list = []
+    now = datetime.datetime.now()
+
+    PiperDatabase.objects.filter(date=now.strftime('%Y-%m-%d')).delete()
 
     for symbol in symbol_list:
-        live_list.append(scrape_live(symbol))
+        timestamp = now.strftime('%Y-%m-%d %H:%M:%S')
+        row = scrape_live(symbol)
+        row[0] = now.strftime('%Y-%m-%d')
 
-    with open('livedb.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        for symbol in symbol_list:
-            now = datetime.datetime.now()
-            row = scrape_live(symbol)
-            row[0] = now.strftime('%Y-%m-%d')
-            writer.writerow(row)
+        add = PiperDatabase(
+            date = row[0],
+            symbol = row[1],
+            opening_price = row[2],
+            high_price = row[3],
+            low_price = row[4],
+            closing_price = row[5],
+            timestamp = timestamp,
+        )
+        add.save()
+
     update_live_message = 'livedb.csv uppdaterades.'
     return update_live_message
 
+
 def updatehistoricaldb(historical_date):
-    with open('fulldb.csv', 'r') as csvfile:
-        read_file = csvfile.read()
+    now = datetime.datetime.now()
 
-    if historical_date in read_file:
-        update_historical_message = 'Data för aktuellt datum finns redan i fulldb.csv'
-        return update_historical_message
-    else:
-        import csv
+    PiperDatabase.objects.filter(date=historical_date).delete()
 
-        with open('fulldb.csv', 'a', newline='') as csvfile:
-            writer = csv.writer(csvfile)
+    for symbol in symbol_list:
+        timestamp = now.strftime('%Y-%m-%d %H:%M:%S')
+        row = scrape_historical(symbol, historical_date)
 
-            for symbol in symbol_list:
-                writer.writerow(scrape_historical(symbol, historical_date))
+        add = PiperDatabase(
+            date=row[0],
+            symbol=row[1],
+            opening_price=row[2],
+            high_price=row[3],
+            low_price=row[4],
+            closing_price=row[5],
+            timestamp=timestamp,
+        )
+        add.save()
 
-        update_historical_message = 'fulldb.csv uppdaterades med data för ' + str(historical_date) + '.'
-        return update_historical_message
-
-'''pseudokod
-def update_piperdb(historical_date):
-
-    if historical_date in #piperdb.date:
-
-        update_historical_message = 'Data för aktuellt datum finns redan i PiperDatabasen'
-        return update_historical_message
-
-    # Om inte, skriv till databas
-    else:
-        for symbol in symbol_list:
-            add = PiperDatabase(
-            date = scrape_historical(symbol, historical_date)[0],
-            symbol = scrape_historical(symbol, historical_date)[1],
-            opening_price = scrape_historical(symbol, historical_date)[2],
-            high_price = scrape_historical(symbol, historical_date)[3],
-            low_price = scrape_historical(symbol, historical_date)[4],
-            closing_price = scrape_historical(symbol, historical_date)[5],
-            )
-            add.save()
-
-        update_historical_message = 'PiperDatabase uppdaterades med data för ' + str(historical_date) + '.'
-        return update_historical_message
-'''
+    update_historical_message = 'fulldb.csv uppdaterades med data för ' + str(historical_date) + '.'
+    return update_historical_message
