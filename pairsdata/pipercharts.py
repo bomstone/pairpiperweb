@@ -5,17 +5,22 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
-from statsmodels.tsa.stattools import coint
 from statsmodels.tsa.stattools import coint, adfuller
 
 import io
 import base64
 import sqlite3
+from piperdatabase.models import PiperDatabase
 
 
 def fetch_data(asset, dataset, startdate, enddate):
+
     conn = sqlite3.connect('db.sqlite3')
     df = pd.read_sql_query("SELECT * FROM piperdb", conn, index_col = 'date', parse_dates=True)
+
+    #queryset = PiperDatabase.objects.all()
+    #df = pd.DataFrame.from_records(queryset)
+
     data = df.loc[startdate:enddate]
     pivot_table = data.pivot(columns='symbol',
                              values=dataset)
@@ -29,8 +34,8 @@ def draw_chart(symbol_list, start_date, end_date):
 
     price = fetch_data(symbol_list, 'closing_price', start_date, end_date)
 
-    S1 = price[symbol_list[0]]
-    S2 = price[symbol_list[1]]
+    S1 = price[symbol_list[0]].astype(float)
+    S2 = price[symbol_list[1]].astype(float)
 
     S1 = sm.add_constant(S1)
     results = sm.OLS(S2, S1).fit()
@@ -81,3 +86,4 @@ def draw_chart(symbol_list, start_date, end_date):
     image_show = str(image_b64, 'utf8')  # encodar till 8 bit strängar
 
     return image_show
+

@@ -4,8 +4,6 @@ from . import pipercharts as pp
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 
 
-
-
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
     todays_date = datetime.now().strftime("%Y-%m-%d")

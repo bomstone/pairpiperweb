@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as soup
 import datetime
-import sqlite3
 import time
 from piperdatabase.models import PiperDatabase
 
