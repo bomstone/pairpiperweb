@@ -11,14 +11,20 @@ import io
 import base64
 import sqlite3
 from piperdatabase.models import PiperDatabase
+from django.db import connection as con
 
 
 def fetch_data(asset, dataset, startdate, enddate):
 
     conn = sqlite3.connect('db.sqlite3')
-    df = pd.read_sql_query("SELECT * FROM piperdb", conn, index_col = 'date', parse_dates=True)
+    df = pd.read_sql_query("SELECT * FROM piperdb", conn,
+                           index_col = 'date',
+                           parse_dates=True,
+                           )
+    #dbquery = PiperDatabase.objects.all().order_by('date', 'symbol')
+    #df = pd.read_sql_query(dbquery, con, index_col='date', parse_dates='true')
 
-    #queryset = PiperDatabase.objects.all()
+    #queryset = PiperDatabase.objects.all().order_by('date', 'symbol')
     #df = pd.DataFrame.from_records(queryset)
 
     data = df.loc[startdate:enddate]
