@@ -10,22 +10,12 @@
                 <th>strategy</th>
                 <th>legs</th>
                 <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
             </tr>
             <tr>
-                <td>{{ form.user }}</td>
-                <td>{{ form.strategy }}</td>
+                <td>{{ mainform.user }}</td>
+                <td>{{ mainform.strategy }}</td>
                 <td><select name="legs"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><button type="submit">Add position</button></td>
             </tr>
         </table>
         <br>
@@ -43,16 +33,15 @@
                     <th>quantity</th>
                 </tr>
                 <tr>
-                    <td>{{ form.product_type }}</td>
-                    <td>{{ form.open_date }}</td>
-                    <td>{{ form.open_time }}</td>
-                    <td>{{ form.asset }}</td>
-                    <td>{{ form.ul_open }}</td>
-                    <td>{{ form.open_price }}</td>
-                    <td>{{ form.mf_finlevel }}</td>
-                    <td>{{ form.target_exposure }}</td>
-                    <td>{{ form.quantity }}<button>auto</button></td>
-                    <td><button type="submit">Add position</button></td>
+                    <td>{{ subform.product_type }}</td>
+                    <td>{{ subform.open_date }}</td>
+                    <td>{{ subform.open_time }}</td>
+                    <td>{{ subform.asset }}</td>
+                    <td>{{ subform.ul_open }}</td>
+                    <td>{{ subform.open_price }}</td>
+                    <td>{{ subform.mf_finlevel }}</td>
+                    <td>{{ subform.target_exposure }}</td>
+                    <td>{{ subform.quantity }}</td>
                 </tr>
             {% endfor %}
         </table>

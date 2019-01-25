@@ -2,7 +2,7 @@ from django import forms
 from django.forms import formset_factory
 
 
-class AddPositionForm(forms.Form):
+class AddMainpositionForm(forms.Form):
     trade_id = forms.IntegerField(required=False)
 
     strategy = forms.CharField(
