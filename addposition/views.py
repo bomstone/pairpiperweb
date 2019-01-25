@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from .forms import AddPositionForm
-from addposition.models import AddPositionModel
+from .forms import AddPositionForm, AddSubpositionForm_FormSet
+from portfolio.models import PortfolioModel
 
 def AddPositionView(request):
 
@@ -8,7 +8,7 @@ def AddPositionView(request):
         form = AddPositionForm(request.POST)
 
         if form.is_valid():
-            add = AddPositionModel(
+            add = PortfolioModel(
                 strategy = form.cleaned_data['strategy'],
                 #trade_id = form.cleaned_data['trade_id'],
                 product_type = form.cleaned_data['product_type'],

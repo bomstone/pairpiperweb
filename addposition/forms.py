@@ -19,12 +19,6 @@ class AddPositionForm(forms.Form):
 
 
 class AddSubpositionForm(forms.Form):
-    product_type = forms.CharField(
-        required=False,
-        max_length=12,
-        widget=forms.TextInput(attrs={'size': 8})
-    )
-
     open_date = forms.CharField(
         required=False,
         max_length=12,
