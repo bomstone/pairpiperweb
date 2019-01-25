@@ -1,7 +1,29 @@
 from django import forms
-from django.forms import formset_factory
+from django.forms import ModelForm
+
+from portfolio.models import PortfolioModel
+
+class AddSubpositionForm(ModelForm):
+    class Meta:
+        model = PortfolioModel
+        fields = [
+            'product_type',
+            'open_date',
+            'open_time',
+            'asset',
+            'ul_open',
+            'open_price',
+            'mf_finlevel',
+            'quantity',
+            'commission',
+        ]
+        """widgets = {
+            'open_date': Textarea(attrs={'cols': 120, 'rows': 20}),
+        }"""
 
 
+
+"""
 class AddMainpositionForm(forms.Form):
     trade_id = forms.IntegerField(required=False)
 
@@ -67,4 +89,4 @@ class AddSubpositionForm(forms.Form):
         widget=forms.TextInput(attrs={'size': 8})
     )
 
-AddSubpositionForm_FormSet = formset_factory(AddSubpositionForm)
+"""

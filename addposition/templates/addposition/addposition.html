@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="portfolio">
-    <form method="post">
+    <!-- <form method="post">
         {% csrf_token %}
         <table>
             <tr>
@@ -33,18 +33,29 @@
                     <th>quantity</th>
                 </tr>
                 <tr>
-                    <td>{{ subform.product_type }}</td>
-                    <td>{{ subform.open_date }}</td>
-                    <td>{{ subform.open_time }}</td>
-                    <td>{{ subform.asset }}</td>
-                    <td>{{ subform.ul_open }}</td>
-                    <td>{{ subform.open_price }}</td>
-                    <td>{{ subform.mf_finlevel }}</td>
-                    <td>{{ subform.target_exposure }}</td>
-                    <td>{{ subform.quantity }}</td>
+                    <td>{{ .product_type }}</td>
+                    <td>{{ .open_date }}</td>
+                    <td>{{ .open_time }}</td>
+                    <td>{{ .asset }}</td>
+                    <td>{{ .ul_open }}</td>
+                    <td>{{ .open_price }}</td>
+                    <td>{{ .mf_finlevel }}</td>
+                    <td>{{ .target_exposure }}</td>
+                    <td>{{ .quantity }}</td>
                 </tr>
             {% endfor %}
-        </table>
+        </table> --!>
+                    <form method="post">
+                            {% csrf_token %}
+                            {{ formset.management_form }}
+                            <table>
+                                {% for form in formset %}
+                                {{ form }}
+                                {% endfor %}
+                                <button type="submit">Add position</button>
+                            </table>
+                        </form>
+
     </form>
 </div>
 
