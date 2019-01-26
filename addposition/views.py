@@ -1,16 +1,22 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from .forms import AddSubpositionForm
-from django.forms import modelformset_factory
+from portfolio.models import PortfolioModel
+
 
 def AddPositionView(request):
 
-    subposition = AddSubpositionForm(request.POST)
-
     if request.method == "POST":
-
+        subposition = AddSubpositionForm(request.POST)
         if subposition.is_valid():
-            add_subposition = subposition.save()
+            subposition.save()
 
+            add = PortfolioModel(
+                trade_id=1,
+                insert_type='subposition',
+            )
+            add.save()
 
-    subposition = AddSubpositionForm()
+            return HttpResponseRedirect('/addposition/')
+    else:
+        subposition = AddSubpositionForm()
     return render(request, 'addposition/addposition.html', {'subposition': subposition})

@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import modelformset_factory
 from portfolio.models import PortfolioModel
 
 
@@ -20,7 +21,6 @@ class AddSubpositionForm(forms.ModelForm):
             'open_date': Textarea(attrs={'cols': 120, 'rows': 20}),
         }
         """
-
 
 class AddMainpositionForm(forms.ModelForm):
     class Meta:
