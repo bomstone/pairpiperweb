@@ -19,6 +19,7 @@ class AddSubpositionForm(forms.ModelForm):
     def save(self):
         instance = super(AddSubpositionForm, self).save(commit=False)
         instance.insert_type = 'subposition'
+        instance.net_open_sek = self.cleaned_data['open_price'] * self.cleaned_data['quantity']
         instance.save()
         return instance
 
