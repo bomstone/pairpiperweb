@@ -16,11 +16,11 @@ class AddSubpositionForm(forms.ModelForm):
             'mf_finlevel',
             'quantity',
         ]
-        """
-        widgets = {
-            'open_date': Textarea(attrs={'cols': 120, 'rows': 20}),
-        }
-        """
+    def save(self):
+        instance = super(AddSubpositionForm, self).save(commit=False)
+        instance.insert_type = 'subposition'
+        instance.save()
+        return instance
 
 class AddMainpositionForm(forms.ModelForm):
     class Meta:
