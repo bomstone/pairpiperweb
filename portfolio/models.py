@@ -33,3 +33,4 @@ class PortfolioModel(models.Model):
         db_table = 'portfolio'
 
 
+
