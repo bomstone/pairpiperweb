@@ -51,9 +51,10 @@ body, html {
   background-color: #31496b;
   color: white;
 }
-.topright {
-    position: absolute;
-    top: 8px;
-    right: 16px;
-    font-size: 18px;
+.adminlink a:link, .adminlink a:visited {
+    position: absolute !important;
+    top: 8px !important;
+    right: 16px !important;
+    font-size: 18px !important;
+    color: #eaeaea !important;
 }
