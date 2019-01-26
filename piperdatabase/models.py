@@ -12,3 +12,14 @@ class PiperDatabase(models.Model):
 
     class Meta():
         db_table = 'piperdb'
+
+    def __unicode__(self):
+        return '%s %s %s %s %s %s %s' % (
+            self.date,
+            self.symbol,
+            self.opening_price,
+            self.high_price,
+            self.low_price,
+            self.closing_price,
+            self.timestamp
+            )
