@@ -18,3 +18,5 @@
 
 **1.2.10** - Portfolio och Add Position tillagd, delvis fungerande, kopplad till sqlite-databas<br>
 **1.2.11** - Uppdaterad tickerlist i samtliga appar (CAST, HUFV-A, FABG, SHB-A, SECU-B)<br>
+
+**1.3.11** - piperdatabase kopplad till db.sqlite3, Add Position och Portfolio kopplade till modelforms, tradelogg tillagd (ej funktionell)<br>
