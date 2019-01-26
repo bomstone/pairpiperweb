@@ -5,15 +5,28 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
-from statsmodels.tsa.stattools import coint
 from statsmodels.tsa.stattools import coint, adfuller
 
 import io
 import base64
+import sqlite3
+from piperdatabase.models import PiperDatabase
+from django.db import connection as con
 
 
 def fetch_data(asset, dataset, startdate, enddate):
-    df = pd.read_csv('fulldb.csv', index_col = 'date', parse_dates=True).append(pd.read_csv('livedb.csv', index_col = 'date', parse_dates=True))
+
+    conn = sqlite3.connect('db.sqlite3')
+    df = pd.read_sql_query("SELECT * FROM piperdb", conn,
+                           index_col = 'date',
+                           parse_dates=True,
+                           )
+    #dbquery = PiperDatabase.objects.all().order_by('date', 'symbol')
+    #df = pd.read_sql_query(dbquery, con, index_col='date', parse_dates='true')
+
+    #queryset = PiperDatabase.objects.all().order_by('date', 'symbol')
+    #df = pd.DataFrame.from_records(queryset)
+
     data = df.loc[startdate:enddate]
     pivot_table = data.pivot(columns='symbol',
                              values=dataset)
@@ -24,24 +37,21 @@ def zscore(series):
     return (series - series.mean()) / np.std(series)
 
 def draw_chart(symbol_list, start_date, end_date):
-    # Hämta data ur historisk databas+livedatabas
+
     price = fetch_data(symbol_list, 'closing_price', start_date, end_date)
 
-    # Separera listan till två variabler
-    S1 = price[symbol_list[0]]
-    S2 = price[symbol_list[1]]
+    S1 = price[symbol_list[0]].astype(float)
+    S2 = price[symbol_list[1]].astype(float)
 
-    # Beräkna spread
     S1 = sm.add_constant(S1)
     results = sm.OLS(S2, S1).fit()
-    S1 = S1[symbol_list[0]]  # återställer S1
+    S1 = S1[symbol_list[0]]
     b = results.params[symbol_list[0]]
     spread = S2 - b * S1
 
-    # Beräkna omvänd spread
     S2 = sm.add_constant(S2)
     results = sm.OLS(S1, S2).fit()
-    S2 = S2[symbol_list[1]]  # återställer S2
+    S2 = S2[symbol_list[1]]
     b = results.params[symbol_list[1]]
     spread_rev = S1 - b * S2
 
@@ -55,7 +65,6 @@ def draw_chart(symbol_list, start_date, end_date):
     else:
         coint_string = ('p-Value = ' + str(pvalue) + ' Likely NOT cointegrated')
 
-    #plotta Zscore
     zscore1.plot(linewidth=1.7, figsize=(10, 2))
     zscore2.plot(linewidth=1.7)
     plt.xlabel('')
@@ -83,3 +92,4 @@ def draw_chart(symbol_list, start_date, end_date):
     image_show = str(image_b64, 'utf8')  # encodar till 8 bit strängar
 
     return image_show
+

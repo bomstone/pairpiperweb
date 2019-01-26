@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="portfolio">
 
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Add position</button>
-</form>
+                    <form method="post">
+                            {% csrf_token %}
+                            {{ subposition.management_form }}
+                            <table>
+
+                                {{ subposition }}
+
+                                <button type="submit">Add position</button>
+                            </table>
+                        </form>
+
+    </form>
+</div>
 
 {% endblock %}

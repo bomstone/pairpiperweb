@@ -25,22 +25,24 @@
                 <th></th>
             </tr>
             {% for obj in object_list %}
-            <tr>
-                <td>{{ obj.strategy }}</td>
-                <td>{{ obj.open_date }}</td>
-                <td>{{ obj.open_time }}</td>
-                <td>{{ obj.asset }}</td>
-                <td>{{ obj.ul_open }}</td>
-                <td>{{ obj.open_price }}</td>
-                <td>{{ obj.quantity }}</td>
-                <td><input type="text" size="7" maxlength="10"></td>
-                <td><input type="text" size="5" maxlength="10"></td>
-                <td><input type="text" size="5" maxlength="10"></td>
-                <td><input type="text" size="5" maxlength="10"></td>
-                <td><input type="text" size="5" maxlength="10"></td>
-                <td></td>
-                <td><button>close position</button></td>
-            </tr>
+                <form action="POST">
+                    <tr>
+                        <td>{{ obj.strategy }}</td>
+                        <td>{{ obj.open_date }}</td>
+                        <td>{{ obj.open_time }}</td>
+                        <td>{{ obj.asset }}</td>
+                        <td>{{ obj.ul_open }}</td>
+                        <td>{{ obj.open_price }}</td>
+                        <td>{{ obj.quantity }}</td>
+                        <td><input type="text" size="7" maxlength="10"></td>
+                        <td><input type="text" size="5" maxlength="10"></td>
+                        <td><input type="text" size="5" maxlength="10"></td>
+                        <td><input type="text" size="5" maxlength="10"></td>
+                        <td><input type="text" size="5" maxlength="10"></td>
+                        <td></td>
+                        <td><input type="submit" value="close position"></td>
+                    </tr>
+                </form>
             {% endfor %}
     </table>
 </div>

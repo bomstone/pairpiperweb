@@ -1,12 +1,12 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView
-from .models import PortfolioPart
+from .models import PortfolioModel
 
 
-def PrintPortfolio(request):
+def PortfolioView(request):
     template_name = 'portfolio/portfolio.html'
 
-    queryset = PortfolioPart.objects.all()
+    queryset = PortfolioModel.objects.all()
     context = {
         'object_list': queryset,
     }

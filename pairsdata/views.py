@@ -4,8 +4,6 @@ from . import pipercharts as pp
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 
 
-
-
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
     todays_date = datetime.now().strftime("%Y-%m-%d")
@@ -27,7 +25,7 @@ class PairsdataView(TemplateView):
 
         chart_1 = pp.draw_chart(symbol_list, start_date, end_date)
         chart_2 = pp.draw_chart(symbol_list, '2018-05-05', end_date)
-        chart_3 = pp.draw_chart(symbol_list, '2018-01-01', end_date)
+        chart_3 = pp.draw_chart(symbol_list, '2018-01-04', end_date)
 
 
         context = {

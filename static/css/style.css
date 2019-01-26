@@ -1,6 +1,5 @@
 {box-sizing: border-box}
 
-/* Set height of body and the document to 100% */
 body, html {
   background-color: #31496b;
   height: 100%;
@@ -9,7 +8,6 @@ body, html {
   color: #eaeaea;
 }
 
-/* Style tab links */
 .tablink {
   background-color: #555;
   color: white;
@@ -27,7 +25,6 @@ body, html {
   background-color: #3d5c87;
 }
 
-/* Style the tab content (and add height:100% for full page content) */
 .content_container {
   background-color: #3d5c87;
   color: white;
@@ -38,12 +35,25 @@ body, html {
 .portfolio th, td {
   text-align: center;
   padding: 11px;
-
 }
 
-.portfolio tr:nth-child(even){background-color: #f2f2f2}
-.portfolio tr {background-color: #d9d9d9; color: black}
+.portfolio tr:nth-child(even){
+    background-color: #f2f2f2
+}
+
+.portfolio td {
+    background-color: #d9d9d9;
+    color: black;
+    font-size: 12px;
+
+}
 .portfolio th {
   background-color: #31496b;
   color: white;
+}
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
 }

@@ -1,9 +1,9 @@
 from django.db import models
 
-# Create your models here.
-class PortfolioPart(models.Model):
+
+class PortfolioModel(models.Model):
     trade_id = models.IntegerField(default=None, null=True)
-    trade_type = models.CharField(max_length=30, default=None, null=True)
+    insert_type = models.CharField(max_length=30, default=None, null=True)
     strategy = models.CharField(max_length=30, default=None, null=True)
     product_type = models.CharField(max_length=30, default=None, null=True)
     asset = models.CharField(max_length=30, default=None, null=True)
@@ -31,5 +31,6 @@ class PortfolioPart(models.Model):
 
     class Meta():
         db_table = 'portfolio'
+
 
 
