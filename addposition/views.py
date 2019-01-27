@@ -1,6 +1,5 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect
 from .forms import AddSubpositionForm, AddMainPosition, GeneralPositionForm
-from portfolio.models import PortfolioModel
 
 
 def AddPositionView(request):
@@ -12,9 +11,11 @@ def AddPositionView(request):
         if subposition.is_valid():
             strategy_val = request.POST.get('strategy')
             user_val = request.POST.get('user')
+            open_date_val = subposition.cleaned_data.get('open_date')
+
 
             subposition.save(strategy_val, user_val)
-            AddMainPosition(strategy_val, user_val)
+            AddMainPosition(strategy_val, user_val, open_date_val)
 
             return HttpResponseRedirect('/addposition/')
 

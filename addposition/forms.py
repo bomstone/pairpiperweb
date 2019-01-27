@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import modelformset_factory
 from portfolio.models import PortfolioModel
 from django.db.models import Max
 
@@ -49,15 +48,30 @@ class AddSubpositionForm(forms.ModelForm):
 
 
 class GeneralPositionForm(forms.Form): #formulär för generell data som skrivs till både AddMainPosition och AddSubPosition
+    user = forms.ChoiceField(choices=(('jesper', 'jesper'), ('mikael', 'mikael')))
+    product_type = forms.ChoiceField(choices=(
+        ('mini future', 'mini future'),
+        ('stock', 'stock'),
+        ('option', 'option'),
+        ('ETF', 'ETF'),
+        ('mixed', 'mixed')
+    ))
     strategy = forms.CharField()
-    user = forms.CharField()
+
+def AddMainPosition(strategy_in, user_in, open_date_in): #kallas i veiws och tar argument från GeneralPositionForm och AddSubpositionForm
+    check_tradeid = PortfolioModel.objects.all().aggregate(Max('trade_id'))
+    if not check_tradeid.get('trade_id__max'):
+        trade_id = 1
+    else:
+        trade_id = check_tradeid.get('trade_id__max')
 
 
-def AddMainPosition(strategy_in, user_in): #kallas i veiws och tar argument från GeneralPositionForm och AddSubpositionForm
     instance = PortfolioModel.objects.create(
 
+        trade_id=trade_id,
         insert_type='position',
         strategy=strategy_in,
+        open_date=open_date_in,
         user=user_in,
 
     )

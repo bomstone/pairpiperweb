@@ -6,7 +6,15 @@ from .models import PortfolioModel
 def PortfolioView(request):
     template_name = 'portfolio/portfolio.html'
 
-    queryset = PortfolioModel.objects.all()
+    if request.method == "POST":
+
+
+
+    else:
+
+        queryset = PortfolioModel.objects.filter(trade_id=2)
+
+
     context = {
         'object_list': queryset,
     }
