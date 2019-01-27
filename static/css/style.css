@@ -32,25 +32,26 @@ body, html {
   height: 100%;
 }
 
-.portfolio th, td {
-  text-align: center;
-  padding: 11px;
-}
-
 .portfolio tr:nth-child(even){
     background-color: #f2f2f2
 }
 
 .portfolio td {
+    text-align: center;
+    padding: 3px;
     background-color: #d9d9d9;
     color: black;
     font-size: 12px;
-
 }
+
 .portfolio th {
+  text-align: center;
+  padding: 5px;
   background-color: #31496b;
   color: white;
+  font-size: 10px;
 }
+
 .adminlink a:link, .adminlink a:visited {
     position: absolute !important;
     top: 8px !important;

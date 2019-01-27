@@ -5,12 +5,15 @@
 
                     <form method="post">
                             {% csrf_token %}
+                            <button type="submit">Add position</button>
+                            <table>
+                                {{ generalposition }}
+                            </table>
                             {{ subposition.management_form }}
                             <table>
 
                                 {{ subposition }}
 
-                                <button type="submit">Add position</button>
                             </table>
                         </form>
 
