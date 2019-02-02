@@ -5,16 +5,38 @@
 
                     <form method="post">
                             {% csrf_token %}
+
+                            <table>
+                                {{ mainposition }}
+                            </table>
+
+                            <table>
+                                <th>product type</th>
+                                <th>date</th>
+                                <th>time</th>
+                                <th>ticker</th>
+                                <th>ticker price</th>
+                                <th>product price</th>
+                                <th>fin. level</th>
+                                <th>#</th>
+                                <br>
+                                {{ subposition.management_form }}
+                                {% for position in subposition %}
+                                    <tr>
+                                        <td>{{ position.product_type }}</td>
+                                        <td>{{ position.open_date }}</td>
+                                        <td>{{ position.open_time }}</td>
+                                        <td>{{ position.asset }}</td>
+                                        <td>{{ position.ul_open }}</td>
+                                        <td>{{ position.open_price }}</td>
+                                        <td>{{ position.mf_finlevel }}</td>
+                                        <td>{{ position.quantity }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+
+                            <br>
                             <button type="submit">Add position</button>
-                            <table>
-                                {{ generalposition }}
-                            </table>
-                            {{ subposition.management_form }}
-                            <table>
-
-                                {{ subposition }}
-
-                            </table>
                         </form>
 
     </form>
