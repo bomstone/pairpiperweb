@@ -21,3 +21,4 @@
 
 **1.3.11** - piperdatabase kopplad till db.sqlite3, Add Position och Portfolio kopplade till modelforms, tradelogg tillagd (ej funktionell)<br>
 **1.3.12** - Startsida (127.0.0.1:8000) tillagd. Länk till admin-sida i headern <br>
+**1.3.13** - AddPosition baserad på modelforms. Skriver till portfolio-model. Main position fortfarande ej komplett
