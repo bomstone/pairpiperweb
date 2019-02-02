@@ -25,13 +25,15 @@ def AddPositionView(request):
 
         if mainposition.is_valid() and subposition.is_valid():
 
-            strategy_val = request.POST.get('strategy')
-            user_val = request.POST.get('user')
-            product_val = request.POST.get('product_type')
+
+
             mainposition.save()
 
             for form in subposition:
-                form.save()
+                form.save(
+                    strategy_val=request.POST.get('strategy'),
+                    user_val=request.POST.get('user'),
+                    )
 
             return HttpResponseRedirect('/addposition/')
 

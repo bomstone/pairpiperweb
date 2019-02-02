@@ -45,27 +45,22 @@ class SubpositionModelForm(forms.ModelForm):
         ]
 
     # Override save-funktion och lägger till ytterligare metadata till positionen som ej fylls i genom formulär
-    def save(self):
+    def save(self, **kwargs):
         instance = super(SubpositionModelForm, self).save(commit=False)
 
         check_tradeid = PortfolioModel.objects.all().aggregate(Max('trade_id'))
         trade_id = check_tradeid.get('trade_id__max')
-
         insert_type = 'subposition'
-        #open_price = self.cleaned_data['open_price']
-        #ul_open = self.cleaned_data['ul_open']
-        #quantity = self.cleaned_data['quantity']
-        #currency = 'SEK'
-        #strategy = strategy_in
-        #user = user_in
+        strategy = kwargs['strategy_val']
+        user = kwargs['user_val']
 
         instance.trade_id = trade_id
         instance.insert_type = insert_type
         #instance.net_open_sek = open_price * quantity
         #instance.true_exposure = (open_price * quantity) * (ul_open / open_price)
         #instance.currency = currency
-        #instance.strategy = strategy
-        #instance.user = user
+        instance.strategy = strategy
+        instance.user = user
 
         instance.save()
         return instance
