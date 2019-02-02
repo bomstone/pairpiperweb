@@ -1,11 +1,32 @@
 from django.db import models
 
+USER = (
+    ('jesper', 'Jesper'),
+    ('mikael', 'Mikael')
+)
+
+PRODUCT_TYPE = (
+    ('mini future', 'Mini future'),
+    ('mini short', 'Mini short'),
+    ('mini long', 'Mini long'),
+    ('stock', 'Stock'),
+    ('option', 'Option'),
+    ('mixed', 'Mixed'),
+)
+
+STRATEGY = (
+    ('pairs trade', 'Pairs trade'),
+    ('standard', 'Standard'),
+    ('iron condor', 'Iron condor'),
+    ('covered call', 'Covered call'),
+)
+
 
 class PortfolioModel(models.Model):
     trade_id = models.IntegerField(default=None, null=True, blank=True)
     insert_type = models.CharField(max_length=30, default=None, null=True, blank=True)
-    strategy = models.CharField(max_length=30, default=None, null=True, blank=True)
-    product_type = models.CharField(max_length=30, default=None, null=True, blank=True)
+    strategy = models.CharField(max_length=30, default=None, null=True, blank=True, choices=STRATEGY)
+    product_type = models.CharField(max_length=30, default=None, null=True, blank=True, choices=PRODUCT_TYPE)
     asset = models.CharField(max_length=30, default=None, null=True, blank=True)
     currency = models.CharField(max_length=4, default=None, null=True, blank=True)
     open_date = models.CharField(max_length=30, default=None, null=True, blank=True)
@@ -28,7 +49,7 @@ class PortfolioModel(models.Model):
     opt_type = models.CharField(max_length=30, default=None, null=True, blank=True)
     opt_date = models.CharField(max_length=30, default=None, null=True, blank=True)
     opt_strike = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
-    user = models.CharField(max_length=30, default=None, null=True, blank=True)
+    user = models.CharField(max_length=30, default=None, null=True, blank=True, choices=USER)
 
     class Meta():
         db_table = 'portfolio'
