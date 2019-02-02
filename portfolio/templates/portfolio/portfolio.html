@@ -7,6 +7,8 @@
     </select>
     <br>
     <br>
+    <form method="POST">
+        {% csrf_token %}
     <table>
             <tr>
                 <th>strategy</th>
@@ -15,17 +17,17 @@
                 <th>asset</th>
                 <th>underlying open</th>
                 <th>mini future open</th>
-                <th>quantity</th>
+                <th>#</th>
                 <th>close date</th>
                 <th>close time</th>
                 <th>underlying close</th>
                 <th>mini future close</th>
                 <th>commission</th>
                 <th>net result</th>
-                <th></th>
+
             </tr>
             {% for obj in object_list %}
-                <form action="POST">
+
                     <tr>
                         <td>{{ obj.strategy }}</td>
                         <td>{{ obj.open_date }}</td>
@@ -34,17 +36,21 @@
                         <td>{{ obj.ul_open }}</td>
                         <td>{{ obj.open_price }}</td>
                         <td>{{ obj.quantity }}</td>
-                        <td><input type="text" size="7" maxlength="10"></td>
-                        <td><input type="text" size="5" maxlength="10"></td>
-                        <td><input type="text" size="5" maxlength="10"></td>
-                        <td><input type="text" size="5" maxlength="10"></td>
-                        <td><input type="text" size="5" maxlength="10"></td>
+                        <td>{{ obj.close_date }}</td>
+                        <td>{{ obj.close_time }}</td>
+                        <td>{{ obj.ul_close }}</td>
+                        <td>{{ obj.close_price }}</td>
+                        <td>{{ obj.commission }}</td>
                         <td></td>
-                        <td><input type="submit" value="close position"></td>
+
                     </tr>
-                </form>
-            {% endfor %}
+        {% endfor %}
     </table>
+
+    <td><input type="submit" value="close position"></td>
+    </form>
+
+
 </div>
 
 
