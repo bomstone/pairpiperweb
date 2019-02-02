@@ -25,8 +25,6 @@ def AddPositionView(request):
 
         if mainposition.is_valid() and subposition.is_valid():
 
-
-
             mainposition.save()
 
             for form in subposition:
