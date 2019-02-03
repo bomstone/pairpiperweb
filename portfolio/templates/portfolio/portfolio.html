@@ -7,49 +7,50 @@
     </select>
     <br>
     <br>
-    <form method="POST">
-        {% csrf_token %}
-    <table>
-            <tr>
-                <th>strategy</th>
-                <th>open date</th>
-                <th>open time</th>
-                <th>asset</th>
-                <th>underlying open</th>
-                <th>mini future open</th>
-                <th>#</th>
-                <th>close date</th>
-                <th>close time</th>
-                <th>underlying close</th>
-                <th>mini future close</th>
-                <th>commission</th>
-                <th>net result</th>
+        <form method="POST">
+            {% csrf_token %}
+        <table>
+                <tr>
+                    <th>strategy</th>
+                    <th>open date</th>
+                    <th>open time</th>
+                    <th>asset</th>
+                    <th>underlying open</th>
+                    <th>mini future open</th>
+                    <th>#</th>
+                    <th>close date</th>
+                    <th>close time</th>
+                    <th>underlying close</th>
+                    <th>mini future close</th>
+                    <th>commission</th>
+                    <th>net result</th>
 
-            </tr>
-            {{ portfolioposition.management_form }}
-            {% for position in portfolioposition %}
+                </tr>
+                {{ portfolioobject.management_form }}
+                {% for object in portfolioobject %}
 
-                    <tr>
-                        <td>{{ position.strategy }}</td>
-                        <td>{{ position.open_date }}</td>
-                        <td>{{ position.open_time }}</td>
-                        <td>{{ position.asset }}</td>
-                        <td>{{ position.ul_open }}</td>
-                        <td>{{ position.open_price }}</td>
-                        <td>{{ position.quantity }}</td>
-                        <td>{{ position.close_date }}</td>
-                        <td>{{ position.close_time }}</td>
-                        <td>{{ position.ul_close }}</td>
-                        <td>{{ position.close_price }}</td>
-                        <td>{{ position.commission }}</td>
-                        <td></td>
+                        <tr>
+                            <td>{{ object.strategy }}</td>
+                            <td>{{ object.open_date }}</td>
+                            <td>{{ object.open_time }}</td>
+                            <td>{{ object.asset }}</td>
+                            <td>{{ object.ul_open }}</td>
+                            <td>{{ object.open_price }}</td>
+                            <td>{{ object.quantity }}</td>
+                            <td>{{ object.close_date }}</td>
+                            <td>{{ object.close_time }}</td>
+                            <td>{{ object.ul_close }}</td>
+                            <td>{{ object.close_price }}</td>
+                            <td>{{ object.commission }}</td>
+                            <td></td>
 
-                    </tr>
-        {% endfor %}
-    </table>
+                        </tr>
+            {% endfor %}
+        </table>
 
-    <td><input type="submit" value="close position"></td>
-    </form>
+        <td><button type="submit">Close position</button></td>
+        </form>
+
 
 
 </div>

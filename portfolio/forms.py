@@ -42,4 +42,5 @@ class PortfoliopositionModelForm(forms.ModelForm):
 PortfoliopositionFormset = modelformset_factory(
     PortfolioModel,
     form=PortfoliopositionModelForm,
+    extra=0,
 )
