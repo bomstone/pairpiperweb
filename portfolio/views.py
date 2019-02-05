@@ -9,24 +9,25 @@ def PortfolioView(request):
 
     if request.method == "GET":
 
-
-        portfolioposition = PortfolioModel.objects.filter(trade_id=3)
-
-        portfolioobject = PortfoliopositionFormset(queryset=portfolioposition)
+        portfolioposition = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(trade_id=2))
 
         context = {
             'portfolioposition': portfolioposition,
-            'portfolioobject': portfolioobject,
         }
 
         return render(request, template_name, context)
 
     elif request.method == "POST":
 
-        portfolioobject = PortfoliopositionFormset(request.POST)
+        portfolioposition = PortfoliopositionFormset(request.POST)
 
-        if portfolioobject.is_valid():
-            portfolioobject.save()
+        if portfolioposition.is_valid():
 
-        return HttpResponseRedirect('/portfolio/')
+            for form in portfolioposition:
+                form.save()
+
+            return HttpResponseRedirect('/portfolio/')
+
+        else:
+            print(portfolioposition.errors)
 
