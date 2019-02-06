@@ -17,6 +17,11 @@ class MainpositionModelForm(forms.ModelForm):
             'product_type': 'Product type',
             'strategy': 'Strategy',
         }
+        widgets = {
+            'user': forms.Select,
+            'product_type': forms.Select,
+            'strategy': forms.Select,
+        }
 
     def save(self):
         instance = super(MainpositionModelForm, self).save(commit=False)
@@ -47,6 +52,15 @@ class SubpositionModelForm(forms.ModelForm):
             'mf_finlevel',
             'quantity',
         ]
+        widgets = {
+            'open_date': forms.TextInput(attrs={'size': 8}),
+            'open_time': forms.TextInput(attrs={'size': 8}),
+            'asset': forms.TextInput(attrs={'size': 8}),
+            'ul_open': forms.TextInput(attrs={'size': 8}),
+            'open_price': forms.TextInput(attrs={'size': 8}),
+            'mf_finlevel': forms.TextInput(attrs={'size': 8}),
+            'quantity': forms.TextInput(attrs={'size': 8}),
+        }
 
     def save(self, **kwargs):
         instance = super(SubpositionModelForm, self).save(commit=False)

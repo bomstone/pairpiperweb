@@ -5,6 +5,7 @@ from portfolio.models import PortfolioModel
 
 
 def AddPositionView(request):
+    template_name = 'addposition/addposition.html'
 
     if request.method == "GET":
         mainposition = MainpositionModelForm()
@@ -16,7 +17,7 @@ def AddPositionView(request):
             'mainposition': mainposition,
         }
 
-        return render(request, 'addposition/addposition.html', context)
+        return render(request, template_name, context)
 
     elif request.method == "POST":
 

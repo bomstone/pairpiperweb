@@ -189,7 +189,7 @@ def updatelivedb():
         )
         add.save()
 
-    update_live_message = 'livedb.csv uppdaterades.'
+    update_live_message = 'databas uppdaterades.'
     return update_live_message
 
 
@@ -213,5 +213,5 @@ def updatehistoricaldb(historical_date):
         )
         add.save()
 
-    update_historical_message = 'fulldb.csv uppdaterades med data för ' + str(historical_date) + '.'
+    update_historical_message = 'databas uppdaterades med data för ' + str(historical_date) + '.'
     return update_historical_message

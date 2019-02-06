@@ -1,27 +1,33 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView
 from .models import PortfolioModel
+from .forms import PortfoliopositionFormset
 
 
 def PortfolioView(request):
     template_name = 'portfolio/portfolio.html'
 
     if request.method == "GET":
-        queryset = PortfolioModel.objects.filter(trade_id=2)
+
+        portfolioposition = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(trade_id=2))
 
         context = {
-            'object_list': queryset,
+            'portfolioposition': portfolioposition,
         }
 
         return render(request, template_name, context)
 
     elif request.method == "POST":
 
-        queryset = PortfolioModel.objects.filter(trade_id=2)
+        portfolioposition = PortfoliopositionFormset(request.POST)
 
-        context = {
-            'object_list': queryset,
-        }
+        if portfolioposition.is_valid():
 
-        return render(request, template_name, context)
+            for form in portfolioposition:
+                form.save()
+
+            return HttpResponseRedirect('/portfolio/')
+
+        else:
+            print(portfolioposition.errors)
 
