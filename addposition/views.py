@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import MainpositionModelForm, SubpositionFormset
-from django.forms import modelformset_factory
 from portfolio.models import PortfolioModel
+from portfolio.transfer import update_mainpos
 
 
 def AddPositionView(request):
@@ -33,6 +33,7 @@ def AddPositionView(request):
                     strategy_val=request.POST.get('strategy'),
                     user_val=request.POST.get('user'),
                     )
+            update_mainpos()
 
             return HttpResponseRedirect('/addposition/')
 

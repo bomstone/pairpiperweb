@@ -6,8 +6,10 @@ class PortfoliopositionModelForm(forms.ModelForm):
     class Meta:
         model = PortfolioModel
         fields = [
-            'product_type',
+            'trade_id',
+            'insert_type',
             'strategy',
+            'product_type',
             'open_date',
             'open_time',
             'asset',
@@ -21,6 +23,8 @@ class PortfoliopositionModelForm(forms.ModelForm):
             'commission',
         ]
         widgets = {
+            'trade_id': forms.HiddenInput(),
+            'insert_type': forms.HiddenInput(),
             'strategy': forms.TextInput(attrs={'size': 6}),
             'product_type': forms.TextInput(attrs={'size': 6}),
             'open_date': forms.TextInput(attrs={'size': 7}),
@@ -36,6 +40,18 @@ class PortfoliopositionModelForm(forms.ModelForm):
             'commission': forms.TextInput(attrs={'size': 6}),
 
         }
+
+    def save(self):
+        instance = super(PortfoliopositionModelForm, self).save(commit=False)
+
+        close_price = self.cleaned_data['close_price']
+        quantity = self.cleaned_data['quantity']
+
+        instance.net_close_sek = close_price * quantity
+
+        instance.save()
+        return instance
+
 
 PortfoliopositionFormset = modelformset_factory(
     PortfolioModel,

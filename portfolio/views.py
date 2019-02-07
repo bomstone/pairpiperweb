@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView
 from .models import PortfolioModel
 from .forms import PortfoliopositionFormset
+from .transfer import transfer_tolog
 
 
 def PortfolioView(request):
@@ -9,7 +10,7 @@ def PortfolioView(request):
 
     if request.method == "GET":
 
-        portfolioposition = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(trade_id=2))
+        portfolioposition = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(trade_id=1))
 
         context = {
             'portfolioposition': portfolioposition,
@@ -24,8 +25,11 @@ def PortfolioView(request):
         if portfolioposition.is_valid():
 
             for form in portfolioposition:
+
                 form.save()
 
+            trade_id_val = form.cleaned_data['trade_id']
+            transfer_tolog(trade_id_val)
             return HttpResponseRedirect('/portfolio/')
 
         else:
