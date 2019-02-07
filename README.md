@@ -1,4 +1,4 @@
-### PairPiperWeb 1.3.14
+### PairPiperWeb 1.4.0
 
 ##
 #### Versionshistorik<br>
@@ -8,18 +8,20 @@
 **0.0.4** - Uppdateringsfunktioner för livedb.csv och fulldb.csv är nu fullt fungerande <br>
 **0.0.5** - Pairsdata visar nu graf i samma template <br>
 
-**0.1.6** - Förbättrad layout samt interface för att växla mellan pairsdata och piperdatabase <br>
-**0.1.7** - Piperdatabase genererar nu statusmeddelande vid databasuppdatering <br>
-**0.1.8** - Problemet "List index out of range" vid webscraping löst <br>
-**0.1.9** - Graf-layout förändrad och förinställd end date i pairs data <br>
-**0.1.10** - Förinställd start date <br>
+**0.1.0** - Förbättrad layout samt interface för att växla mellan pairsdata och piperdatabase <br>
+**0.1.1** - Piperdatabase genererar nu statusmeddelande vid databasuppdatering <br>
+**0.1.2** - Problemet "List index out of range" vid webscraping löst <br>
+**0.1.3** - Graf-layout förändrad och förinställd end date i pairs data <br>
+**0.1.4** - Förinställd start date <br>
 
-**1.1.10** - Körs skarpt på lokal webbserver synkad via Dropbox
+**1.1.5** - Körs skarpt på lokal webbserver synkad via Dropbox
 
-**1.2.10** - Portfolio och Add Position tillagd, delvis fungerande, kopplad till sqlite-databas<br>
-**1.2.11** - Uppdaterad tickerlist i samtliga appar (CAST, HUFV-A, FABG, SHB-A, SECU-B)<br>
+**1.2.0** - Portfolio och Add Position tillagd, delvis fungerande, kopplad till sqlite-databas<br>
+**1.2.1** - Uppdaterad tickerlist i samtliga appar (CAST, HUFV-A, FABG, SHB-A, SECU-B)<br>
 
-**1.3.11** - piperdatabase kopplad till db.sqlite3, Add Position och Portfolio kopplade till modelforms, tradelogg tillagd (ej funktionell)<br>
-**1.3.12** - Startsida (127.0.0.1:8000) tillagd. Länk till admin-sida i headern <br>
-**1.3.13** - AddPosition baserad på modelforms. Skriver till portfolio-model. Main position fortfarande ej komplett <br>
-**1.3.14** - Portfolio-appen kan nu redigera och lägga till data till en position  <br>
+**1.3.2** - piperdatabase kopplad till db.sqlite3, Add Position och Portfolio kopplade till modelforms, tradelogg tillagd (ej funktionell)<br>
+**1.3.3** - Startsida (127.0.0.1:8000) tillagd. Länk till admin-sida i headern <br>
+**1.3.4** - AddPosition baserad på modelforms. Skriver till portfolio-model. Main position fortfarande ej komplett <br>
+**1.3.5** - Portfolio-appen kan nu redigera och lägga till data till en position  <br>
+
+**1.4.0** - Positioner skrivs nu till tradelogg när de stängs på portfolio-sidan  <br>
