@@ -5,20 +5,57 @@
 
                     <form method="post">
                             {% csrf_token %}
-
+                            Main position
                             <table>
-                                {{ mainposition }}
-                            </table>
+                                <th>user</th>
+                                <th>strategy</th>
+                                <th>product type</th>
+                                <th>open date</th>
+                                <th>open time</th>
+                                <th>asset</th>
+                                <th>currency</th>
+                                <th>fx open</th>
+                                <th>asset price</th>
+                                <th>open price</th>
+                                <th>#</th>
+                                <th>FinLevel</th>
+                                <th>option type</th>
+                                <th>option date</th>
+                                <th>option strike</th>
+                                <tr>
+                                    <td>{{ mainposition.user }}</td>
+                                    <td>{{ mainposition.strategy }}</td>
+                                    <td>{{ mainposition.product_type }}</td>
+                                    <td>{{ mainposition.open_date }}</td>
+                                    <td>{{ mainposition.open_time }}</td>
+                                    <td>{{ mainposition.asset }}</td>
+                                    <td>{{ mainposition.currency }}</td>
+                                    <td>{{ mainposition.fx_open }}</td>
+                                    <td>{{ mainposition.ul_open }}</td>
+                                    <td>{{ mainposition.open_price }}</td>
+                                    <td>{{ mainposition.quantity }}</td>
+                                    <td>{{ mainposition.mf_finlevel }}</td>
+                                    <td>{{ mainposition.opt_type }}</td>
+                                    <td>{{ mainposition.opt_date }}</td>
+                                    <td>{{ mainposition.opt_strike }}</td>
+                                </tr>
 
+                            </table>
+                            Subpositions
                             <table>
                                 <th>product type</th>
-                                <th>date</th>
-                                <th>time</th>
-                                <th>ticker</th>
-                                <th>ticker price</th>
-                                <th>product price</th>
-                                <th>fin. level</th>
+                                <th>open date</th>
+                                <th>open time</th>
+                                <th>asset</th>
+                                <th>currency</th>
+                                <th>fx open</th>
+                                <th>asset price</th>
+                                <th>open price</th>
                                 <th>#</th>
+                                <th>FinLevel</th>
+                                <th>option type</th>
+                                <th>option date</th>
+                                <th>option strike</th>
                                 <br>
                                 {{ subposition.management_form }}
                                 {% for position in subposition %}
@@ -27,10 +64,15 @@
                                         <td>{{ position.open_date }}</td>
                                         <td>{{ position.open_time }}</td>
                                         <td>{{ position.asset }}</td>
+                                        <td>{{ position.currency }}</td>
+                                        <td>{{ position.fx_open }}</td>
                                         <td>{{ position.ul_open }}</td>
                                         <td>{{ position.open_price }}</td>
-                                        <td>{{ position.mf_finlevel }}</td>
                                         <td>{{ position.quantity }}</td>
+                                        <td>{{ position.mf_finlevel }}</td>
+                                        <td>{{ position.opt_type }}</td>
+                                        <td>{{ position.opt_date }}</td>
+                                        <td>{{ position.opt_strike }}</td>
                                     </tr>
                                 {% endfor %}
                             </table>
