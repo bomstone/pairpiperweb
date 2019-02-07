@@ -11,20 +11,19 @@
             {% csrf_token %}
             <table>
                     <tr>
-                        <th>strategy</th>
-                        <th>product type</th>
-                        <th>open date</th>
-                        <th>open time</th>
-                        <th>asset</th>
-                        <th>underlying open</th>
-                        <th>product open</th>
+                        <th>Strategy</th>
+                        <th>Product type</th>
+                        <th>Open date</th>
+                        <th>Open time</th>
+                        <th>Asset</th>
+                        <th>Asset open</th>
+                        <th>Product open</th>
                         <th>#</th>
-                        <th>close date</th>
-                        <th>close time</th>
-                        <th>underlying close</th>
-                        <th>product close</th>
-                        <th>commission</th>
-                        <th>net result</th>
+                        <th>Close date</th>
+                        <th>Close time</th>
+                        <th>Asset close</th>
+                        <th>Product close</th>
+                        <th>Commission</th>
 
                     </tr>
                     {{ portfolioposition.management_form }}

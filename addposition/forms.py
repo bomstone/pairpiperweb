@@ -35,9 +35,9 @@ class MainpositionModelForm(forms.ModelForm):
             'ul_open': forms.TextInput(attrs={'size': 8}),
             'fx_open': forms.TextInput(attrs={'size': 5}),
             'open_price': forms.TextInput(attrs={'size': 8}),
-            'mf_finlevel': forms.TextInput(attrs={'size': 8}),
-            'quantity': forms.TextInput(attrs={'size': 8}),
-            'opt_date': forms.TextInput(attrs={'size': 4}),
+            'mf_finlevel': forms.TextInput(attrs={'size': 5}),
+            'quantity': forms.TextInput(attrs={'size': 2}),
+            'opt_date': forms.TextInput(attrs={'size': 6}),
             'opt_strike': forms.TextInput(attrs={'size': 4}),
         }
 
@@ -83,9 +83,9 @@ class SubpositionModelForm(forms.ModelForm):
             'ul_open': forms.TextInput(attrs={'size': 8}),
             'fx_open': forms.TextInput(attrs={'size': 5}),
             'open_price': forms.TextInput(attrs={'size': 8}),
-            'mf_finlevel': forms.TextInput(attrs={'size': 8}),
-            'quantity': forms.TextInput(attrs={'size': 8}),
-            'opt_date': forms.TextInput(attrs={'size': 4}),
+            'mf_finlevel': forms.TextInput(attrs={'size': 5}),
+            'quantity': forms.TextInput(attrs={'size': 2}),
+            'opt_date': forms.TextInput(attrs={'size': 6}),
             'opt_strike': forms.TextInput(attrs={'size': 4}),
 
         }

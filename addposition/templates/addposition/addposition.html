@@ -6,86 +6,98 @@
                     <form method="post">
                             {% csrf_token %}
                         <table>
-                            <th>user</th>
-                            <th>strategy</th>
                             <th>show currency</th>
                             <th>legs</th>
+                            <th>target exposure</th>
+                            <tr>
+
+                                <td><input type="checkbox"></td>
+                                <td><input type="number" min="0" max="4"></td>
+                                <td><input type="text"></td>
+                            </tr>
+                        </table><br>
+
+                        <table>
+                            <th>user</th>
+                            <th>strategy</th>
                             <tr>
                                 <td>{{ mainposition.user }}</td>
                                 <td>{{ mainposition.strategy }}</td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="number" min="0" max="4"></td>
                             </tr>
-                        </table>
-                            Main position
-                            <table>
-                                <th>product_type</th>
-                                <th>open date</th>
-                                <th>open time</th>
-                                <th>asset</th>
-                                <th>currency</th>
-                                <th>fx open</th>
-                                <th>asset price</th>
-                                <th>open price</th>
-                                <th>#</th>
-                                <th>FinLevel</th>
-                                <th>option date</th>
-                                <th>option strike</th>
-                                <tr>
-                                    <td>{{ mainposition.product_type }}</td>
-                                    <td>{{ mainposition.open_date }}</td>
-                                    <td>{{ mainposition.open_time }}</td>
-                                    <td>{{ mainposition.asset }}</td>
-                                    <td>{{ mainposition.currency }}</td>
-                                    <td>{{ mainposition.fx_open }}</td>
-                                    <td>{{ mainposition.ul_open }}</td>
-                                    <td>{{ mainposition.open_price }}</td>
-                                    <td>{{ mainposition.quantity }}</td>
-                                    <td>{{ mainposition.mf_finlevel }}</td>
-                                    <td>{{ mainposition.opt_date }}</td>
-                                    <td>{{ mainposition.opt_strike }}</td>
-                                </tr>
+                        </table><br>
 
-                            </table>
-                            Subpositions
-                            <table>
-                                <th>product type</th>
-                                <th>open date</th>
-                                <th>open time</th>
-                                <th>asset</th>
-                                <th>currency</th>
-                                <th>fx open</th>
-                                <th>asset price</th>
-                                <th>open price</th>
-                                <th>#</th>
-                                <th>FinLevel</th>
-                                <th>option date</th>
-                                <th>option strike</th>
-                                <br>
-                                {{ subposition.management_form }}
-                                {% for position in subposition %}
-                                    <tr>
-                                        <td>{{ position.product_type }}</td>
-                                        <td>{{ position.open_date }}</td>
-                                        <td>{{ position.open_time }}</td>
-                                        <td>{{ position.asset }}</td>
-                                        <td>{{ position.currency }}</td>
-                                        <td>{{ position.fx_open }}</td>
-                                        <td>{{ position.ul_open }}</td>
-                                        <td>{{ position.open_price }}</td>
-                                        <td>{{ position.quantity }}</td>
-                                        <td>{{ position.mf_finlevel }}</td>
-                                        <td>{{ position.opt_date }}</td>
-                                        <td>{{ position.opt_strike }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
+                            Main position
+
+                        <table>
+                            <th>Product type</th>
+                            <th>Open date</th>
+                            <th>Open time</th>
+                            <th>Asset</th>
+                            <th>Currency</th>
+                            <th>FX open</th>
+                            <th>Asset open</th>
+                            <th>Open price</th>
+                            <th>#</th>
+                            <th>FinLevel</th>
+                            <th>Option date</th>
+                            <th>Option strike</th>
+                            <tr>
+                                <td>{{ mainposition.product_type }}</td>
+                                <td>{{ mainposition.open_date }}</td>
+                                <td>{{ mainposition.open_time }}</td>
+                                <td>{{ mainposition.asset }}</td>
+                                <td>{{ mainposition.currency }}</td>
+                                <td>{{ mainposition.fx_open }}</td>
+                                <td>{{ mainposition.ul_open }}</td>
+                                <td>{{ mainposition.open_price }}</td>
+                                <td>{{ mainposition.quantity }}</td>
+                                <td>{{ mainposition.mf_finlevel }}</td>
+                                <td>{{ mainposition.opt_date }}</td>
+                                <td>{{ mainposition.opt_strike }}</td>
+                            </tr>
+
+                        </table><br>
+
+                        Subpositions
+
+                        <table>
+                            <th>Product type</th>
+                            <th>Open date</th>
+                            <th>Open time</th>
+                            <th>Asset</th>
+                            <th>Currency</th>
+                            <th>FX open</th>
+                            <th>Asset open</th>
+                            <th>Open price</th>
+                            <th>#</th>
+                            <th>FinLevel</th>
+                            <th>Option date</th>
+                            <th>Option strike</th>
+                            <br>
+                            {{ subposition.management_form }}
+                            {% for position in subposition %}
+                                <tr>
+                                    <td>{{ position.product_type }}</td>
+                                    <td>{{ position.open_date }}</td>
+                                    <td>{{ position.open_time }}</td>
+                                    <td>{{ position.asset }}</td>
+                                    <td>{{ position.currency }}</td>
+                                    <td>{{ position.fx_open }}</td>
+                                    <td>{{ position.ul_open }}</td>
+                                    <td>{{ position.open_price }}</td>
+                                    <td>{{ position.quantity }}<button type="button">set</button></td>
+                                    <td>{{ position.mf_finlevel }}</td>
+                                    <td>{{ position.opt_date }}</td>
+                                    <td>{{ position.opt_strike }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
 
                             <br>
                             <button type="submit">Add position</button>
-                        </form>
+                    </form>
 
-    </form>
+
 </div>
 
 {% endblock %}
