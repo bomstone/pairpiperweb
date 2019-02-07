@@ -8,16 +8,16 @@
                         <table>
                             <th>user</th>
                             <th>strategy</th>
-                            <th>product type</th>
+                            <th>show currency</th>
                             <tr>
                                 <td>{{ mainposition.user }}</td>
                                 <td>{{ mainposition.strategy }}</td>
-                                <td>{{ mainposition.product_type }}</td>
+                                <td><input type="checkbox"></td>
                             </tr>
                         </table>
                             Main position
                             <table>
-
+                                <th>product_type</th>
                                 <th>open date</th>
                                 <th>open time</th>
                                 <th>asset</th>
@@ -31,7 +31,7 @@
                                 <th>option date</th>
                                 <th>option strike</th>
                                 <tr>
-
+                                    <td>{{ mainposition.product_type }}</td>
                                     <td>{{ mainposition.open_date }}</td>
                                     <td>{{ mainposition.open_time }}</td>
                                     <td>{{ mainposition.asset }}</td>
