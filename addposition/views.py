@@ -1,6 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import MainpositionModelForm, SubpositionFormset
-from django.forms import modelformset_factory
 from portfolio.models import PortfolioModel
 from portfolio.transfer import update_mainpos
 

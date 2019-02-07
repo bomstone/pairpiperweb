@@ -21,8 +21,6 @@ def update_mainpos():
         dates.append(obj['open_date'])
         times.append(obj['open_time'])
 
-    #instance.open_date =
-    #instance.open_time =
     instance.asset = str(assets[0] + ' : ' + assets[1])
     instance.open_date = str(dates[1])
     instance.open_time = str(times[1])
@@ -52,10 +50,3 @@ def transfer_tolog(trade_id_in):
         obj['trade_id'] = new_tradeid
         TradelogModel.objects.create(**obj)
 
-
-    # 'WHERE insert_type = 'position', position.net_result = SUM(subposition.net_result)
-    # 'WHERE insert type = 'position', position.close_price = SUM(subposition.net_close_sek)
-    # 'WHERE insert type = 'position', position.net_close_sek = SUM(subposition.net_close_sek)
-    # 'WHERE insert_type = 'position', position.close_date = MAX(subposition.close_date)
-    # 'WHERE insert_type = 'position', position.close_time = MAX(subposition.close_time)
-    # 'WHERE insert type = 'position', position.close_price = SUM(subposition.commission)
