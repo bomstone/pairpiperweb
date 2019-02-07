@@ -37,16 +37,28 @@ def transfer_tolog(trade_id_in):
     check_tradeid = TradelogModel.objects.all().aggregate(Max('trade_id'))
     new_tradeid = check_tradeid.get('trade_id__max') + 1
 
+    net_result = 0
+    dates = []
+    times = []
+    commission = 0
 
     for obj in queryset_sub:
         obj['id'] = None
         obj['trade_id'] = new_tradeid
+        obj['net_result_sek'] = obj['net_close_sek'] + obj['net_open_sek']
+        net_result += obj['net_close_sek'] + obj['net_open_sek']
+        dates.append(obj['close_date'])
+        times.append(obj['close_time'])
+        commission += obj['commission']
         TradelogModel.objects.create(**obj)
-
-
 
     for obj in queryset_pos:
         obj['id'] = None
         obj['trade_id'] = new_tradeid
+        obj['net_result_sek'] = net_result
+        obj['close_date'] = dates[1]
+        obj['close_time'] = times[1]
+        obj['commission'] = commission
         TradelogModel.objects.create(**obj)
 
+    PortfolioModel.objects.filter(trade_id=trade_id_in).delete()

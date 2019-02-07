@@ -46,13 +46,12 @@ class PortfoliopositionModelForm(forms.ModelForm):
 
         close_price = self.cleaned_data['close_price']
         quantity = self.cleaned_data['quantity']
-        net_open_sek = self.cleaned_data['net_open_sek']
 
         instance.net_close_sek = close_price * quantity
-        instance.net_result_sek = net_open_sek + (close_price * quantity)
 
         instance.save()
         return instance
+
 
 PortfoliopositionFormset = modelformset_factory(
     PortfolioModel,
