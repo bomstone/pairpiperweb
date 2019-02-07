@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import MainpositionModelForm, SubpositionFormset
 from portfolio.models import PortfolioModel
-from portfolio.transfer import update_mainpos
+from portfolio.transfer import update_mainpos, update_singlepos
 
 
 def AddPositionView(request):
@@ -24,18 +24,26 @@ def AddPositionView(request):
         mainposition = MainpositionModelForm(request.POST)
         subposition = SubpositionFormset(request.POST)
 
-        if mainposition.is_valid() and subposition.is_valid():
+        if mainposition.is_valid():
 
             mainposition.save()
 
-            for form in subposition:
-                form.save(
-                    strategy_val=request.POST.get('strategy'),
-                    user_val=request.POST.get('user'),
-                    )
-            update_mainpos()
+            if subposition.is_valid():
 
-            return HttpResponseRedirect('/addposition/')
+                for form in subposition:
+                    if form.data['open_date']:
+                        update_singlepos()
+                        return HttpResponseRedirect('/addposition/')
+                    else:
+                        for form in subposition:
+                            form.save(
+                                strategy_val=request.POST.get('strategy'),
+                                user_val=request.POST.get('user'),
+                            )
+                        update_mainpos()
+                        return HttpResponseRedirect('/addposition/')
+
+
 
 
 

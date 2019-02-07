@@ -10,17 +10,35 @@ class MainpositionModelForm(forms.ModelForm):
         fields = [
             'user',
             'product_type',
-            'strategy'
+            'strategy',
+            'asset',
+            'currency',
+            'open_date',
+            'open_time',
+            'ul_open',
+            'fx_open',
+            'open_price',
+            'quantity',
+            'mf_finlevel',
+            'opt_date',
+            'opt_strike',
         ]
-        labels = {
-            'user': 'User',
-            'product_type': 'Product type',
-            'strategy': 'Strategy',
-        }
+
         widgets = {
             'user': forms.Select,
             'product_type': forms.Select,
             'strategy': forms.Select,
+            'asset': forms.TextInput(attrs={'size': 8}),
+            'currency': forms.TextInput(attrs={'size': 5}),
+            'open_date': forms.TextInput(attrs={'size': 8}),
+            'open_time': forms.TextInput(attrs={'size': 8}),
+            'ul_open': forms.TextInput(attrs={'size': 8}),
+            'fx_open': forms.TextInput(attrs={'size': 5}),
+            'open_price': forms.TextInput(attrs={'size': 8}),
+            'mf_finlevel': forms.TextInput(attrs={'size': 8}),
+            'quantity': forms.TextInput(attrs={'size': 8}),
+            'opt_date': forms.TextInput(attrs={'size': 4}),
+            'opt_strike': forms.TextInput(attrs={'size': 4}),
         }
 
     def save(self):
@@ -44,22 +62,32 @@ class SubpositionModelForm(forms.ModelForm):
         model = PortfolioModel
         fields = [
             'product_type',
+            'asset',
+            'currency',
             'open_date',
             'open_time',
-            'asset',
             'ul_open',
+            'fx_open',
+            'quantity',
             'open_price',
             'mf_finlevel',
-            'quantity',
+            'opt_date',
+            'opt_strike',
         ]
         widgets = {
+            'product_type': forms.Select,
+            'asset': forms.TextInput(attrs={'size': 8}),
+            'currency': forms.TextInput(attrs={'size': 5}),
             'open_date': forms.TextInput(attrs={'size': 8}),
             'open_time': forms.TextInput(attrs={'size': 8}),
-            'asset': forms.TextInput(attrs={'size': 8}),
             'ul_open': forms.TextInput(attrs={'size': 8}),
+            'fx_open': forms.TextInput(attrs={'size': 5}),
             'open_price': forms.TextInput(attrs={'size': 8}),
             'mf_finlevel': forms.TextInput(attrs={'size': 8}),
             'quantity': forms.TextInput(attrs={'size': 8}),
+            'opt_date': forms.TextInput(attrs={'size': 4}),
+            'opt_strike': forms.TextInput(attrs={'size': 4}),
+
         }
 
     def save(self, **kwargs):
