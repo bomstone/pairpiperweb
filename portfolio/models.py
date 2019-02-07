@@ -6,7 +6,6 @@ USER = (
 )
 
 PRODUCT_TYPE = (
-    ('mini future', 'Mini future'),
     ('mini short', 'Mini short'),
     ('mini long', 'Mini long'),
     ('stock', 'Stock'),
