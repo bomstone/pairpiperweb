@@ -28,7 +28,7 @@ class PortfolioModel(models.Model):
     strategy = models.CharField(max_length=30, default=None, null=True, blank=True, choices=STRATEGY)
     product_type = models.CharField(max_length=30, default=None, null=True, blank=True, choices=PRODUCT_TYPE)
     asset = models.CharField(max_length=30, default=None, null=True, blank=True)
-    currency = models.CharField(max_length=4, default=None, null=True, blank=True)
+    currency = models.CharField(max_length=4, default='SEK', null=True, blank=True)
     open_date = models.CharField(max_length=30, default=None, null=True, blank=True)
     open_time = models.CharField(max_length=30, default=None, null=True, blank=True)
     open_price = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)

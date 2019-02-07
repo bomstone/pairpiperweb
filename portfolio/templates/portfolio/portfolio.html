@@ -31,6 +31,8 @@
                     {% for position in portfolioposition %}
                             <tr>
                                 {{ position.id }}
+                                {{ position.trade_id }}
+                                {{ position.insert_type }}
                                 <td>{{ position.strategy }}</td>
                                 <td>{{ position.product_type }}</td>
                                 <td>{{ position.open_date }}</td>

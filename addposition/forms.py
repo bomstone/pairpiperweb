@@ -71,7 +71,6 @@ class SubpositionModelForm(forms.ModelForm):
         open_price = self.cleaned_data['open_price']
         ul_open = self.cleaned_data['ul_open']
         quantity = self.cleaned_data['quantity']
-        currency = 'SEK'
         strategy = kwargs['strategy_val']
         user = kwargs['user_val']
 
@@ -79,7 +78,6 @@ class SubpositionModelForm(forms.ModelForm):
         instance.insert_type = insert_type
         instance.net_open_sek = 0 - (open_price * quantity)
         instance.true_exposure = (open_price * quantity) * (ul_open / open_price)
-        instance.currency = currency
         instance.strategy = strategy
         instance.user = user
 
