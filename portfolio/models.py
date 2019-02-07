@@ -9,8 +9,10 @@ PRODUCT_TYPE = (
     ('mini short', 'Mini short'),
     ('mini long', 'Mini long'),
     ('stock', 'Stock'),
-    ('option', 'Option'),
-    ('mixed', 'Mixed'),
+    ('call option', 'Call option'),
+    ('put option', 'Put option'),
+    ('future', 'Future'),
+    ('etf', 'ETF'),
 )
 
 STRATEGY = (
@@ -45,7 +47,6 @@ class PortfolioModel(models.Model):
     commission = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     net_result_sek = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     mf_finlevel = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
-    opt_type = models.CharField(max_length=30, default=None, null=True, blank=True)
     opt_date = models.CharField(max_length=30, default=None, null=True, blank=True)
     opt_strike = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     user = models.CharField(max_length=30, default=None, null=True, blank=True, choices=USER)

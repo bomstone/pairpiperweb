@@ -25,7 +25,6 @@ class TradelogModel(models.Model):
     commission = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     net_result_sek = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     mf_finlevel = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
-    opt_type = models.CharField(max_length=30, default=None, null=True, blank=True)
     opt_date = models.CharField(max_length=30, default=None, null=True, blank=True)
     opt_strike = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     user = models.CharField(max_length=30, default=None, null=True, blank=True)

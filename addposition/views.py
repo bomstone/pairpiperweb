@@ -24,16 +24,22 @@ def AddPositionView(request):
         mainposition = MainpositionModelForm(request.POST)
         subposition = SubpositionFormset(request.POST)
 
-        if mainposition.is_valid() and subposition.is_valid():
+        if mainposition.is_valid():
 
             mainposition.save()
 
+        if subposition.is_valid():
+
             for form in subposition:
-                form.save(
-                    strategy_val=request.POST.get('strategy'),
-                    user_val=request.POST.get('user'),
+
+                if form.data['open_date']:
+                    form.save(
+                        strategy_val=request.POST.get('strategy'),
+                        user_val=request.POST.get('user'),
                     )
-            update_mainpos()
+                    update_mainpos()
+                else:
+                    return HttpResponseRedirect('/addposition/')
 
             return HttpResponseRedirect('/addposition/')
 

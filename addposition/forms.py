@@ -20,7 +20,6 @@ class MainpositionModelForm(forms.ModelForm):
             'open_price',
             'quantity',
             'mf_finlevel',
-            'opt_type',
             'opt_date',
             'opt_strike',
         ]
@@ -38,7 +37,6 @@ class MainpositionModelForm(forms.ModelForm):
             'open_price': forms.TextInput(attrs={'size': 8}),
             'mf_finlevel': forms.TextInput(attrs={'size': 8}),
             'quantity': forms.TextInput(attrs={'size': 8}),
-            'opt_type': forms.TextInput(attrs={'size': 4}),
             'opt_date': forms.TextInput(attrs={'size': 4}),
             'opt_strike': forms.TextInput(attrs={'size': 4}),
         }
@@ -73,7 +71,6 @@ class SubpositionModelForm(forms.ModelForm):
             'quantity',
             'open_price',
             'mf_finlevel',
-            'opt_type',
             'opt_date',
             'opt_strike',
         ]
@@ -88,7 +85,6 @@ class SubpositionModelForm(forms.ModelForm):
             'open_price': forms.TextInput(attrs={'size': 8}),
             'mf_finlevel': forms.TextInput(attrs={'size': 8}),
             'quantity': forms.TextInput(attrs={'size': 8}),
-            'opt_type': forms.TextInput(attrs={'size': 4}),
             'opt_date': forms.TextInput(attrs={'size': 4}),
             'opt_strike': forms.TextInput(attrs={'size': 4}),
 
