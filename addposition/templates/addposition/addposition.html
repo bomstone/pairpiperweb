@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<script>
+$(function(ready){
+    $(".setBtn").each(function( index ) {
+       this.onclick=(function() {
+            var qty = $("#targetExposure").val() / $(".assetOpen")[index].value;
+            $(".positionQuantity")[index].value = qty;
+            });
+        });
+});
+</script>
 <div class="portfolio">
 
                     <form method="post">
@@ -13,7 +23,7 @@
 
                                 <td><input type="checkbox"></td>
                                 <td><input type="number" min="0" max="4"></td>
-                                <td><input type="text"></td>
+                                <td><input  id="targetExposure" type="text"></td>
                             </tr>
                         </table><br>
 
@@ -85,7 +95,7 @@
                                     <td>{{ position.fx_open }}</td>
                                     <td>{{ position.ul_open }}</td>
                                     <td>{{ position.open_price }}</td>
-                                    <td>{{ position.quantity }}<button type="button">set</button></td>
+                                    <td>{{ position.quantity }}<button class="setBtn") type="button">set</button></td>
                                     <td>{{ position.mf_finlevel }}</td>
                                     <td>{{ position.opt_date }}</td>
                                     <td>{{ position.opt_strike }}</td>

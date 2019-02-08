@@ -80,11 +80,11 @@ class SubpositionModelForm(forms.ModelForm):
             'currency': forms.TextInput(attrs={'size': 5}),
             'open_date': forms.TextInput(attrs={'size': 8}),
             'open_time': forms.TextInput(attrs={'size': 8}),
-            'ul_open': forms.TextInput(attrs={'size': 8}),
+            'ul_open': forms.TextInput(attrs={'size': 8,'class':'assetOpen'}),
             'fx_open': forms.TextInput(attrs={'size': 5}),
             'open_price': forms.TextInput(attrs={'size': 8}),
             'mf_finlevel': forms.TextInput(attrs={'size': 5}),
-            'quantity': forms.TextInput(attrs={'size': 2}),
+            'quantity': forms.TextInput(attrs={'size': 2, 'class':'positionQuantity'}),
             'opt_date': forms.TextInput(attrs={'size': 6}),
             'opt_strike': forms.TextInput(attrs={'size': 4}),
 
