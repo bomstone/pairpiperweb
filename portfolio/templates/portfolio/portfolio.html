@@ -7,6 +7,8 @@
     </select>
     <br>
     <br>
+        <form method="POST">
+            {% csrf_token %}
             <table>
                     <tr>
                         <th>Strategy</th>
@@ -24,10 +26,8 @@
                         <th>Commission</th>
 
                     </tr>
-                    {% for position in portfolioposition %}
-                <form method="POST">
-            {% csrf_token %}
                     {{ portfolioposition.management_form }}
+                    {% for position in portfolioposition %}
                             <tr>
                                 {{ position.id }}
                                 {{ position.trade_id }}
@@ -45,12 +45,12 @@
                                 <td>{{ position.ul_close }}</td>
                                 <td>{{ position.close_price }}</td>
                                 <td>{{ position.commission }}</td>
-                                <td><button type="submit">Close position</button></td>
+                                <td></td>
                             </tr>
-                    </form>
                     {% endfor %}
             </table>
-
+            <button type="submit">Close position</button>
+        </form>
 </div>
 
 

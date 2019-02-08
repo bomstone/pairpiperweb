@@ -10,7 +10,7 @@ def PortfolioView(request):
 
     if request.method == "GET":
 
-        portfolioposition = PortfoliopositionFormset(queryset=PortfolioModel.objects.all())
+        portfolioposition = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(trade_id=1))
 
         context = {
             'portfolioposition': portfolioposition,
