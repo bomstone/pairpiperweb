@@ -15,7 +15,7 @@ $(function(ready){
     $(".setBtn").each(function( index ) {
        this.onclick=(function() {
             var qty = $("#targetExposure").val() / $(".assetOpen")[index].value;
-            $(".positionQuantity")[index].value = qty;
+            $(".positionQuantity")[index].value = Math.round(qty);
             });
         });
      $("#id_strategy").change(function(){
