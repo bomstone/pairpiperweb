@@ -2,15 +2,60 @@
 
 {% block content %}
 <script>
-$(function(ready){
+toggleColumns = function(cols, visible){
+        for(i=0;i<cols.length;i++){
+        if(visible){
+            $('#subpositionsTable tr > *:nth-child('+cols[i]+')').show();
+            $('#mainTable tr > *:nth-child('+cols[i]+')').show();
+            }else{
+            $('#subpositionsTable tr > *:nth-child('+cols[i]+')').hide();
+            $('#mainTable tr > *:nth-child('+cols[i]+')').hide();
+            }
+        }
+     };
+     $(function(ready){
     $(".setBtn").each(function( index ) {
        this.onclick=(function() {
             var qty = $("#targetExposure").val() / $(".assetOpen")[index].value;
             $(".positionQuantity")[index].value = qty;
             });
         });
-});
-</script>
+     $("#id_strategy").change(function(){
+        $("#submitPosition").show();
+        if(this.value == "standard"){
+            $("#mainPosition").show();
+            $("#subpositions").hide();
+        }else if(this.value == "pairs trade"){
+            $("#subpositions").show();
+            $("#mainPosition").hide();
+        }else{
+            $("#subpositions").hide();
+            $("#mainPosition").hide();
+            $("#submitPosition").hide();
+        }
+
+     });
+
+      toggleColumns([5,6],false);
+     $('#currency').change(function(){
+        console.log(this.checked);
+        if(this.checked){
+            toggleColumns([5,6],true);
+        }else{
+        toggleColumns([5,6],false);
+        }
+     });
+
+     $('#id_product_type').change(function(){
+        console.log(this.value);
+        if(this.value != 'stock'){
+            toggleColumns([7,10,11,12],true);
+        }else{
+ $('#subpositionsTable tr > *:nth-child(7)').show();
+            toggleColumns([7,10,11,12],false);
+        }
+     });
+});</script>
 <div class="portfolio">
 
                     <form method="post">
@@ -21,7 +66,7 @@ $(function(ready){
                             <th>target exposure</th>
                             <tr>
 
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" id="currency"></td>
                                 <td><input type="number" min="0" max="4"></td>
                                 <td><input  id="targetExposure" type="text"></td>
                             </tr>
@@ -35,10 +80,10 @@ $(function(ready){
                                 <td>{{ mainposition.strategy }}</td>
                             </tr>
                         </table><br>
+                        <div id="mainPosition" style="display: none;">
+                            <h3>Main position</h3>
 
-                            Main position
-
-                        <table>
+                        <table id="mainTable">
                             <th>Product type</th>
                             <th>Open date</th>
                             <th>Open time</th>
@@ -66,45 +111,48 @@ $(function(ready){
                                 <td>{{ mainposition.opt_strike }}</td>
                             </tr>
 
-                        </table><br>
-
-                        Subpositions
-
-                        <table>
-                            <th>Product type</th>
-                            <th>Open date</th>
-                            <th>Open time</th>
-                            <th>Asset</th>
-                            <th>Currency</th>
-                            <th>FX open</th>
-                            <th>Asset open</th>
-                            <th>Open price</th>
-                            <th>#</th>
-                            <th>FinLevel</th>
-                            <th>Option date</th>
-                            <th>Option strike</th>
-                            <br>
-                            {{ subposition.management_form }}
-                            {% for position in subposition %}
-                                <tr>
-                                    <td>{{ position.product_type }}</td>
-                                    <td>{{ position.open_date }}</td>
-                                    <td>{{ position.open_time }}</td>
-                                    <td>{{ position.asset }}</td>
-                                    <td>{{ position.currency }}</td>
-                                    <td>{{ position.fx_open }}</td>
-                                    <td>{{ position.ul_open }}</td>
-                                    <td>{{ position.open_price }}</td>
-                                    <td>{{ position.quantity }}<button class="setBtn") type="button">set</button></td>
-                                    <td>{{ position.mf_finlevel }}</td>
-                                    <td>{{ position.opt_date }}</td>
-                                    <td>{{ position.opt_strike }}</td>
-                                </tr>
-                            {% endfor %}
                         </table>
 
+                        <br>
+</div>
+                        <div id="subpositions" style="display: none;">
+                        <h3>Subpositions</h3>
+
+                            <table id = "subpositionsTable">
+                                <th>Product type</th>
+                                <th>Open date</th>
+                                <th>Open time</th>
+                                <th>Asset</th>
+                                <th>Currency</th>
+                                <th>FX open</th>
+                                <th>Asset open</th>
+                                <th>Open price</th>
+                                <th>#</th>
+                                <th>FinLevel</th>
+                                <th>Option date</th>
+                                <th>Option strike</th>
+                                <br>
+                                {{ subposition.management_form }}
+                                {% for position in subposition %}
+                                    <tr>
+                                        <td>{{ position.product_type }}</td>
+                                        <td>{{ position.open_date }}</td>
+                                        <td>{{ position.open_time }}</td>
+                                        <td>{{ position.asset }}</td>
+                                        <td>{{ position.currency }}</td>
+                                        <td>{{ position.fx_open }}</td>
+                                        <td>{{ position.ul_open }}</td>
+                                        <td>{{ position.open_price }}</td>
+                                        <td>{{ position.quantity }}<button class="setBtn") type="button">set</button></td>
+                                        <td>{{ position.mf_finlevel }}</td>
+                                        <td>{{ position.opt_date }}</td>
+                                        <td>{{ position.opt_strike }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
                             <br>
-                            <button type="submit">Add position</button>
+                            <button type="submit" id="submitPosition" style="display: none;">Add position</button>
                     </form>
 
 
