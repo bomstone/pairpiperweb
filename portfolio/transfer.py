@@ -33,10 +33,9 @@ def update_singlepos():
     check_tradeid = PortfolioModel.objects.all().aggregate(Max('trade_id'))
     tradeid_max = check_tradeid.get('trade_id__max')
 
-
     instance = PortfolioModel.objects.get(trade_id=tradeid_max, insert_type='position')
 
-    instance.net_open_sek = 0 - (instance.open_price * instance.quantity)
+    instance.net_open_sek = 0 - ((instance.open_price * instance.quantity) * instance.fx_open)
     instance.save()
 
 

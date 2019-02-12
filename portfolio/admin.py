@@ -7,9 +7,13 @@ class portfolioAdmin(admin.ModelAdmin):
         'trade_id',
         'insert_type',
         'strategy',
+        'open_date',
+        'open_time',
         'product_type',
         'asset',
-        'open_date'
+        'currency',
+        'open_price',
+        'net_open_sek',
     )
 
 admin.site.register(PortfolioModel, portfolioAdmin)

@@ -21,6 +21,7 @@ class PortfoliopositionModelForm(forms.ModelForm):
             'ul_close',
             'close_price',
             'commission',
+            'user',
         ]
         widgets = {
             'trade_id': forms.HiddenInput(),
@@ -29,7 +30,7 @@ class PortfoliopositionModelForm(forms.ModelForm):
             'product_type': forms.TextInput(attrs={'size': 6}),
             'open_date': forms.TextInput(attrs={'size': 7}),
             'open_time': forms.TextInput(attrs={'size': 6}),
-            'asset': forms.TextInput(attrs={'size': 6}),
+            'asset': forms.TextInput(attrs={'size': 10}),
             'ul_open': forms.TextInput(attrs={'size': 5}),
             'open_price': forms.TextInput(attrs={'size': 5}),
             'quantity': forms.TextInput(attrs={'size': 4}),
@@ -38,6 +39,7 @@ class PortfoliopositionModelForm(forms.ModelForm):
             'ul_close': forms.TextInput(attrs={'size': 6}),
             'close_price': forms.TextInput(attrs={'size': 6}),
             'commission': forms.TextInput(attrs={'size': 6}),
+            'user': forms.TextInput(attrs={'size': 6}),
 
         }
 

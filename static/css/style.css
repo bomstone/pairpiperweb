@@ -52,6 +52,26 @@ body, html {
   font-size: 12px;
 }
 
+.addPosition tr:nth-child(even){
+    background-color: #f2f2f2
+}
+
+.addPosition td {
+    text-align: center;
+    padding: 3px;
+    background-color: #d9d9d9;
+    color: black;
+    font-size: 12px;
+}
+
+.addPosition th {
+  text-align: center;
+  padding: 5px;
+  background-color: #31496b;
+  color: white;
+  font-size: 12px;
+}
+
 .adminlink a:link, .adminlink a:visited {
     position: absolute !important;
     top: 8px !important;
@@ -59,4 +79,25 @@ body, html {
     font-size: 18px !important;
     color: #eaeaea !important;
     text-decoration: none !important;
+}
+
+.positionGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 95%;
+    background-color: grey;
+}
+#generalPosition {
+    grid-column: 1;
+    background-color: white;
+    width: 40%;
+
+}
+
+#positions {
+    grid-column: 2;
+    align: left;
+    background-color: red;
+    width: 60%;
+
 }
