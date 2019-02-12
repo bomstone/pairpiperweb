@@ -22,12 +22,12 @@ $(function(ready){
         $("#submitPosition").show();
         if(this.value == "standard"){
             $("#mainPosition").show();
-            $("#subpositions").hide();
+            $("#subPositions").hide();
         }else if(this.value == "pairs trade"){
-            $("#subpositions").show();
+            $("#subPositions").show();
             $("#mainPosition").hide();
         }else{
-            $("#subpositions").hide();
+            $("#subPositions").hide();
             $("#mainPosition").hide();
             $("#submitPosition").hide();
         }
@@ -44,13 +44,26 @@ $(function(ready){
         }
      });
 
-     $('#id_product_type').change(function(){
+      $('#id_product_type').change(function(){
         console.log(this.value);
-        if(this.value != 'stock'){
             toggleColumns([7,10,11,12],true);
-        }else{
- $('#subpositionsTable tr > *:nth-child(7)').show();
+        if(this.value == 'stock'){
             toggleColumns([7,10,11,12],false);
+        }else if(this.value == 'mini short'){
+            toggleColumns([11,12],false);
+        }else if(this.value == 'mini long'){
+            toggleColumns([11,12],false);
         }
-     });
+    });
+        $('#id_form-0-product_type').change(function(){
+        console.log(this.value);
+            toggleColumns([7,10,11,12],true);
+        if(this.value == 'stock'){
+            toggleColumns([7,10,11,12],false);
+        }else if(this.value == 'mini short'){
+            toggleColumns([11,12],false);
+        }else if(this.value == 'mini long'){
+            toggleColumns([11,12],false);
+        }
+    });
 });
