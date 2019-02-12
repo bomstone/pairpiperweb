@@ -2,10 +2,10 @@
 function toggleColumns(cols, visible){
         for(i=0;i<cols.length;i++){
         if(visible){
-            $('#subpositionsTable tr > *:nth-child('+cols[i]+')').show();
+            $('#subPositionsTable tr > *:nth-child('+cols[i]+')').show();
             $('#mainTable tr > *:nth-child('+cols[i]+')').show();
             }else{
-            $('#subpositionsTable tr > *:nth-child('+cols[i]+')').hide();
+            $('#subPositionsTable tr > *:nth-child('+cols[i]+')').hide();
             $('#mainTable tr > *:nth-child('+cols[i]+')').hide();
             }
         }
