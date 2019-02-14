@@ -29,7 +29,7 @@ class MainpositionModelForm(forms.ModelForm):
             'product_type': forms.Select,
             'strategy': forms.Select,
             'asset': forms.TextInput(attrs={'size': 8}),
-            'currency': forms.TextInput(attrs={'size': 5}),
+            'currency': forms.TextInput(attrs={'size': 3}),
             'open_date': forms.TextInput(attrs={'size': 8}),
             'open_time': forms.TextInput(attrs={'size': 8}),
             'ul_open': forms.TextInput(attrs={'size': 8}),
@@ -77,7 +77,7 @@ class SubpositionModelForm(forms.ModelForm):
         widgets = {
             'product_type': forms.Select,
             'asset': forms.TextInput(attrs={'size': 8}),
-            'currency': forms.TextInput(attrs={'size': 5}),
+            'currency': forms.TextInput(attrs={'size': 3}),
             'open_date': forms.TextInput(attrs={'size': 8}),
             'open_time': forms.TextInput(attrs={'size': 8}),
             'ul_open': forms.TextInput(attrs={'size': 8,'class':'assetOpen'}),

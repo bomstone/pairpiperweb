@@ -81,23 +81,18 @@ body, html {
     text-decoration: none !important;
 }
 
+.generalPosition { grid-area: left; }
+.positions { grid-area: right; }
+
 .positionGrid {
     display: grid;
-    grid-template-columns: auto auto;
-    width: 95%;
-    background-color: grey;
-}
-#generalPosition {
-    grid-column: 1;
-    background-color: white;
-    width: 40%;
-
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 10px;
+    padding: 5px;
 }
 
-#positions {
-    grid-column: 2;
-    align: left;
-    background-color: red;
-    width: 60%;
-
+.positionGrid > div {
+    text-align: center;
+    padding: 5px;
 }
+

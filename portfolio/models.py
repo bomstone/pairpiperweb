@@ -68,3 +68,5 @@ class PortfolioModel(models.Model):
             self.net_open_sek,
 
             )
+
+

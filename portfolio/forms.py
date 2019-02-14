@@ -54,6 +54,8 @@ class PortfoliopositionModelForm(forms.ModelForm):
         instance.save()
         return instance
 
+    def get_subpositions(self):
+        return PortfolioModel.objects.filter(insert_type="subposition")
 
 PortfoliopositionFormset = modelformset_factory(
     PortfolioModel,

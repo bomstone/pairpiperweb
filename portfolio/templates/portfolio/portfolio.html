@@ -1,57 +1,63 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="portfolio">
+    <center>
     <select>
         <option value="jesper">jesper</option>
         <option value="mikael">mikael</option>
     </select>
     <br>
     <br>
-        <form method="POST">
-            {% csrf_token %}
-            <table>
-                                <tr>
-                        <th>User</th>
-                        <th>Strategy</th>
-                        <th>Product type</th>
-                        <th>Open date</th>
-                        <th>Open time</th>
-                        <th>Asset</th>
-                        <th>Asset open</th>
-                        <th>Product open</th>
-                        <th>#</th>
-                        <th>Close date</th>
-                        <th>Close time</th>
-                        <th>Asset close</th>
-                        <th>Product close</th>
-                        <th>Commission</th>
+{{ portfolio_position.management_form }}
+{% for object in portfolio_object %}
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Strategy</th>
+                <th>Product type</th>
+                <th>Open date</th>
+                <th>Open time</th>
+                <th>Asset</th>
+                <th>Asset open</th>
+                <th>Product open</th>
+                <th>#</th>
+                <th>Close date</th>
+                <th>Close time</th>
+                <th>Asset close</th>
+                <th>Product close</th>
+                <th>Commission</th>
+            </tr>
+            {{ portfolio_object.management_form }}
+            {% for o in object.get_subpositions %}
+            <tr>
 
-                    </tr>
-                    {{ portfolio_object.management_form }}
-                    {% for object in portfolio_object %}
-                            <tr>
-                                {{ object.id }}
-                                {{ object.trade_id }}
-                                {{ object.insert_type }}
-                                <td>{{ object.user  }}</td>
-                                <td>{{ object.strategy }}</td>
-                                <td>{{ object.product_type }}</td>
-                                <td>{{ object.open_date }}</td>
-                                <td>{{ object.open_time }}</td>
-                                <td>{{ object.asset }}</td>
-                                <td>{{ object.ul_open }}</td>
-                                <td>{{ object.open_price }}</td>
-                                <td>{{ object.quantity }}</td>
-                                <td>{{ object.close_date }}</td>
-                                <td>{{ object.close_time }}</td>
-                                <td>{{ object.ul_close }}</td>
-                                <td>{{ object.close_price }}</td>
-                                <td>{{ object.commission }}</td>
-                            </tr>
-                {% endfor %}
-            </table>
-            <button type="submit">Close position</button>
-        </form>
+                {{ object.id }}
+                {{ object.trade_id }}
+                {{ object.insert_type }}
+                <td>{{ object.user  }}</td>
+                <td>{{ object.strategy }}</td>
+                <td>{{ object.product_type }}</td>
+                <td>{{ object.open_date }}</td>
+                <td>{{ object.open_time }}</td>
+                <td>{{ object.asset }}</td>
+                <td>{{ object.ul_open }}</td>
+                <td>{{ object.open_price }}</td>
+                <td>{{ object.quantity }}</td>
+                <td>{{ object.close_date }}</td>
+                <td>{{ object.close_time }}</td>
+                <td>{{ object.ul_close }}</td>
+                <td>{{ object.close_price }}</td>
+                <td>{{ object.commission }}</td>
+            </tr>
+
+            {% endfor %}
+        </table>
+        <button type="submit">Close position</button>
+    </form>
+{% endfor %}
+    </center>
 </div>
 
 

@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="portfolio">
+    <center>
     <table>
         <form method="POST">
         {% csrf_token %}
@@ -117,12 +118,13 @@
         </form>
         </tr>
     </table>
-</div>
+
     <br><br><br>
         <img src="data:image/png;base64,{{ chart_1 }}" onerror="this.style.display = 'none';" alt=""/><br><br>
         <img src="data:image/png;base64,{{ chart_2 }}" onerror="this.style.display = 'none';" alt=""/><br><br>
         <img src="data:image/png;base64,{{ chart_3 }}" onerror="this.style.display = 'none';" alt=""/><br><br>
 
-    </center>
+</center>
+</div>
 
 {% endblock %}
