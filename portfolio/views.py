@@ -13,11 +13,10 @@ def PortfolioView(request):
     if request.method == "GET":
 
         portfolio_position = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(insert_type='position'))
-        portfolio_object = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(insert_type='position'))
-
+        portfolio_object = PortfoliopositionFormset(queryset=PortfolioModel.objects.all())
         context = {
-            'portfolio_position': portfolio_position,
             'portfolio_object': portfolio_object,
+            'portfolio_position': portfolio_position,
         }
 
         return render(request, template_name, context)
