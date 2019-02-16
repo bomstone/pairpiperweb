@@ -35,14 +35,14 @@ class PortfolioModel(models.Model):
     open_price = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     ul_open = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     true_exposure = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
-    fx_open = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
+    fx_open = models.DecimalField(max_digits=10, decimal_places=3, default=1, null=True, blank=True)
     net_open_sek = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     quantity = models.IntegerField(default=None, null=True, blank=True)
     close_date = models.CharField(max_length=30, default=None, null=True, blank=True)
     close_time = models.CharField(max_length=30, default=None, null=True, blank=True)
     close_price = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     ul_close = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
-    fx_close = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
+    fx_close = models.DecimalField(max_digits=10, decimal_places=3, default=1, null=True, blank=True)
     net_close_sek = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     commission = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
     net_result_sek = models.DecimalField(max_digits=10, decimal_places=3, default=None, null=True, blank=True)
@@ -55,11 +55,18 @@ class PortfolioModel(models.Model):
         db_table = 'portfolio'
 
     def __unicode__(self):
-        return '%s %s %s %s %s %s' % (
+        return '%s %s %s %s %s %s %s %s %s %s' % (
             self.trade_id,
             self.insert_type,
             self.strategy,
+            self.open_date,
+            self.open_time,
             self.product_type,
             self.asset,
-            self.open_date,
+            self.currency,
+            self.open_price,
+            self.net_open_sek,
+
             )
+
+

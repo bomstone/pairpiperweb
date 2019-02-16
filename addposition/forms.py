@@ -29,15 +29,15 @@ class MainpositionModelForm(forms.ModelForm):
             'product_type': forms.Select,
             'strategy': forms.Select,
             'asset': forms.TextInput(attrs={'size': 8}),
-            'currency': forms.TextInput(attrs={'size': 5}),
+            'currency': forms.TextInput(attrs={'size': 3}),
             'open_date': forms.TextInput(attrs={'size': 8}),
             'open_time': forms.TextInput(attrs={'size': 8}),
             'ul_open': forms.TextInput(attrs={'size': 8}),
             'fx_open': forms.TextInput(attrs={'size': 5}),
             'open_price': forms.TextInput(attrs={'size': 8}),
-            'mf_finlevel': forms.TextInput(attrs={'size': 8}),
-            'quantity': forms.TextInput(attrs={'size': 8}),
-            'opt_date': forms.TextInput(attrs={'size': 4}),
+            'mf_finlevel': forms.TextInput(attrs={'size': 5}),
+            'quantity': forms.TextInput(attrs={'size': 2}),
+            'opt_date': forms.TextInput(attrs={'size': 6}),
             'opt_strike': forms.TextInput(attrs={'size': 4}),
         }
 
@@ -77,15 +77,15 @@ class SubpositionModelForm(forms.ModelForm):
         widgets = {
             'product_type': forms.Select,
             'asset': forms.TextInput(attrs={'size': 8}),
-            'currency': forms.TextInput(attrs={'size': 5}),
+            'currency': forms.TextInput(attrs={'size': 3}),
             'open_date': forms.TextInput(attrs={'size': 8}),
             'open_time': forms.TextInput(attrs={'size': 8}),
-            'ul_open': forms.TextInput(attrs={'size': 8}),
+            'ul_open': forms.TextInput(attrs={'size': 8,'class':'assetOpen'}),
             'fx_open': forms.TextInput(attrs={'size': 5}),
             'open_price': forms.TextInput(attrs={'size': 8}),
-            'mf_finlevel': forms.TextInput(attrs={'size': 8}),
-            'quantity': forms.TextInput(attrs={'size': 8}),
-            'opt_date': forms.TextInput(attrs={'size': 4}),
+            'mf_finlevel': forms.TextInput(attrs={'size': 5}),
+            'quantity': forms.TextInput(attrs={'size': 2, 'class':'positionQuantity'}),
+            'opt_date': forms.TextInput(attrs={'size': 6}),
             'opt_strike': forms.TextInput(attrs={'size': 4}),
 
         }
@@ -99,12 +99,14 @@ class SubpositionModelForm(forms.ModelForm):
         open_price = self.cleaned_data['open_price']
         ul_open = self.cleaned_data['ul_open']
         quantity = self.cleaned_data['quantity']
+        fx_open = self.cleaned_data['fx_open']
         strategy = kwargs['strategy_val']
         user = kwargs['user_val']
 
+
         instance.trade_id = trade_id
         instance.insert_type = insert_type
-        instance.net_open_sek = 0 - (open_price * quantity)
+        instance.net_open_sek = 0 - ((open_price * quantity) * fx_open)
         instance.true_exposure = (open_price * quantity) * (ul_open / open_price)
         instance.strategy = strategy
         instance.user = user

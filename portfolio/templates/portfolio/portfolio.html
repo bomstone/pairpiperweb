@@ -1,78 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="portfolio">
+    <center>
     <select>
         <option value="jesper">jesper</option>
         <option value="mikael">mikael</option>
     </select>
     <br>
     <br>
-        <form method="POST">
-            {% csrf_token %}
-            <table>
+    {% for id in id_list %}
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Strategy</th>
+                <th>Product type</th>
+                <th>Open date</th>
+                <th>Open time</th>
+                <th>Asset</th>
+                <th>Asset open</th>
+                <th>Product open</th>
+                <th>#</th>
+                <th>Close date</th>
+                <th>Close time</th>
+                <th>Asset close</th>
+                <th>Product close</th>
+                <th>Commission</th>
+            </tr>
+            {{ portfolio_object.management_form }}
+            {% for object in portfolio_object %}
+                {% if object.trade_id.value == id %}
                     <tr>
-                        <th>strategy</th>
-                        <th>product type</th>
-                        <th>open date</th>
-                        <th>open time</th>
-                        <th>asset</th>
-                        <th>underlying open</th>
-                        <th>product open</th>
-                        <th>#</th>
-                        <th>close date</th>
-                        <th>close time</th>
-                        <th>underlying close</th>
-                        <th>product close</th>
-                        <th>commission</th>
-                        <th>net result</th>
-
+                    {{ object.id }}
+                    {{ object.trade_id }}
+                    {{ object.insert_type }}
+                    <td>{{ object.user  }}</td>
+                    <td>{{ object.strategy }}</td>
+                    <td>{{ object.product_type }}</td>
+                    <td>{{ object.open_date }}</td>
+                    <td>{{ object.open_time }}</td>
+                    <td>{{ object.asset }}</td>
+                    <td>{{ object.ul_open }}</td>
+                    <td>{{ object.open_price }}</td>
+                    <td>{{ object.quantity }}</td>
+                    <td>{{ object.close_date }}</td>
+                    <td>{{ object.close_time }}</td>
+                    <td>{{ object.ul_close }}</td>
+                    <td>{{ object.close_price }}</td>
+                    <td>{{ object.commission }}</td>
                     </tr>
-                    {{ portfolioposition.management_form }}
-                    {% for position in portfolioposition %}
-                            <tr>
-                                {{ position.id }}
-                                {{ position.trade_id }}
-                                {{ position.insert_type }}
-                                <td>{{ position.strategy }}</td>
-                                <td>{{ position.product_type }}</td>
-                                <td>{{ position.open_date }}</td>
-                                <td>{{ position.open_time }}</td>
-                                <td>{{ position.asset }}</td>
-                                <td>{{ position.ul_open }}</td>
-                                <td>{{ position.open_price }}</td>
-                                <td>{{ position.quantity }}</td>
-                                <td>{{ position.close_date }}</td>
-                                <td>{{ position.close_time }}</td>
-                                <td>{{ position.ul_close }}</td>
-                                <td>{{ position.close_price }}</td>
-                                <td>{{ position.commission }}</td>
-                                <td></td>
-                            </tr>
-                    {% endfor %}
-            </table>
-            <button type="submit">Close position</button>
-        </form>
+                {% endif %}
+            {% endfor %}
+        </table>
+        <button type="submit">Close position</button>
+    </form>
+{% endfor %}
+    </center>
 </div>
 
 
 {% endblock %}
 
 <!--
-{% for obj in portfolioform %}
-                            <tr>
-                                <td>{{ obj.strategy }}</td>
-                                <td>{{ obj.open_date }}</td>
-                                <td>{{ obj.open_time }}</td>
-                                <td>{{ obj.asset }}</td>
-                                <td>{{ obj.ul_open }}</td>
-                                <td>{{ obj.open_price }}</td>
-                                <td>{{ obj.quantity }}</td>
-                                <td>{{ obj.close_date }}</td>
-                                <td>{{ obj.close_time }}</td>
-                                <td>{{ obj.ul_close }}</td>
-                                <td>{{ obj.close_price }}</td>
-                                <td>{{ obj.commission }}</td>
-                                <td></td>
-                            </tr>
-                {% endfor %}
+
 -->

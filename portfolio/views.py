@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 from .models import PortfolioModel
 from .forms import PortfoliopositionFormset
 from .transfer import transfer_tolog
+from itertools import chain
+from django.db.models import Max
 
 
 def PortfolioView(request):
@@ -10,28 +12,29 @@ def PortfolioView(request):
 
     if request.method == "GET":
 
-        portfolioposition = PortfoliopositionFormset(queryset=PortfolioModel.objects.filter(trade_id=1))
+        id_list = []
+        queryset = PortfolioModel.objects.filter(insert_type='position')
+        for obj in queryset:
+            id_list.append(obj.trade_id)
 
+        portfolio_object = PortfoliopositionFormset(queryset=PortfolioModel.objects.all())
         context = {
-            'portfolioposition': portfolioposition,
+            'portfolio_object': portfolio_object,
+            'id_list': id_list,
         }
 
         return render(request, template_name, context)
 
     elif request.method == "POST":
 
-        portfolioposition = PortfoliopositionFormset(request.POST)
-
-        if portfolioposition.is_valid():
-
-            for form in portfolioposition:
-
+        portfolio_object = PortfoliopositionFormset(request.POST)
+        trade_id_val = 0
+        for form in portfolio_object:
+            if form.is_valid():
                 form.save()
+                trade_id_val = form.cleaned_data['trade_id']
+        transfer_tolog(trade_id_val)
+        print(trade_id_val)
+        return HttpResponseRedirect('/portfolio/')
 
-            trade_id_val = form.cleaned_data['trade_id']
-            transfer_tolog(trade_id_val)
-            return HttpResponseRedirect('/portfolio/')
-
-        else:
-            print(portfolioposition.errors)
 
