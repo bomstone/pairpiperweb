@@ -1,10 +1,7 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.shortcuts import render, HttpResponseRedirect
 from .models import PortfolioModel
 from .forms import PortfoliopositionFormset
 from .transfer import transfer_tolog
-from itertools import chain
-from django.db.models import Max
 
 
 def PortfolioView(request):
@@ -29,12 +26,13 @@ def PortfolioView(request):
 
         portfolio_object = PortfoliopositionFormset(request.POST)
         trade_id_val = 0
+
         for form in portfolio_object:
             if form.is_valid():
                 form.save()
                 trade_id_val = form.cleaned_data['trade_id']
         transfer_tolog(trade_id_val)
-        print(trade_id_val)
+
         return HttpResponseRedirect('/portfolio/')
 
 
