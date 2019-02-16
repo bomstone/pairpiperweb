@@ -28,17 +28,13 @@ def PortfolioView(request):
     elif request.method == "POST":
 
         portfolio_object = PortfoliopositionFormset(request.POST)
-
-        if portfolio_object.is_valid():
-
-            for form in portfolio_object:
-
+        trade_id_val = 0
+        for form in portfolio_object:
+            if form.is_valid():
                 form.save()
+                trade_id_val = form.cleaned_data['trade_id']
+        transfer_tolog(trade_id_val)
+        print(trade_id_val)
+        return HttpResponseRedirect('/portfolio/')
 
-            trade_id_val = form.cleaned_data['trade_id']
-            transfer_tolog(trade_id_val)
-            return HttpResponseRedirect('/portfolio/')
-
-        else:
-            print(portfolio_object.errors)
 
