@@ -1,4 +1,4 @@
-### PairPiperWeb 1.4.1
+### PairPiperWeb 1.5.0
 
 ##
 #### Versionshistorik<br>
@@ -26,3 +26,5 @@
 
 **1.4.0** - Positioner skrivs nu till tradelogg när de stängs på portfolio-sidan  <br>
 **1.4.1** - Både singel- och flerbenspositioner kan nu öppnas och stängas via interface  <br>
+
+**1.5.0** - Portfolio-appen kan nu visa samtliga och stänga valda positioner
