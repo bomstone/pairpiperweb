@@ -80,19 +80,3 @@ body, html {
     color: #eaeaea !important;
     text-decoration: none !important;
 }
-
-.generalPosition { grid-area: left; }
-.positions { grid-area: right; }
-
-.positionGrid {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 10px;
-    padding: 5px;
-}
-
-.positionGrid > div {
-    text-align: center;
-    padding: 5px;
-}
-
