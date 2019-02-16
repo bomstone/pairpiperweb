@@ -8,8 +8,7 @@
     </select>
     <br>
     <br>
-    {{ portfolio_position.management_form }}
-    {% for position in portfolio_position %}
+    {% for id in id_list %}
     <form method="POST">
         {% csrf_token %}
         <table>
@@ -31,7 +30,7 @@
             </tr>
             {{ portfolio_object.management_form }}
             {% for object in portfolio_object %}
-                {% if object.trade_id.value == position.trade_id.value %}
+                {% if object.trade_id.value == id %}
 
                     <tr>
                     {{ object.id }}
