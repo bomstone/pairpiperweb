@@ -25,7 +25,6 @@ def update_mainpos():
     instance.open_date = str(dates[1])
     instance.open_time = str(times[1])
     instance.net_open_sek = find_netopen
-    instance.open_price = 0 - find_netopen
     instance.quantity = 1
     instance.save()
 
@@ -57,6 +56,7 @@ def transfer_tolog(trade_id_in):
             TradelogModel.objects.create(**obj)
     else:
         net_result = 0
+        net_close = 0
         dates = []
         times = []
         commission = 0
@@ -66,6 +66,7 @@ def transfer_tolog(trade_id_in):
             obj['trade_id'] = new_tradeid
             obj['net_result_sek'] = obj['net_close_sek'] + obj['net_open_sek']
             net_result += obj['net_close_sek'] + obj['net_open_sek']
+            net_close += obj['net_close_sek']
             dates.append(obj['close_date'])
             times.append(obj['close_time'])
             commission += obj['commission']
@@ -74,6 +75,7 @@ def transfer_tolog(trade_id_in):
         for obj in queryset_pos:
             obj['id'] = None
             obj['trade_id'] = new_tradeid
+            obj['net_close_sek'] = net_close
             obj['net_result_sek'] = net_result
             obj['close_date'] = dates[1]
             obj['close_time'] = times[1]
