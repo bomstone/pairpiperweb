@@ -55,7 +55,8 @@ class PortfolioModel(models.Model):
         db_table = 'portfolio'
 
     def __unicode__(self):
-        return '%s %s %s %s %s %s %s %s %s %s' % (
+        return '%s %s %s %s %s %s %s %s %s %s %s' % (
+            self.user,
             self.trade_id,
             self.insert_type,
             self.strategy,

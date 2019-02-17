@@ -46,10 +46,11 @@ class PortfoliopositionModelForm(forms.ModelForm):
     def save(self):
         instance = super(PortfoliopositionModelForm, self).save(commit=False)
 
-        close_price = self.cleaned_data['close_price']
-        quantity = self.cleaned_data['quantity']
+        if self.cleaned_data['insert_type'] == 'subposition':
+            close_price = self.cleaned_data['close_price']
+            quantity = self.cleaned_data['quantity']
 
-        instance.net_close_sek = close_price * quantity
+            instance.net_close_sek = close_price * quantity
 
         instance.save()
         return instance

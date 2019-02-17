@@ -14,6 +14,7 @@ class portfolioAdmin(admin.ModelAdmin):
         'currency',
         'open_price',
         'net_open_sek',
+        'user',
     )
 
 admin.site.register(PortfolioModel, portfolioAdmin)
