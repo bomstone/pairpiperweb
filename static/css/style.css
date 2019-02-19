@@ -80,3 +80,15 @@ body, html {
     color: #eaeaea !important;
     text-decoration: none !important;
 }
+
+.left {
+
+    float: left;
+
+}
+
+.right {
+
+    float: right;
+
+}
