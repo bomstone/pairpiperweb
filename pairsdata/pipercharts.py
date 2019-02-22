@@ -106,16 +106,16 @@ def draw_price(symbol_list, start_date, end_date):
     S1_pct = np.cumsum(S1.pct_change())
     S2_pct = np.cumsum(S2.pct_change())
     zscore1 = zscore(S2_pct)
-    zscore1.plot(linewidth=1.7, figsize=(6, 2))
+    S1_pct.plot(linewidth=1.7, figsize=(6, 2))
 
     zscore2 = zscore(S1_pct)
-    zscore2.plot(linewidth=1.7)
+    S2_pct.plot(linewidth=1.7)
     plt.xlabel('')
     plt.xticks(rotation=0, color='white', fontsize=8)
     plt.yticks(color='white', fontsize=8)
     plt.legend([symbol_list[1], symbol_list[0]], fontsize=9, bbox_to_anchor=(1.0, 1.12), loc=5,
                ncol=2, borderaxespad=0.);
-
+    plt.gca().axes.get_yaxis().set_visible(False)
     f = io.BytesIO()
 
     plt.savefig(f,
