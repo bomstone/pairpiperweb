@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from datetime import datetime, timedelta
 from . import pipercharts as pp
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from piperdatabase.symbols import symbolList
 
 
 class PairsdataView(TemplateView):
@@ -13,6 +14,7 @@ class PairsdataView(TemplateView):
         context = super(PairsdataView, self).get_context_data(**kwargs)
         context['todays_date'] = self.todays_date
         context['today_minus'] = self.today_minus
+        context['symbol_list'] = symbolList
         return context
 
     def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
@@ -39,6 +41,7 @@ class PairsdataView(TemplateView):
             'chart_31': chart_31,
             'todays_date': self.todays_date,
             'today_minus': self.today_minus,
+            'symbol_list': symbolList,
             }
 
         return render(request, self.template_name, context)
