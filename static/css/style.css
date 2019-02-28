@@ -100,29 +100,31 @@ body, html {
 }
 
 /*Portfolio Close Button*/
+
+
 #closebtn {
-    background-color: rgb(245, 194, 88);
-    border: 1px solid rgb(245, 194, 88);
+    background-color: #fbd245;
+    border: 1px solid #fbd245;
     border-radius: 3px;
     cursor: pointer;
     font-size: 12px;
     font-weight: 700;
     line-height: 22px;
     height: 24px;
-    color: white;
+    color: black;
     padding: 0 20px;
     text-align: center;
     display: inline-block;
     box-sizing: border-box;
-    text-shadow: 1px 1px 2px #000000;
+    text-shadow: none;
 
 }
 
 #closebtn:hover {
-    background: #fbd245;
-    border-color: #fbd245;
-    color: #555555;
-    text-shadow: none;
+    background: rgb(214, 154, 29);
+    border-color: rgb(214, 154, 29);
+    color: white;
+    text-shadow: 1px 1px 2px #000000;
 }
 
 
