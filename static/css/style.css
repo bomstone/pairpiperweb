@@ -98,3 +98,86 @@ body, html {
     float: right;
 
 }
+
+/*Portfolio Close Button*/
+#closebtn {
+    background-color: rgb(245, 194, 88);
+    border: 1px solid rgb(245, 194, 88);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 22px;
+    height: 24px;
+    color: white;
+    padding: 0 20px;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    text-shadow: 1px 1px 2px #000000;
+
+}
+
+#closebtn:hover {
+    background: #fbd245;
+    border-color: #fbd245;
+    color: #555555;
+    text-shadow: none;
+}
+
+
+/*Portfolio User Dropdown*/
+#slct {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+
+/* Custom Select */
+.selectuser {
+  position: relative;
+  display: block;
+  width: 8em;
+  height: 2em;
+  line-height: 2;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: .25em;
+}
+#slct {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+#slct::-ms-expand {
+  display: none;
+}
+/* Arrow */
+.selectuser::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1em;
+  background: #34495e;
+  pointer-events: none;
+}
+/* Transition */
+.selectuser:hover::after {
+  color: rgb(300, 194, 88);
+}
+.selectuser::after {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}

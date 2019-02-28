@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
+{% block extrahead %}
+{% endblock %}
 {% block content %}
 <div class="portfolio">
     <center>
-    <select>
-        <option value="jesper">jesper</option>
-        <option value="mikael">mikael</option>
+     <div class="selectuser">
+    <select name="slct" id="slct">
+      <option>User</option>
+      <option value="1">Jesper</option>
+      <option value="2">Mikael</option>
     </select>
+  </div>
     <br>
     <br>
     {% for id in id_list %}
@@ -53,7 +58,7 @@
                 {% endif %}
             {% endfor %}
         </table>
-        <button type="submit">Close position</button>
+        <button type="submit" id="closebtn">Close</button>
     </form>
 {% endfor %}
     </center>
