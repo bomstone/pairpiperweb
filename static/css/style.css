@@ -185,7 +185,7 @@ nav{position:relative;width:1310px;margin:0 auto;}
 #pairnav > ul > li.has-sub > a:after{position:absolute;top:22px;right:11px;width:8px;height:2px;display:block;background:#ddd;content:''}
 #pairnav > ul > li.has-sub > a:before{position:absolute;top:19px;right:14px;display:block;width:2px;height:8px;background:#ddd;content:'';-webkit-transition:all .25s ease;-ms-transition:all .25s ease;transition:all .25s ease}
 #pairnav > ul > li.has-sub:hover > a:before{top:23px;height:0}
-#pairnav ul ul{position:absolute;left:-9999px;box-shadow: 1px 2px 3px 2px #2c3e50;;}
+#pairnav ul ul{position:absolute;left:-9999px;box-shadow: 1px 1px 1px 1px #2c3e50;;}
 #pairnav ul ul li{height:0;-webkit-transition:all .25s ease;-ms-transition:all .25s ease;background:#31496b;transition:all .25s ease}
 #pairnav ul ul li:hover{}
 #pairnav li:hover > ul{left:auto}
