@@ -84,30 +84,101 @@ body, html {
 
 /*Portfolio Close Button*/
 
-
 #closebtn {
-    background-color: #fbd245;
-    border: 1px solid #fbd245;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 22px;
-    height: 24px;
-    color: black;
-    padding: 0 20px;
-    text-align: center;
-    display: inline-block;
-    box-sizing: border-box;
-    text-shadow: none;
+  font-family: Calibri;
+  position: relative;
+  height: 25px;
+  width: 70px;
+  margin: 10px 7px;
+  padding: 5px 5px;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: white;
+  border: 1px solid #fbd245;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px 1px #2c3e50;
+  outline: 0;
+  overflow:hidden;
+  background: none;
+  z-index: 1;
+  cursor: pointer;
+  transition:         0.08s ease-in;
+  -o-transition:      0.08s ease-in;
+  -ms-transition:     0.08s ease-in;
+  -moz-transition:    0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
 
 }
 
 #closebtn:hover {
-    background: rgb(214, 154, 29);
-    border-color: rgb(214, 154, 29);
-    color: white;
-    text-shadow: 1px 1px 2px #000000;
+  color: black;
+  font-weight: 700;
+}
+
+#closebtn:before {
+  content: "";
+  position: absolute;
+  background: #fbd245;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+#closebtn:hover:before {
+  top: 0;
+}
+
+/*Add position Button*/
+
+#submitPosition {
+  font-family: Calibri;
+  position: relative;
+  height: 35px;
+  width: 90px;
+  margin: 10px 7px;
+  padding: 5px 5px;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: white;
+  border: 1px solid #fbd245;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px 1px #2c3e50;
+  outline: 0;
+  overflow:hidden;
+  background: none;
+  z-index: 1;
+  cursor: pointer;
+  transition:         0.08s ease-in;
+  -o-transition:      0.08s ease-in;
+  -ms-transition:     0.08s ease-in;
+  -moz-transition:    0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+#submitPosition:hover {
+  color: black;
+  font-weight: 700;
+}
+
+#submitPosition:before {
+  content: "";
+  position: absolute;
+  background: #fbd245;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+#submitPosition:hover:before {
+  top: 0;
 }
 
 
