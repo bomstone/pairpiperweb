@@ -143,12 +143,12 @@ body, html {
   font-weight: bold;
   font-size: 12px;
   color: white;
-  border: 1px solid #fbd245;
+  border: 1px solid #288e43;
   border-radius: 4px;
   box-shadow: 1px 1px 1px 1px #2c3e50;
   outline: 0;
   overflow:hidden;
-  background: none;
+  background: #288e43;
   z-index: 1;
   cursor: pointer;
   transition:         0.08s ease-in;
@@ -159,25 +159,11 @@ body, html {
 }
 
 #submitPosition:hover {
-  color: black;
-  font-weight: 700;
+  color: white;
+  font-weight: bold;
+  background: #1c8438;
 }
 
-#submitPosition:before {
-  content: "";
-  position: absolute;
-  background: #fbd245;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 100%;
-  z-index: -1;
-  -webkit-transition: top 0.09s ease-in;
-}
-
-#submitPosition:hover:before {
-  top: 0;
-}
 
 
 /*Portfolio User Dropdown*/
