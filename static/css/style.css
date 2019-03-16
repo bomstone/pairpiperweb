@@ -90,10 +90,9 @@ body, html {
   height: 25px;
   width: 70px;
   margin: 10px 7px;
-  padding: 5px 5px;
+  padding: 5px;
   font-weight: bold;
   font-size: 12px;
-  letter-spacing: 1px;
   color: white;
   border: 1px solid #fbd245;
   border-radius: 4px;
@@ -137,13 +136,12 @@ body, html {
 #submitPosition {
   font-family: Calibri;
   position: relative;
-  height: 35px;
-  width: 90px;
+  height: 30px;
+  width: 80px;
   margin: 10px 7px;
-  padding: 5px 5px;
+  padding: 5px;
   font-weight: bold;
   font-size: 12px;
-  letter-spacing: 1px;
   color: white;
   border: 1px solid #fbd245;
   border-radius: 4px;
