@@ -15,7 +15,12 @@ class PairsdataView(TemplateView):
         context['todays_date'] = self.todays_date
         context['today_minus'] = self.today_minus
         context['symbol_list'] = symbolList
-        return context
+        return {
+            'todays_date': datetime.now().strftime("%Y-%m-%d"),
+            'today_minus': (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d'),
+            'symbol_list': symbolList,
+           }
+
 
     def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
 
@@ -39,10 +44,10 @@ class PairsdataView(TemplateView):
             'chart_11': chart_11,
             'chart_21': chart_21,
             'chart_31': chart_31,
-            'todays_date': self.todays_date,
-            'today_minus': self.today_minus,
+            'todays_date': datetime.now().strftime("%Y-%m-%d"),
+            'today_minus': (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d'),
             'symbol_list': symbolList,
             }
 
-        return render(request, self.template_name, context)
+        return render(request, self.template_name, context,)
 
