@@ -73,10 +73,28 @@ body, html {
 }
 
 .adminlink a:link, .adminlink a:visited {
-    position: absolute !important;
-    top: 8px !important;
-    right: 16px !important;
-    font-size: 18px !important;
-    color: #eaeaea !important;
-    text-decoration: none !important;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+    color: #eaeaea;
+    text-decoration: none;
+}
+
+.left {
+
+    float: left;
+
+}
+
+.center {
+
+    float: left;
+
+}
+
+.right {
+    background-color: #555;
+    float: right;
+
 }

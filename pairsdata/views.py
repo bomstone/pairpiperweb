@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from datetime import datetime, timedelta
 from . import pipercharts as pp
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from piperdatabase.symbols import symbolList
 
 
 class PairsdataView(TemplateView):
@@ -13,6 +14,7 @@ class PairsdataView(TemplateView):
         context = super(PairsdataView, self).get_context_data(**kwargs)
         context['todays_date'] = self.todays_date
         context['today_minus'] = self.today_minus
+        context['symbol_list'] = symbolList
         return context
 
     def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
@@ -23,17 +25,23 @@ class PairsdataView(TemplateView):
         asset_2 = request.POST.get('ticker_2_droplist')
         symbol_list = [asset_1, asset_2]
 
-        chart_1 = pp.draw_chart(symbol_list, start_date, end_date)
-        chart_2 = pp.draw_chart(symbol_list, '2018-05-05', end_date)
-        chart_3 = pp.draw_chart(symbol_list, '2018-01-04', end_date)
-
+        chart_1 = pp.draw_spread(symbol_list, start_date, end_date)
+        chart_2 = pp.draw_spread(symbol_list, '2018-05-05', end_date)
+        chart_3 = pp.draw_spread(symbol_list, '2018-01-04', end_date)
+        chart_11 = pp.draw_price(symbol_list, start_date, end_date)
+        chart_21 = pp.draw_price(symbol_list, '2018-05-05', end_date)
+        chart_31 = pp.draw_price(symbol_list, '2018-01-04', end_date)
 
         context = {
             'chart_1': chart_1,
             'chart_2': chart_2,
             'chart_3': chart_3,
+            'chart_11': chart_11,
+            'chart_21': chart_21,
+            'chart_31': chart_31,
             'todays_date': self.todays_date,
             'today_minus': self.today_minus,
+            'symbol_list': symbolList,
             }
 
         return render(request, self.template_name, context)
