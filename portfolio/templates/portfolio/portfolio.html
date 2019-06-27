@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
+{% block extrahead %}
+         <script type="text/javascript" src="{{STATICFILES_DIRS}}/static/js/portfolio.js"></script>
+{% endblock %}
 {% block content %}
 <div class="portfolio">
     <center>
-    <select>
-        <option value="jesper">jesper</option>
-        <option value="mikael">mikael</option>
+     <div class="selectuser">
+    <select name="slct" id="slct">
+      <option>User</option>
+      <option value="Jesper">Jesper</option>
+      <option value="Mikael">Mikael</option>
     </select>
+  </div>
     <br>
     <br>
     {% for id in id_list %}
@@ -35,7 +41,7 @@
                     {{ object.id }}
                     {{ object.trade_id }}
                     {{ object.insert_type }}
-                    <td>{{ object.user  }}</td>
+                    <td class="userCell">{{ object.user  }}</td>
                     <td>{{ object.strategy }}</td>
                     <td>{{ object.product_type }}</td>
                     <td>{{ object.open_date }}</td>
@@ -53,7 +59,7 @@
                 {% endif %}
             {% endfor %}
         </table>
-        <button type="submit">Close position</button>
+        <button type="submit" id="closebtn">Close</button>
     </form>
 {% endfor %}
     </center>
