@@ -1,4 +1,4 @@
-### PairPiperWeb 1.5.1
+### PairPiperWeb 1.5.2
 
 ##
 #### Versionshistorik<br>
@@ -29,3 +29,4 @@
 
 **1.5.0** - Portfolio-appen kan nu visa samtliga och stänga valda positioner <br>
 **1.5.1** - Open price / close price borttaget från main position vid flerbenstrades <br>
+**1.5.2** - Added /autoscraper to repository <br>
