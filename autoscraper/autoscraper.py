@@ -3,17 +3,18 @@ import requests
 from bs4 import BeautifulSoup as soup
 import datetime
 import time
-from config import symbol_dict
-from config import db_name
+from autoscraper-config import symbol_dict
+from autoscraper-config import db_name
+from autoscraper-config import log_file
 
 def append_to_log(counter, script_time):
-    log_txt = open(r'log.txt', 'a')
+    log_txt = open(str(log_file), 'a')
 
     now = datetime.datetime.now()
     time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
     script_time = script_time.total_seconds()
     log_txt.write(str(time_stamp) + ' - Finished adding ' + str(counter) +
-                  ' rows to PiperDB. Script execution time: ' + str(script_time) + 's\n')
+                  ' rows to ' +str(db_name) + '. Script execution time: ' + str(script_time) + 's\n')
 
     log_txt.close()
 
