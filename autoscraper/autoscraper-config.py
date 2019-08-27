@@ -1,5 +1,8 @@
-#databasnamn - Används för att skilja på testdatabas och livedatabas
-db_name = "testdb.sqlite3"
+# coding=utf-8
+#databas - ange komplett sökväg till databas
+db_name = '/media/admin/local/www/pairpiperweb-live/db.sqlite3'
+#logfil - ange komplett sökväg till logfil
+log_file = '/media/admin/local/www/pairpiperweb-live/autoscraper/log.txt'
 
 # Symboler med respektive URL på https://www.investing.com/'
 symbol_dict = {
