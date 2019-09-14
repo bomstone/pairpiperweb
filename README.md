@@ -1,4 +1,4 @@
-### PairPiperWeb 1.5.3
+### PairPiperWeb 1.5.4
 
 ##
 #### Versionshistorik<br>
@@ -31,3 +31,4 @@
 **1.5.1** - Open price / close price borttaget från main position vid flerbenstrades <br>
 **1.5.2** - La till /autoscraper till repository <br>
 **1.5.3** - Uppdaterade requirements och gitignore <br>
+**1.5.4** - Piperdatabase borttaget då Autoscraper fyller samma funktion. Admin-static flyttade till ordinarie static-mapp.
