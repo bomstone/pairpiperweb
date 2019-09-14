@@ -36,57 +36,66 @@ def scrape_live(symbol):
 
     datetime_object = datetime.datetime.strptime(livedata[0], '%b %d, %Y').date()
     parse_date = (str(datetime_object))
+    now = datetime.datetime.now()
+    timestamp = now.strftime('%Y-%m-%d %H:%M:%S')
     datastring = [parse_date,
                   symbol,
                   livedata[2].replace(',', ''),
                   livedata[3].replace(',', ''),
                   livedata[4].replace(',', ''),
                   livedata[1].replace(',', ''),
+                  timestamp
                   ]
     url.close()
     time.sleep(2)
     return datastring
 
-def updatelivedb():
+
+def collect_data():
+    collected_set = []
     now = datetime.datetime.now()
-    conn = sqlite3.connect(str(db_name))
-    c = conn.cursor()
 
-    date = now.strftime('%Y-%m-%d')
-    c.execute("DELETE FROM piperdb WHERE date=(?)", (date,))
-
-    conn.commit()
-    conn.close()
-    counter = 0
     for symbol in symbol_dict:
-
-        time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
         row = scrape_live(symbol)
         row[0] = now.strftime('%Y-%m-%d')
+        collected_set.append(row)
+
+    return collected_set
+
+
+def update_piperdb():
+    now = datetime.datetime.now()
+    date = now.strftime('%Y-%m-%d')
+    counter = 0
+
+    conn = sqlite3.connect(str(db_name))
+    c = conn.cursor()
+    c.execute("DELETE FROM piperdb WHERE date=(?)", (date,))
+    conn.commit()
+    conn.close()
+    dataset = collect_data()
+    script_time = datetime.datetime.now() - now
+
+    for row in dataset:
 
         conn = sqlite3.connect(str(db_name))
         c = conn.cursor()
         c.execute("""INSERT INTO piperdb (date, symbol, opening_price, high_price, low_price, closing_price, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?)""", (
-            row[0], 
-            row[1], 
-            row[2], 
-            row[3], 
-            row[4], 
+            row[0],
+            row[1],
+            row[2],
+            row[3],
+            row[4],
             row[5],
-            time_stamp,
+            row[6],
             ))
-
         counter += 1
         conn.commit()
-
     conn.close()
-
-    script_time = datetime.datetime.now() - now
 
     append_to_log(counter, script_time)
 
-updatelivedb()
 
-
+update_piperdb()
 
 
