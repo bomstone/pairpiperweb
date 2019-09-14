@@ -3,9 +3,9 @@ import requests
 from bs4 import BeautifulSoup as soup
 import datetime
 import time
-from autoscraper-config import symbol_dict
-from autoscraper-config import db_name
-from autoscraper-config import log_file
+from config import symbol_dict
+from config import db_name
+from config import log_file
 
 def append_to_log(counter, script_time):
     log_txt = open(str(log_file), 'a')

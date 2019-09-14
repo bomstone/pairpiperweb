@@ -1,1 +1,3 @@
 
+2019-09-14 12:33:31 - Finished adding 45 rows to D:\Projekt\Dev\pairpiperweb\db.sqlite3. Script execution time: 143.783812s
+2019-09-14 12:47:37 - Finished adding 45 rows to D:\Projekt\Dev\pairpiperweb\db.sqlite3. Script execution time: 142.605616s
