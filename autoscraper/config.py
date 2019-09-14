@@ -60,3 +60,5 @@ symbol_dict = {
     'VOLV-A': 'equities/volvo-a-historical-data?cid=26021',
     'VOLV-B': 'equities/volvo-b-historical-data',
 }
+
+symbolList = list(symbol_dict.keys())

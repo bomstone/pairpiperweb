@@ -16,7 +16,6 @@ Including another URLconf
 from django.urls import include, path
 from django.views.generic.base import TemplateView
 from django.contrib import admin
-import piperdatabase.views
 from pairsdata.views import PairsdataView
 import portfolio.views
 import addposition.views
@@ -29,9 +28,6 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('admin/', admin.site.urls),
     path('pairsdata/', PairsdataView.as_view(), name='pairsdata'),
-    path('piperdatabase/', piperdatabase.views.PiperdatabaseView, name='PiperdatabaseView'),
-    path('piperdatabase/updatelive/', piperdatabase.views.updatelive),
-    path('piperdatabase/updatehistorical/', piperdatabase.views.updatehistorical),
     path('portfolio/', portfolio.views.PortfolioView, name='PortfolioView'),
     path('addposition/', addposition.views.AddPositionView, name='AddpositionView'),
     path('tradelog/', tradelog.views.TradelogView, name='TradelogView'),
