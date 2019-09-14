@@ -10,22 +10,19 @@ from statsmodels.tsa.stattools import coint, adfuller
 import io
 import base64
 import sqlite3
-from piperdatabase.models import PiperDatabase
-from django.db import connection as con
+import os
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def fetch_data(asset, dataset, startdate, enddate):
 
-    conn = sqlite3.connect('db.sqlite3')
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'db.sqlite3'))
     df = pd.read_sql_query("SELECT * FROM piperdb", conn,
                            index_col = 'date',
                            parse_dates=True,
                            )
-    #dbquery = PiperDatabase.objects.all().order_by('date', 'symbol')
-    #df = pd.read_sql_query(dbquery, con, index_col='date', parse_dates='true')
-
-    #queryset = PiperDatabase.objects.all().order_by('date', 'symbol')
-    #df = pd.DataFrame.from_records(queryset)
 
     data = df.loc[startdate:enddate]
     pivot_table = data.pivot(columns='symbol',
@@ -33,8 +30,10 @@ def fetch_data(asset, dataset, startdate, enddate):
     filtered_data = pivot_table.filter(items=asset)
     return filtered_data
 
+
 def zscore(series):
     return (series - series.mean()) / np.std(series)
+
 
 def draw_spread(symbol_list, start_date, end_date):
 
