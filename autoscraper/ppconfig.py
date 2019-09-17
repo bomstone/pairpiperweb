@@ -1,19 +1,14 @@
-# AUTOSCRAPER CONFIG
-
+# ------------- PAIR PIPER WEB config file ------------- #
 import os
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# coding=utf-8
-#databas - ange komplett sökväg till databas
+# Databas
 db_name = os.path.join(BASE_DIR, 'db.sqlite3')
-#logfil - ange komplett sökväg till logfil
-log_file = os.path.join(BASE_DIR, 'autoscraper/log.txt')
 
 # Symboler med respektive URL på https://www.investing.com/'
-symbol_dict = {
+symbolDict = {
     'ABB': 'equities/abb-ltd-historical-data?cid=482',
     'ALFA': 'equities/alfa-laval-historical-data',
     'ALIV-SDB': 'equities/autoliv-inc-historical-data',
@@ -61,4 +56,4 @@ symbol_dict = {
     'VOLV-B': 'equities/volvo-b-historical-data',
 }
 
-symbolList = list(symbol_dict.keys())
+symbolList = list(symbolDict.keys())

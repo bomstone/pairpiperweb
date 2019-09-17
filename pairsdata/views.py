@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from datetime import datetime, timedelta
 from . import pipercharts as pp
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from autoscraper.config import symbolList
+from autoscraper.ppconfig import symbolList
 
 
 class PairsdataView(TemplateView):

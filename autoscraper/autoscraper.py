@@ -3,9 +3,14 @@ import requests
 from bs4 import BeautifulSoup as soup
 import datetime
 import time
-from config import symbol_dict
-from config import db_name
-from config import log_file
+import os
+from ppconfig import db_name, symbolDict
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+log_file = os.path.join(BASE_DIR, 'autoscraper/log.txt')
+
 
 def append_to_log(counter, script_time):
     log_txt = open(str(log_file), 'a')
@@ -14,12 +19,13 @@ def append_to_log(counter, script_time):
     time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
     script_time = script_time.total_seconds()
     log_txt.write(str(time_stamp) + ' - Finished adding ' + str(counter) +
-                  ' rows to ' +str(db_name) + '. Script execution time: ' + str(script_time) + 's\n')
+                  ' rows to ' + str(db_name) + '. Script execution time: ' + str(script_time) + 's\n')
 
     log_txt.close()
 
-def scrape_live(symbol):
-    url = requests.get('https://www.investing.com/' + symbol_dict[symbol],
+
+def scrape_investing_com(symbol):
+    url = requests.get('https://www.investing.com/' + symbolDict[symbol],
                        headers={'User-Agent': 'Mozilla/5.0 Chrome/70.0.3538.110'})
     page_soup = soup(url.content, 'html.parser')
     containers = page_soup.findAll('table', {'class': 'genTbl closedTbl historicalTbl'})
@@ -55,8 +61,8 @@ def collect_data():
     collected_set = []
     now = datetime.datetime.now()
 
-    for symbol in symbol_dict:
-        row = scrape_live(symbol)
+    for symbol in symbolDict:
+        row = scrape_investing_com(symbol)
         row[0] = now.strftime('%Y-%m-%d')
         collected_set.append(row)
 
