@@ -21,9 +21,7 @@ class PairsdataView(TemplateView):
             'symbol_list': symbolList,
            }
 
-
-    def post(self, request):     #beskriver vad som händer vid post-request (sumbit i formuläret)
-
+    def post(self, request):
         start_date = request.POST.get('start_date_textbox')
         end_date = request.POST.get('end_date_textbox')
         asset_1 = request.POST.get('ticker_1_droplist')
