@@ -8,7 +8,7 @@ from autoscraper.ppconfig import symbolList
 class PairsdataView(TemplateView):
     template_name = 'pairsdata/pairsdata.html'
     todays_date = datetime.now().strftime("%Y-%m-%d")
-    today_minus = (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d')
+    today_minus = (datetime.today() - timedelta(days=60)).strftime('%Y-%m-%d')
 
     def get_context_data(self, **kwargs):
         context = super(PairsdataView, self).get_context_data(**kwargs)
@@ -17,7 +17,7 @@ class PairsdataView(TemplateView):
         context['symbol_list'] = symbolList
         return {
             'todays_date': datetime.now().strftime("%Y-%m-%d"),
-            'today_minus': (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d'),
+            'today_minus': (datetime.today() - timedelta(days=60)).strftime('%Y-%m-%d'),
             'symbol_list': symbolList,
            }
 
@@ -27,13 +27,15 @@ class PairsdataView(TemplateView):
         asset_1 = request.POST.get('ticker_1_droplist')
         asset_2 = request.POST.get('ticker_2_droplist')
         symbol_list = [asset_1, asset_2]
+        minus_1 = (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d')
+        minus_2 = (datetime.today() - timedelta(days=250)).strftime('%Y-%m-%d')
 
         chart_1 = pp.draw_spread(symbol_list, start_date, end_date)
-        chart_2 = pp.draw_spread(symbol_list, '2018-05-05', end_date)
-        chart_3 = pp.draw_spread(symbol_list, '2018-01-04', end_date)
+        chart_2 = pp.draw_spread(symbol_list, str(minus_1), end_date)
+        chart_3 = pp.draw_spread(symbol_list, str(minus_2), end_date)
         chart_11 = pp.draw_price(symbol_list, start_date, end_date)
-        chart_21 = pp.draw_price(symbol_list, '2018-05-05', end_date)
-        chart_31 = pp.draw_price(symbol_list, '2018-01-04', end_date)
+        chart_21 = pp.draw_price(symbol_list, str(minus_1), end_date)
+        chart_31 = pp.draw_price(symbol_list, str(minus_2), end_date)
 
         context = {
             'chart_1': chart_1,
@@ -43,8 +45,12 @@ class PairsdataView(TemplateView):
             'chart_21': chart_21,
             'chart_31': chart_31,
             'todays_date': datetime.now().strftime("%Y-%m-%d"),
-            'today_minus': (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d'),
+            'today_minus': (datetime.today() - timedelta(days=20)).strftime('%Y-%m-%d'),
             'symbol_list': symbolList,
+            'start_date': start_date,
+            'end_date': end_date,
+            'minus_1': minus_1,
+            'minus_2': minus_2,
             }
 
         return render(request, self.template_name, context,)
