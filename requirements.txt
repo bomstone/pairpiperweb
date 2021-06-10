@@ -1,6 +1,6 @@
 beautifulsoup4==4.6.3
 DateTime==4.3
-django==2.2.4
+django==2.2.24
 matplotlib==3.0.2
 numpy==1.15.4
 numpydoc==0.8.0
